@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe Générique — MOFU Hub · Castorama · Template Scalable</title>
+<style>
+:root {
+  --bg: #F0F2F7;
+  --white: #FFFFFF;
+  --border: #C8D0E0;
+  --text: #1B2840;
+  --text-2: #4A5A72;
+  --text-3: #8A97AE;
+  --orange: #fedc01;
+  --navy: #0063b0;
+
+  /* GEO signal colors */
+  --geo-s: #1255BE; --geo-s-bg: #E5EFFE;
+  --geo-u: #0A7850; --geo-u-bg: #E2F5EC;
+  --geo-e: #5F28C2; --geo-e-bg: #EAE5FB;
+  --geo-p: #B84500; --geo-p-bg: #FDF0E3;
+  --cro:   #B8004E; --cro-bg:   #FDEEF4;
+
+  /* Variable vs Fixe */
+  --var-color:  #7B3FA0; --var-bg: #F0EAFC;
+  --fix-color:  #1255BE; --fix-bg: #E5EFFE;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  padding: 0 20px 64px;
+}
+.page-wrap { max-width: 1020px; margin: 0 auto; }
+
+/* ── DOC HEADER ── */
+.doc-head { padding: 40px 0 24px; margin-bottom: 8px; }
+.doc-head h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 4px; }
+.doc-head p { color: var(--text-2); font-size: 13px; }
+.doc-badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.doc-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; }
+.db-template { background: var(--navy); color: #fff; }
+.db-scalable { background: var(--orange); color: var(--navy); }
+.db-version  { background: var(--bg); color: var(--text-3); border: 1px solid var(--border); }
+
+/* ── VARIABLES BLOCK ── */
+.var-block {
+  background: var(--white);
+  border: 2px solid var(--var-color);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.var-block-head {
+  background: var(--var-color);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+}
+.var-block-body {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.var-item {
+  background: var(--var-bg);
+  border: 1px solid #D4C1F5;
+  border-radius: 7px;
+  padding: 12px 14px;
+}
+.var-label { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--var-color); margin-bottom: 4px; }
+.var-name  { font-size: 14px; font-weight: 800; color: var(--var-color); margin-bottom: 4px; font-family: Menlo, Consolas, monospace; }
+.var-desc  { font-size: 11.5px; color: var(--text-2); line-height: 1.5; }
+.var-example { margin-top: 6px; font-size: 10.5px; color: var(--var-color); font-style: italic; }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.legend-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--text-3); width: 100%; margin-bottom: 3px; }
+.geo-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.geo-s-b  { background: var(--geo-s-bg); color: var(--geo-s); } .geo-s-b .dot  { background: var(--geo-s); }
+.geo-u-b  { background: var(--geo-u-bg); color: var(--geo-u); } .geo-u-b .dot  { background: var(--geo-u); }
+.geo-e-b  { background: var(--geo-e-bg); color: var(--geo-e); } .geo-e-b .dot  { background: var(--geo-e); }
+.geo-p-b  { background: var(--geo-p-bg); color: var(--geo-p); } .geo-p-b .dot  { background: var(--geo-p); }
+.geo-cro-b{ background: var(--cro-bg);   color: var(--cro);   } .geo-cro-b .dot{ background: var(--cro);   }
+.geo-var-b{ background: var(--var-bg);   color: var(--var-color); } .geo-var-b .dot{ background: var(--var-color); }
+.geo-std  { background: #F0F2F7; color: var(--text-3); border: 1px solid var(--border); }
+
+/* ── WIREFRAME SECTIONS ── */
+.wf-wrap { display: flex; flex-direction: column; gap: 6px; }
+
+.wf-section {
+  background: var(--white);
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.wf-section.service   { border-left: 4px solid var(--geo-s); }
+.wf-section.ugc       { border-left: 4px solid var(--geo-u); }
+.wf-section.expertise { border-left: 4px solid var(--geo-e); }
+.wf-section.persona   { border-left: 4px solid var(--geo-p); }
+.wf-section.std       { border-left: 4px solid var(--border); }
+.wf-section.multi     { border-left: 4px solid var(--orange); }
+.wf-section.cro       { border-left: 4px solid var(--cro); }
+
+.wf-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 16px;
+  background: #F8F9FC;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.wf-num {
+  font-size: 11px; font-weight: 700;
+  color: #fff; background: var(--text-3);
+  border-radius: 3px; padding: 1px 8px; flex-shrink: 0;
+}
+.wf-name { font-size: 14px; font-weight: 700; color: var(--text); flex: 1; min-width: 120px; }
+.wf-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.wf-geo {
+  font-size: 11px; font-weight: 600;
+  padding: 3px 9px; border-radius: 20px;
+}
+.wf-geo.s   { background: var(--geo-s-bg); color: var(--geo-s); }
+.wf-geo.u   { background: var(--geo-u-bg); color: var(--geo-u); }
+.wf-geo.e   { background: var(--geo-e-bg); color: var(--geo-e); }
+.wf-geo.p   { background: var(--geo-p-bg); color: var(--geo-p); }
+.wf-geo.cro { background: var(--cro-bg);   color: var(--cro);   }
+
+/* FIXE / VARIABLE pill dans le header */
+.badge-fix { background: var(--fix-bg); color: var(--fix-color); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.05em; }
+.badge-var { background: var(--var-bg); color: var(--var-color); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.05em; }
+
+.wf-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.wf-col {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+.wf-col:last-child { border-right: none; }
+.wf-col.full { grid-column: 1 / -1; border-right: none; }
+.wf-col-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--text-3); margin-bottom: 7px;
+}
+.wf-col-content { font-size: 12.5px; color: var(--text-2); line-height: 1.6; }
+.wf-col-content ul { padding-left: 14px; }
+.wf-col-content li { margin-bottom: 3px; }
+.wf-col-content strong { color: var(--text); }
+
+/* Variable placeholder dans le body */
+.var-ph {
+  display: inline-block;
+  background: var(--var-bg);
+  color: var(--var-color);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  border: 1px dashed var(--var-color);
+  font-family: Menlo, Consolas, monospace;
+}
+
+.note-strip {
+  grid-column: 1 / -1;
+  background: #FFF7F3;
+  border-top: 1px solid #FFD8C0;
+  padding: 8px 18px;
+  font-size: 11.5px; color: #9A4010;
+  line-height: 1.55;
+}
+.note-strip.var-note {
+  background: var(--var-bg);
+  border-top-color: #D4C1F5;
+  color: var(--var-color);
+}
+.note-strip.cro-note {
+  background: var(--cro-bg);
+  border-top-color: #F4AACB;
+  color: var(--cro);
+}
+
+/* Sketches */
+.sketch { background: var(--bg); border-radius: 6px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 11px; border: 1px dashed var(--border); margin-top: 8px; }
+.sketch-tall { height: 64px; }
+.sketch-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.sketch-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text-3); }
+.sketch-chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.sketch-chip.var  { background: var(--var-bg); color: var(--var-color); border: 1px dashed var(--var-color); }
+.sketch-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.sketch-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.sketch-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+.sketch-box { background: var(--bg); border: 1px dashed var(--border); border-radius: 5px; height: 52px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-3); text-align: center; padding: 4px; flex-direction: column; gap: 2px; }
+.sketch-box.var { background: var(--var-bg); border-color: var(--var-color); color: var(--var-color); }
+.sketch-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.sketch-tag { background: var(--bg); border: 1px solid var(--border); padding: 3px 10px; border-radius: 4px; font-size: 10px; color: var(--text-3); }
+.cta-sketch { background: var(--orange); color: var(--navy); border-radius: 4px; padding: 5px 14px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 8px; }
+.cta-sketch-out { border: 2px solid var(--navy); color: var(--navy); border-radius: 4px; padding: 4px 14px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 8px; margin-left: 6px; }
+
+/* Product card sketch */
+.pcard { background: var(--bg); border: 1px dashed var(--border); border-radius: 6px; padding: 10px 8px; font-size: 10px; color: var(--text-3); text-align: center; }
+.pcard-price { font-size: 13px; font-weight: 800; color: var(--navy); }
+.pcard-ref   { font-size: 10px; text-decoration: line-through; }
+.pcard-stock { color: #1A7A4A; font-weight: 600; font-size: 10px; }
+
+/* ── TABLE SCALABILITY FOOTER ── */
+.scale-note {
+  margin-top: 20px;
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 22px 24px;
+  color: #fff;
+}
+.scale-note-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; color: rgba(255,255,255,0.45);
+  margin-bottom: 14px;
+}
+.scale-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; font-size: 12.5px; }
+.scale-col-title { color: rgba(255,255,255,0.45); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+.scale-col-body { color: rgba(255,255,255,0.8); line-height: 1.7; }
+.scale-col-body span { color: var(--orange); font-weight: 700; }
+
+@media (max-width: 720px) {
+  .wf-body { grid-template-columns: 1fr; }
+  .wf-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .wf-col:last-child { border-bottom: none; }
+  .wf-col.full { border-bottom: none; }
+  .var-block-body { grid-template-columns: 1fr; }
+  .scale-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="doc-head">
+    <div class="doc-badge-row">
+      <span class="doc-badge db-template">Template Générique</span>
+      <span class="doc-badge db-scalable">Scalable tous univers</span>
+      <span class="doc-badge db-version">Castorama · MOFU Hub · v2.0</span>
+    </div>
+    <h1>Wireframe — MOFU Hub <span style="color:var(--var-color);font-family:Menlo,Consolas,monospace;">[UNIVERS]</span></h1>
+    <p>Template générique · 16 composants · Adaptable à tout univers Castorama · Code couleur : <strong style="color:var(--var-color);">violet = variable par univers</strong> · <strong style="color:var(--fix-color);">bleu = fixe</strong></p>
+  </div>
+
+  <!-- VARIABLES À DÉFINIR PAR UNIVERS -->
+  <div class="var-block">
+    <div class="var-block-head">
+      ⚙ Variables à définir pour chaque univers — remplir avant d'adapter le template
+    </div>
+    <div class="var-block-body">
+      <div class="var-item">
+        <div class="var-label">Identifiant</div>
+        <div class="var-name">[UNIVERS_SLUG]</div>
+        <div class="var-desc">Slug URL de l'univers — sert de clé dans toutes les API</div>
+        <div class="var-example">ex: "jardin" · "cuisine" · "dressing" · "peinture" · "outillage"</div>
+      </div>
+      <div class="var-item">
+        <div class="var-label">H1 page</div>
+        <div class="var-name">[TITRE_UNIVERS]</div>
+        <div class="var-desc">Intitulé de la page affiché en H1 et breadcrumb</div>
+        <div class="var-example">ex: "Outillage jardin" · "Électroménager cuisine" · "Rangement dressing"</div>
+      </div>
+      <div class="var-item">
+        <div class="var-label">Type calculateur</div>
+        <div class="var-name">[CALC_TYPE]</div>
+        <div class="var-desc">Outil de recommandation propre à l'univers</div>
+        <div class="var-example">ex: m²→type tondeuse (jardin) · volume→robot (cuisine) · m²→armoire (dressing)</div>
+      </div>
+      <div class="var-item">
+        <div class="var-label">Unité calculateur</div>
+        <div class="var-name">[CALC_INPUT]</div>
+        <div class="var-desc">Input principal du calculateur (label + plage)</div>
+        <div class="var-example">ex: "Surface m² (1–50)" · "Volume du jardin m²" · "Nb de couverts"</div>
+      </div>
+      <div class="var-item">
+        <div class="var-label">Spec produit principale</div>
+        <div class="var-name">[SPEC_PRINCIPALE]</div>
+        <div class="var-desc">Attribut clé du produit pour les tableaux (ex: Puissance)</div>
+        <div class="var-example">ex: "Puissance (W)" · "Largeur de coupe (cm)" · "Capacité (L)"</div>
+      </div>
+      <div class="var-item">
+        <div class="var-label">4 situations MOFU</div>
+        <div class="var-name">[SITUATIONS×4]</div>
+        <div class="var-desc">Les 4 cards d'intention projet propres à l'univers</div>
+        <div class="var-example">ex: Rénovation · Économies · Design · Installation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LÉGENDE -->
+  <div class="legend">
+    <div class="legend-title">Code couleur — GEO · CRO · Scalabilité</div>
+    <span class="geo-badge geo-s-b"><span class="dot"></span>Service</span>
+    <span class="geo-badge geo-u-b"><span class="dot"></span>UGC</span>
+    <span class="geo-badge geo-e-b"><span class="dot"></span>Expertise</span>
+    <span class="geo-badge geo-p-b"><span class="dot"></span>Personnification</span>
+    <span class="geo-badge geo-cro-b"><span class="dot"></span>CRO — signal conversion</span>
+    <span class="geo-badge geo-var-b"><span class="dot"></span>Variable par univers</span>
+    <span class="geo-badge geo-std">Fixe tous univers</span>
+  </div>
+
+  <div class="wf-wrap">
+
+    <!-- S01 HEADER -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">01</span>
+        <span class="wf-name">Header + Navigation</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard</span><span class="badge-fix">FIXE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">Composant Castorama standard — identique partout</div>
+          <div class="wf-col-content">Logo · Barre de recherche · Mon compte / Panier · Nav univers</div>
+          <div class="sketch">[ CASTORAMA ] _____ Rechercher _____ Mon compte · Panier</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S02 BREADCRUMB -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">02</span>
+        <span class="wf-name">Breadcrumb</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-content">
+            Accueil › <span class="var-ph">[CATEGORIE PARENTE]</span> › <strong><span class="var-ph">[TITRE_UNIVERS]</span></strong>
+          </div>
+          <div class="note-strip var-note">Variable : seul le dernier niveau et la catégorie parente changent selon l'univers. La structure à 3 niveaux est fixe.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S03 HERO — CRO v2 -->
+    <div class="wf-section persona">
+      <div class="wf-head">
+        <span class="wf-num">03</span>
+        <span class="wf-name">Hero situationnel</span>
+        <div class="wf-tags"><span class="wf-geo p">Personnification</span><span class="wf-geo cro">CRO</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Texte (55%) — variable par univers</div>
+          <div class="wf-col-content">
+            <strong>H1 :</strong> <span class="var-ph">[TITRE_UNIVERS]</span><br>
+            <strong>Chapeau :</strong> <span class="var-ph">[CHAPEAU_SITUATIONNEL]</span> — 2 phrases, neutre, couvre 3 intentions<br>
+            <strong>CTA primaire →</strong> #calculateur (outil = engagement fort)<br>
+            <strong>CTA secondaire →</strong> #catalogue<br>
+            <strong>Preuve sociale :</strong> ★★★★★ <span class="var-ph">[NOTE/5]</span> · <span class="var-ph">[N]</span> avis vérifiés
+          </div>
+          <div style="margin-top:8px">
+            <span class="cta-sketch"><span class="var-ph" style="font-size:10px;">[CTA_CALCULATEUR]</span></span>
+            <span class="cta-sketch-out">Voir les produits</span>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:#F4A820;">★★★★★ <span style="color:var(--text-3);"><span class="var-ph" style="font-size:10px">[NOTE]</span>/5 · <span class="var-ph" style="font-size:10px">[N]</span> avis vérifiés Castorama</span></div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Visuel (45%) — variable par univers</div>
+          <div class="wf-col-content"><span class="var-ph">[IMAGE_LIFESTYLE_UNIVERS]</span> — photo produit en contexte ambiance</div>
+          <div class="sketch sketch-tall">[ IMAGE LIFESTYLE <span class="var-ph" style="font-size:10px;">[UNIVERS]</span> ]</div>
+        </div>
+        <div class="note-strip">Le hero reste neutre et inclusif. La bifurcation persona se fait via les chips et les cards MOFU en dessous. Le CTA primaire pointe vers l'outil calculateur propre à l'univers.</div>
+      </div>
+    </div>
+
+    <!-- S04 CHIPS -->
+    <div class="wf-section multi">
+      <div class="wf-head">
+        <span class="wf-num">04</span>
+        <span class="wf-name">Chips sémantiques</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo p">Personnification</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Rôle double — fixe</div>
+          <div class="wf-col-content">
+            1. <strong>Ancres SEO</strong> — signal sémantique (top, middle, longue traîne)<br>
+            2. <strong>Filtre catalogue</strong> — clic → scroll #catalogue + filtre pré-activé
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">10 chips — 100% variables par univers</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip active"><span class="var-ph" style="font-size:10px;">[Tout l'univers]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 2]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 3]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 4]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 5]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 6]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 7]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 8]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 9]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:10px;">[Chip 10]</span></span>
+          </div>
+        </div>
+        <div class="note-strip var-note">Les 10 chips viennent de l'analyse SEO + search interne Castorama pour cet univers (voir WS2 — note de cadrage). Chaque chip doit mapper sur un filtre catalogue existant.</div>
+      </div>
+    </div>
+
+    <!-- S05 MOFU CARDS -->
+    <div class="wf-section persona">
+      <div class="wf-head">
+        <span class="wf-num">05</span>
+        <span class="wf-name">4 cards MOFU — Navigation situations</span>
+        <div class="wf-tags"><span class="wf-geo p">Personnification</span><span class="wf-geo e">Expertise</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Structure card — fixe</div>
+          <div class="wf-col-content">Icône + titre situation + description 1 ligne + lien → page MOFU profonde<br><br>Router vers les pages MOFU profondes. Capture les intentions projet (pas produit).</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">4 situations — 100% variables par univers</div>
+          <div class="sketch-grid-4" style="margin-top:0">
+            <div class="sketch-box var"><span class="var-ph" style="font-size:9px;">[SITUATION 1]</span></div>
+            <div class="sketch-box var"><span class="var-ph" style="font-size:9px;">[SITUATION 2]</span></div>
+            <div class="sketch-box var"><span class="var-ph" style="font-size:9px;">[SITUATION 3]</span></div>
+            <div class="sketch-box var"><span class="var-ph" style="font-size:9px;">[SITUATION 4]</span></div>
+          </div>
+        </div>
+        <div class="note-strip var-note">Les 4 situations capturent les intentions projet de l'univers. Ex jardin : Créer une pelouse · Entretien · Potager · Terrassement. Ex cuisine : Rénover · Gagner en espace · Design · Guide électroménager.</div>
+      </div>
+    </div>
+
+    <!-- S06 CATALOGUE — CRO v2 -->
+    <div class="wf-section cro">
+      <div class="wf-head">
+        <span class="wf-num">06</span>
+        <span class="wf-name">Catalogue produits — id="catalogue"</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard PLP</span><span class="wf-geo cro">CRO</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (contenu)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Chips catalogue + filtres PLP</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip active">Tous</span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:9px;">[TYPE A]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:9px;">[TYPE B]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:9px;">[TYPE C]</span></span>
+            <span class="sketch-chip var"><span class="var-ph" style="font-size:9px;">[BADGE A]</span></span>
+          </div>
+          <div class="sketch-row" style="margin-top:10px;">
+            <span class="sketch-tag">Marque ▼</span>
+            <span class="sketch-tag var"><span class="var-ph" style="font-size:9px;">[SPEC_PRINCIPALE]</span> ▼</span>
+            <span class="sketch-tag">Prix ▼</span>
+            <span class="sketch-tag">Trier par ▼</span>
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Card produit — structure CRO fixe</div>
+          <div class="sketch-grid-2" style="margin-top:0">
+            <div class="pcard">
+              [ SVG produit <span class="var-ph" style="font-size:9px">[UNIVERS]</span> ]<br>
+              <strong><span class="var-ph" style="font-size:9px">[Marque Modèle]</span></strong><br>
+              <span class="pcard-ref">XXX €</span> <span class="pcard-price">YY,YY €</span><br>
+              <span class="pcard-stock">✓ En stock</span><br>
+              <span style="font-size:10px;color:var(--text-3);">Livraison offerte dès 69 €</span><br>
+              [ Ajouter au panier ]<br>
+              <span style="font-size:9px;color:var(--text-3);border-top:1px solid var(--border);margin-top:3px;padding-top:3px;display:block;">Installation dès <span class="var-ph" style="font-size:8px">[PRIX_INSTALL]</span>€</span>
+            </div>
+            <div class="pcard">
+              [ SVG produit ]<br>
+              <strong><span class="var-ph" style="font-size:9px">[Marque Modèle]</span></strong><br>
+              <span class="pcard-price">YY,YY €</span><br>
+              <span style="color:#C84000;font-size:10px;font-weight:600;">⚠ Dernières pièces</span><br>
+              <span style="font-size:10px;color:var(--text-3);">Livraison offerte dès 69 €</span><br>
+              [ Ajouter au panier ]<br>
+              <span style="font-size:9px;color:var(--text-3);border-top:1px solid var(--border);margin-top:3px;padding-top:3px;display:block;">Installation dès <span class="var-ph" style="font-size:8px">[PRIX_INSTALL]</span>€</span>
+            </div>
+          </div>
+        </div>
+        <div class="note-strip cro-note"><strong>CRO — 4 signaux fixes :</strong> Prix barré · badge stock coloré · "Livraison offerte dès 69 €" · "Installation dès X€". Le prix d'installation et l'unité de spec principale sont variables selon l'univers. Les chips de filtres sont issus de la taxonomie produit WS1.</div>
+      </div>
+    </div>
+
+    <!-- S07 CALCULATEUR -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">07</span>
+        <span class="wf-name">Outil de recommandation — id="calculateur"</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo p">Personnification</span><span class="wf-geo cro">CRO</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Inputs — variables par univers</div>
+          <div class="wf-col-content">
+            <strong>Input 1 :</strong> <span class="var-ph">[CALC_INPUT]</span><br>
+            <strong>Input 2 :</strong> <span class="var-ph">[CALC_PARAMETRE_2]</span> (ex: isolation, usage, usage fréquence)<br>
+            <strong>Bouton :</strong> <span class="var-ph">[CALC_CTA_LABEL]</span><br>
+            <strong>Erreur inline</strong> si champ vide (pas d'alert JS)
+          </div>
+          <div class="sketch" style="margin-top:8px">[ <span class="var-ph" style="font-size:9px">[INPUT 1]</span> ] [ <span class="var-ph" style="font-size:9px">[INPUT 2 ▼]</span> ] [ Calculer ]</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Output — structure fixe</div>
+          <div class="wf-col-content">
+            <strong>Résultat :</strong> <span class="var-ph">[VALEUR RECOMMANDÉE]</span> + tip contextuel<br>
+            <strong>3 produits</strong> filtrés correspondant au résultat (SVG + prix + CTA)<br>
+            <strong>CTA PLP :</strong> "Voir tous les <span class="var-ph" style="font-size:10px">[VALEUR]</span> →"
+          </div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:70px;gap:3px;">[ SVG ]<br>Produit<br>XX€<br><span style="background:var(--orange);color:var(--navy);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir</span></div>
+            <div class="sketch-box" style="height:70px;gap:3px;">[ SVG ]<br>Produit<br>XX€<br><span style="background:var(--orange);color:var(--navy);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir</span></div>
+            <div class="sketch-box" style="height:70px;gap:3px;">[ SVG ]<br>Produit<br>XX€<br><span style="background:var(--orange);color:var(--navy);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir</span></div>
+          </div>
+        </div>
+        <div class="note-strip var-note"><strong>C'est le seul composant entièrement différent selon l'univers</strong> — la logique de recommandation change. Seule la structure output (résultat + 3 produits + CTA PLP) est fixe. Voir <span style="font-weight:700;">[CALC_TYPE]</span> dans les variables.</div>
+      </div>
+    </div>
+
+    <!-- S08 TABLEAUX -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">08</span>
+        <span class="wf-name">Tableaux comparatifs (×2)</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo cro">CRO</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (colonnes)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Tableau 1 — Modèles phares</div>
+          <div class="wf-col-content">
+            <strong>Intro GEO 100 mots</strong> (WS2 éditorial)<br>
+            Colonnes fixes : Produit · Prix · Note clients · Action<br>
+            Colonnes variables : <span class="var-ph">[SPEC_PRINCIPALE]</span> · <span class="var-ph">[SPEC_2]</span> · <span class="var-ph">[CRITERE_UNIVERS]</span>
+          </div>
+          <div class="sketch" style="height:56px;font-size:10px;">[ Produit ] | <span class="var-ph" style="font-size:9px">[SPEC]</span> | Prix | Note | <span class="var-ph" style="font-size:9px">[SPEC2]</span> | <span style="background:var(--navy);color:#fff;padding:1px 5px;border-radius:3px;">Voir</span></div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Tableau 2 — Grandes marques</div>
+          <div class="wf-col-content">
+            <strong>Intro GEO 100 mots</strong> (WS2 éditorial)<br>
+            Colonnes fixes : Marque · Gamme prix · Note · Disponibilité · Action<br>
+            Colonnes variables : <span class="var-ph">[SPEC_MARQUE]</span> · <span class="var-ph">[INSTALLATION_TYPE]</span>
+          </div>
+          <div class="sketch" style="height:56px;font-size:10px;">[ Marque ] | <span class="var-ph" style="font-size:9px">[SPEC]</span> | Prix | Note | Dispo | <span style="background:var(--navy);color:#fff;padding:1px 5px;border-radius:3px;">Voir</span></div>
+        </div>
+        <div class="note-strip">Les ancres produit dans le tableau 1 doivent inclure le mot-clé complet : "[Marque] [Modèle] [Spec principale]". La colonne Action (bouton Voir) est fixe dans les deux tableaux.</div>
+      </div>
+    </div>
+
+    <!-- S09 SERVICES -->
+    <div class="wf-section service">
+      <div class="wf-head">
+        <span class="wf-num">09</span>
+        <span class="wf-name">Services Castorama</span>
+        <div class="wf-tags"><span class="wf-geo s">Service</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (libellés)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Structure — 4 encarts toujours</div>
+          <div class="wf-col-content">Toujours 4 services. Si &lt;4 disponibles pour l'univers : compléter avec services universels (Livraison, Carte Castorama, Click &amp; Drive).<br><br>Chaque service doit être lié au topic de l'univers dans son libellé.</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">4 encarts (libellés à adapter par univers)</div>
+          <div class="wf-col-content">
+            <ul>
+              <li>🚚 <strong>Livraison à domicile</strong> — "Votre <span class="var-ph" style="font-size:10px">[PRODUIT]</span> livré en 48h"</li>
+              <li>🔨 <strong>Service installation</strong> — dès <span class="var-ph" style="font-size:10px">[PRIX_INSTALL]</span>€ (si disponible)</li>
+              <li>💳 <strong>Carte Castorama</strong> — "−10% 1ère commande" (fixe)</li>
+              <li>🏪 <strong>Click &amp; Drive</strong> — "Disponible en 2h en magasin" (fixe)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note-strip var-note">Source des services disponibles par univers : voir WS4 de la note de cadrage. Le prix d'installation est variable — ne pas afficher si le service n'existe pas pour cet univers.</div>
+      </div>
+    </div>
+
+    <!-- S10 MARKETPLACE -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">10</span>
+        <span class="wf-name">Marketplace — Nos autres produits</span>
+        <div class="wf-tags"><span class="wf-geo s">Service</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (produits)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">Produits vendeurs partenaires · Badge "Garantie acheteur Castorama"<br><br>4–5 produits en ligne : image · nom · prix · livraison estimée · note vendeur · bouton "Voir l'offre"<br><br>Indicateur : <span class="var-ph">[REDUCTION_%]</span> si applicable</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Card marketplace — fixe</div>
+          <div class="sketch-grid-2" style="margin-top:0">
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">[img] · <span class="var-ph" style="font-size:9px">[Marque Modèle]</span><br>XX€ · Livraison 48h<br>★★★★ · Partenaire<br><span style="background:var(--navy);color:#fff;padding:1px 6px;border-radius:2px;font-size:9px;">Voir l'offre</span></div>
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">[img] · <span class="var-ph" style="font-size:9px">[Marque Modèle]</span><br>XX€ <span style="color:#2D7D46;font-weight:700;">−15%</span> · Sur commande<br>★★★☆ · Partenaire<br><span style="background:var(--navy);color:#fff;padding:1px 6px;border-radius:2px;font-size:9px;">Voir l'offre</span></div>
+          </div>
+        </div>
+        <div class="note-strip">Positionné après Services propres Castorama. Feed issu du partenaire marketplace (WS1 — endpoint marketplace séparé).</div>
+      </div>
+    </div>
+
+    <!-- S11 UGC -->
+    <div class="wf-section ugc">
+      <div class="wf-head">
+        <span class="wf-num">11</span>
+        <span class="wf-name">Avis clients — UGC simplifié</span>
+        <div class="wf-tags"><span class="wf-geo u">UGC</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (avis)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Note globale — variable</div>
+          <div class="wf-col-content"><strong><span class="var-ph" style="font-size:10px">[NOTE]</span>/5</strong> · ★★★★★ · <span class="var-ph" style="font-size:10px">[N]</span> avis vérifiés<br><br>Avis filtrés par univers via <code>?universe=[UNIVERS_SLUG]</code> (WS3). Non segmentés par persona sur cette page hub.</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">3 avis sélectionnés — ≥4★, vérifiés, ≥20 mots</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box">★★★★★<br><span class="var-ph" style="font-size:9px">[Avis]</span></div>
+            <div class="sketch-box">★★★★★<br><span class="var-ph" style="font-size:9px">[Avis]</span></div>
+            <div class="sketch-box">★★★★☆<br><span class="var-ph" style="font-size:9px">[Avis]</span></div>
+          </div>
+        </div>
+        <div class="note-strip">Les avis segmentés par persona (rénovateur, passionné…) sont réservés aux pages MOFU profondes — pas sur ce hub. Voir WS3 pour l'endpoint filtré.</div>
+      </div>
+    </div>
+
+    <!-- S12 FAQ -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">12</span>
+        <span class="wf-name">FAQ situationnelle — accordéon</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (Q&A)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">6 questions MOFU — toutes variables</div>
+          <div class="wf-col-content">
+            <ul>
+              <li><span class="var-ph" style="font-size:10px">[Q1 — recommandation principale]</span> (ouverte par défaut)</li>
+              <li><span class="var-ph" style="font-size:10px">[Q2 — comparaison type A vs type B]</span></li>
+              <li><span class="var-ph" style="font-size:10px">[Q3 — installation / DIY]</span></li>
+              <li><span class="var-ph" style="font-size:10px">[Q4 — angle rénovation / DPE]</span></li>
+              <li><span class="var-ph" style="font-size:10px">[Q5 — angle design / esthétique]</span></li>
+              <li><span class="var-ph" style="font-size:10px">[Q6 — normes techniques univers]</span> ← expertise niche</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Technique — fixe</div>
+          <div class="wf-col-content">Accordéon CSS pur (input:checkbox). Q1 ouverte par défaut. Zéro JS requis.<br><br>Contenu issu du CMS éditorial via <code>?universe=[UNIVERS_SLUG]&amp;type=faq</code></div>
+          <div class="sketch" style="margin-top:8px">▼ <span class="var-ph" style="font-size:9px">[Q1 ouverte]</span><br>▶ <span class="var-ph" style="font-size:9px">[Q2 masquée]</span></div>
+        </div>
+        <div class="note-strip var-note">Q6 obligatoirement axée normes techniques de l'univers : certifications, classes, volumes, labels. Sert de signal d'expertise de niche pour GEO et crawlers spécialisés.</div>
+      </div>
+    </div>
+
+    <!-- S13 ACTUALITES -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">13</span>
+        <span class="wf-name">Actualités du moment</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (articles)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">3 cards d'actualités issues du blog Castorama, taggées par univers.<br><br>Source : CMS <code>?universe=[UNIVERS_SLUG]&amp;type=actualite&amp;limit=3</code><br>Fraîcheur max : –6 mois</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">3 cards — image + catégorie + titre + date + lien</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:70px;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">[img]<br><span class="var-ph" style="font-size:9px">[Catégorie]</span><br><span class="var-ph" style="font-size:9px">[Titre article]</span></div>
+            <div class="sketch-box" style="height:70px;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">[img]<br><span class="var-ph" style="font-size:9px">[Catégorie]</span><br><span class="var-ph" style="font-size:9px">[Titre article]</span></div>
+            <div class="sketch-box" style="height:70px;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">[img]<br><span class="var-ph" style="font-size:9px">[Catégorie]</span><br><span class="var-ph" style="font-size:9px">[Titre article]</span></div>
+          </div>
+        </div>
+        <div class="note-strip">Signal freshness Google et IA. Catégories possibles : Tendances · Économies · Installation · Normes · Design (adapter par univers). Voir WS2 — tagging blog Castorama.</div>
+      </div>
+    </div>
+
+    <!-- S14 CONSEILS -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">14</span>
+        <span class="wf-name">Tous nos conseils pour vos projets</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (guides)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">5 cards guides edito — articles de fond liés à l'univers (guides d'achat, installation, normes).<br><br>Format : icône + titre court + description 1 ligne + lien "Lire le guide"<br><br>Source : CMS <code>?universe=[UNIVERS_SLUG]&amp;type=conseil&amp;limit=5</code></div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">5 thèmes — variables par univers</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:60px;gap:2px;font-size:10px;"><span class="var-ph" style="font-size:9px">[icône]</span> <span class="var-ph" style="font-size:9px">[Guide 1]</span></div>
+            <div class="sketch-box" style="height:60px;gap:2px;font-size:10px;"><span class="var-ph" style="font-size:9px">[icône]</span> <span class="var-ph" style="font-size:9px">[Guide 2]</span></div>
+            <div class="sketch-box" style="height:60px;gap:2px;font-size:10px;"><span class="var-ph" style="font-size:9px">[icône]</span> <span class="var-ph" style="font-size:9px">[Guide 3]</span></div>
+            <div class="sketch-box" style="height:60px;gap:2px;font-size:10px;"><span class="var-ph" style="font-size:9px">[icône]</span> <span class="var-ph" style="font-size:9px">[Guide 4]</span></div>
+            <div class="sketch-box" style="height:60px;gap:2px;font-size:10px;"><span class="var-ph" style="font-size:9px">[icône]</span> <span class="var-ph" style="font-size:9px">[Guide 5]</span></div>
+          </div>
+        </div>
+        <div class="note-strip var-note">Couvrir obligatoirement : guide d'achat · installation/DIY · économies/DPE · technique (norme/spec) · design/esthétique. Les titres et URLs sont variables — la structure des 5 thèmes est fixe.</div>
+      </div>
+    </div>
+
+    <!-- S15 MAILLAGE -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">15</span>
+        <span class="wf-name">Maillage interne</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="badge-fix">FIXE (structure)</span><span class="badge-var">VARIABLE (liens)</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">3 colonnes de liens topical — structure fixe, contenu variable</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Vos situations</strong><br>
+              → <span class="var-ph" style="font-size:9px">[Situation 1]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Situation 2]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Situation 3]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Situation 4]</span>
+            </div>
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Par type de produit</strong><br>
+              → <span class="var-ph" style="font-size:9px">[Type A]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Type B]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Type C]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Accessoires]</span>
+            </div>
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Nos conseils</strong><br>
+              → <span class="var-ph" style="font-size:9px">[Guide achat]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Guide install]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Guide spec]</span><br>
+              → <span class="var-ph" style="font-size:9px">[Guide avancé]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S16 CHIPS REBOND -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">16</span>
+        <span class="wf-name">Chips rebond — PLPs BOFU</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Navigation</span><span class="badge-var">VARIABLE</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">Liens directs vers les PLPs profondes — variables par univers</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[PLP A]</span> →</span>
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[PLP B]</span> →</span>
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[PLP C]</span> →</span>
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[PLP D]</span> →</span>
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[PLP E]</span> →</span>
+            <span class="sketch-chip var" style="border-radius:5px;font-weight:600;"><span class="var-ph" style="font-size:9px">[Accessoires]</span> →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEMPLATE SCALABILITY -->
+    <div class="scale-note">
+      <div class="scale-note-title">Récapitulatif scalabilité — ce qui change et ce qui reste</div>
+      <div class="scale-grid">
+        <div>
+          <div class="scale-col-title">Fixe — identique partout</div>
+          <div class="scale-col-body">
+            Structure 16 sections<br>
+            Double CTA hero + preuve sociale<br>
+            Card produit CRO (prix barré · stock · livraison · install)<br>
+            Structure tableaux (+ colonne Action)<br>
+            Output calculateur (résultat + 3 produits + CTA PLP)<br>
+            Structure FAQ 6 Q (dont Q6 normes)<br>
+            Structure Actualités · Conseils · Maillage · Chips rebond<br>
+            Accordéon CSS pur (zéro JS)
+          </div>
+        </div>
+        <div>
+          <div class="scale-col-title">Variable — à remplir par univers</div>
+          <div class="scale-col-body">
+            <span>[UNIVERS_SLUG]</span> — clé API partout<br>
+            <span>[TITRE_UNIVERS]</span> — H1 + breadcrumb<br>
+            <span>[CHAPEAU_HERO]</span> — 2 phrases situationnelles<br>
+            <span>[CALC_TYPE]</span> — logique de l'outil recommandation<br>
+            <span>[SPEC_PRINCIPALE]</span> — colonne clé des tableaux<br>
+            <span>[SITUATIONS×4]</span> — cards MOFU navigation<br>
+            <span>[CHIPS×10]</span> — sémantique SEO univers<br>
+            <span>[PRIX_INSTALL]</span> — prix service installation<br>
+            Contenu FAQ · Actualités · Conseils · Maillage
+          </div>
+        </div>
+        <div>
+          <div class="scale-col-title">Exemples de déclinaisons</div>
+          <div class="scale-col-body">
+            <span>Jardinage :</span> Tondeuse · m²→type coupe · Démarrage printemps<br><br>
+            <span>Cuisine :</span> Électroménager · usage→capacité · Rénovation cuisine<br><br>
+            <span>Dressing :</span> Rangement · m²→type armoire · Optimiser l'espace<br><br>
+            <span>Bricolage :</span> Outillage · puissance→type perceuse · Rénover<br><br>
+            <span>Peinture :</span> Travaux · m²→litres · Rénover une pièce
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

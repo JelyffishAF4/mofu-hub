@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe — Chauffage SDB · Castorama MOFU Hub</title>
+<style>
+:root {
+  --bg: #F0F2F7;
+  --white: #FFFFFF;
+  --border: #C8D0E0;
+  --text: #1B2840;
+  --text-2: #4A5A72;
+  --text-3: #8A97AE;
+  --orange: #fedc01;
+  --navy: #0063b0;
+
+  --geo-s: #1255BE; --geo-s-bg: #E5EFFE;
+  --geo-u: #0A7850; --geo-u-bg: #E2F5EC;
+  --geo-e: #5F28C2; --geo-e-bg: #EAE5FB;
+  --geo-p: #B84500; --geo-p-bg: #FDF0E3;
+  --cro: #B8004E;  --cro-bg: #FDEEF4;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  padding: 32px 20px 64px;
+}
+.page-wrap { max-width: 960px; margin: 0 auto; }
+
+/* HEADER DOC */
+.doc-head { margin-bottom: 28px; }
+.doc-head h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); margin-bottom: 4px; }
+.doc-head p { color: var(--text-2); font-size: 13px; }
+
+/* LEGEND */
+.legend {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.legend-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--text-3); width: 100%; margin-bottom: 4px; }
+.geo-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 20px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.geo-s-b { background: var(--geo-s-bg); color: var(--geo-s); } .geo-s-b .dot { background: var(--geo-s); }
+.geo-u-b { background: var(--geo-u-bg); color: var(--geo-u); } .geo-u-b .dot { background: var(--geo-u); }
+.geo-e-b { background: var(--geo-e-bg); color: var(--geo-e); } .geo-e-b .dot { background: var(--geo-e); }
+.geo-p-b { background: var(--geo-p-bg); color: var(--geo-p); } .geo-p-b .dot { background: var(--geo-p); }
+.geo-cro-b { background: var(--cro-bg); color: var(--cro); } .geo-cro-b .dot { background: var(--cro); }
+.geo-std { background: #F0F2F7; color: var(--text-3); border: 1px solid var(--border); }
+
+/* WIREFRAME SECTIONS */
+.wf-wrap { display: flex; flex-direction: column; gap: 6px; }
+
+.wf-section {
+  background: var(--white);
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left accent stripe by GEO type */
+.wf-section.service { border-left: 4px solid var(--geo-s); }
+.wf-section.ugc { border-left: 4px solid var(--geo-u); }
+.wf-section.expertise { border-left: 4px solid var(--geo-e); }
+.wf-section.persona { border-left: 4px solid var(--geo-p); }
+.wf-section.std { border-left: 4px solid var(--border); }
+.wf-section.multi { border-left: 4px solid var(--orange); }
+.wf-section.cro { border-left: 4px solid var(--cro); }
+
+.wf-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px;
+  background: #F8F9FC;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap; gap: 8px;
+}
+
+.wf-num {
+  font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums;
+  color: #fff; background: var(--text-3);
+  border-radius: 3px; padding: 1px 8px; flex-shrink: 0;
+}
+
+.wf-name { font-size: 14px; font-weight: 700; color: var(--text); flex: 1; min-width: 120px; }
+
+.wf-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+
+.wf-geo {
+  font-size: 11px; font-weight: 600;
+  padding: 3px 9px; border-radius: 20px;
+}
+.wf-geo.s { background: var(--geo-s-bg); color: var(--geo-s); }
+.wf-geo.u { background: var(--geo-u-bg); color: var(--geo-u); }
+.wf-geo.e { background: var(--geo-e-bg); color: var(--geo-e); }
+.wf-geo.p { background: var(--geo-p-bg); color: var(--geo-p); }
+.wf-geo.cro { background: var(--cro-bg); color: var(--cro); }
+
+.wf-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.wf-col {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+.wf-col:last-child { border-right: none; }
+.wf-col.full { grid-column: 1 / -1; border-right: none; }
+
+.wf-col-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--text-3); margin-bottom: 7px;
+}
+
+.wf-col-content { font-size: 12.5px; color: var(--text-2); line-height: 1.6; }
+.wf-col-content ul { padding-left: 14px; }
+.wf-col-content li { margin-bottom: 3px; }
+.wf-col-content strong { color: var(--text); }
+
+.note-strip {
+  grid-column: 1 / -1;
+  background: #FFF7F3;
+  border-top: 1px solid #FFD8C0;
+  padding: 8px 18px;
+  font-size: 11.5px; color: #9A4010;
+  line-height: 1.55;
+}
+.note-strip.cro-note {
+  background: var(--cro-bg);
+  border-top-color: #F4AACB;
+  color: var(--cro);
+}
+
+/* Mock sketches inside sections */
+.sketch { background: var(--bg); border-radius: 6px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 11px; border: 1px dashed var(--border); margin-top: 8px; }
+.sketch-tall { height: 64px; }
+.sketch-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.sketch-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text-3); }
+.sketch-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.sketch-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.sketch-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+.sketch-box { background: var(--bg); border: 1px dashed var(--border); border-radius: 5px; height: 52px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-3); text-align: center; padding: 4px; }
+.sketch-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.sketch-tag { background: var(--bg); border: 1px solid var(--border); padding: 3px 10px; border-radius: 4px; font-size: 10px; color: var(--text-3); }
+.cta-sketch { background: var(--orange); color: var(--navy); border-radius: 4px; padding: 5px 14px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 8px; }
+.cta-sketch-out { border: 2px solid var(--navy); color: var(--navy); border-radius: 4px; padding: 4px 14px; font-size: 11px; font-weight: 700; display: inline-block; margin-top: 8px; margin-left: 6px; }
+
+/* Product card sketch */
+.product-sketch { background: var(--bg); border: 1px dashed var(--border); border-radius: 6px; padding: 10px 8px; font-size: 10px; color: var(--text-3); text-align: center; }
+.product-sketch .ps-price { font-size: 13px; font-weight: 800; color: var(--navy); }
+.product-sketch .ps-ref { font-size: 10px; text-decoration: line-through; color: var(--text-3); }
+.product-sketch .ps-stock-ok { color: #1A7A4A; font-weight: 600; font-size: 10px; }
+.product-sketch .ps-stock-low { color: #C84000; font-weight: 600; font-size: 10px; }
+.product-sketch .ps-delivery { color: var(--text-3); font-size: 10px; }
+.product-sketch .ps-install { color: var(--text-3); font-size: 10px; border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+
+@media (max-width: 640px) {
+  .wf-body { grid-template-columns: 1fr; }
+  .wf-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .wf-col:last-child { border-bottom: none; }
+  .wf-col.full { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="doc-head">
+    <h1>Wireframe — Chauffage de salle de bain</h1>
+    <p>Page MOFU Hub · Castorama · 16 composants · Template scalable · CRO v2</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-title">Code couleur GEO + CRO</div>
+    <span class="geo-badge geo-s-b"><span class="dot"></span>Service</span>
+    <span class="geo-badge geo-u-b"><span class="dot"></span>UGC</span>
+    <span class="geo-badge geo-e-b"><span class="dot"></span>Expertise</span>
+    <span class="geo-badge geo-p-b"><span class="dot"></span>Personnification</span>
+    <span class="geo-badge geo-cro-b"><span class="dot"></span>CRO — signal conversion</span>
+    <span class="geo-badge geo-std">Standard Castorama</span>
+  </div>
+
+  <div class="wf-wrap">
+
+    <!-- S01 HEADER -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">01</span>
+        <span class="wf-name">Header + Navigation</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">Composant</div>
+          <div class="wf-col-content">Logo Castorama · barre de recherche · Mon compte / Panier · Nav univers (Chauffage &amp; Clim, Salle de bain, Cuisine, Jardin…)</div>
+          <div class="sketch">[ CASTORAMA ] _____ Rechercher _____ [Rechercher] &nbsp; Mon compte · Mes listes · Panier</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S02 BREADCRUMB -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">02</span>
+        <span class="wf-name">Breadcrumb</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-content">Accueil › Chauffage, climatisation et ventilation › <strong>Chauffage de salle de bain</strong><br><br><em>Variable scalable : seul le dernier niveau change selon l'univers.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S03 HERO — CRO v2 -->
+    <div class="wf-section persona">
+      <div class="wf-head">
+        <span class="wf-num">03</span>
+        <span class="wf-name">Hero situationnel</span>
+        <div class="wf-tags"><span class="wf-geo p">Personnification</span><span class="wf-geo cro">CRO</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Texte (55%)</div>
+          <div class="wf-col-content">
+            <strong>H1 :</strong> "Chauffage de salle de bain"<br>
+            <strong>Chapeau :</strong> Texte situationnel — couvre rénovation, économies ET design.<br>
+            <strong>Double CTA :</strong><br>
+            · Primaire → #calculateur (valeur immédiate)<br>
+            · Secondaire → #catalogue (produits)<br>
+            <strong>Preuve sociale :</strong> ★★★★★ 4,7/5 · 1 284 avis vérifiés
+          </div>
+          <div style="margin-top:8px;">
+            <span class="cta-sketch">Calculer ma puissance</span>
+            <span class="cta-sketch-out">Voir les produits</span>
+          </div>
+          <div style="margin-top:8px;font-size:11px;color:#F4A820;">★★★★★ <span style="color:var(--text-3);">4,7/5 · 1 284 avis vérifiés Castorama</span></div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Visuel (45%)</div>
+          <div class="wf-col-content">Photo lifestyle salle de bain — sèche-serviettes en contexte.</div>
+          <div class="sketch sketch-tall">[ IMAGE LIFESTYLE SDB ]</div>
+        </div>
+        <div class="note-strip cro-note"><strong>CRO v2 :</strong> CTA primaire pointe vers #calculateur (outil = engagement fort) plutôt que #catalogue (liste = engagement faible). La preuve sociale anchor sous les CTAs renforce la confiance avant le scroll.</div>
+      </div>
+    </div>
+
+    <!-- S04 CHIPS -->
+    <div class="wf-section multi">
+      <div class="wf-head">
+        <span class="wf-num">04</span>
+        <span class="wf-name">Chips sémantiques</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo p">Personnification</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Rôle double</div>
+          <div class="wf-col-content">
+            1. <strong>Ancres SEO</strong> — chaque chip est un signal sémantique (top, middle, longue traîne)<br>
+            2. <strong>Filtre catalogue</strong> — clic → scroll vers #catalogue + filtre pré-activé
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">10 chips (exemples)</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip">Chauffage SDB</span>
+            <span class="sketch-chip">Chauffage économique</span>
+            <span class="sketch-chip">Chauffage design</span>
+            <span class="sketch-chip">Sèche-serviettes électrique</span>
+            <span class="sketch-chip">Eau chaude</span>
+            <span class="sketch-chip">500W</span>
+            <span class="sketch-chip">Sans travaux</span>
+            <span class="sketch-chip">Connecté</span>
+            <span class="sketch-chip">Pas cher</span>
+            <span class="sketch-chip">DPE</span>
+          </div>
+        </div>
+        <div class="note-strip">Variable scalable : les chips changent selon l'univers (jardinage, cuisine…) mais le composant est identique.</div>
+      </div>
+    </div>
+
+    <!-- S05 MOFU CARDS -->
+    <div class="wf-section persona">
+      <div class="wf-head">
+        <span class="wf-num">05</span>
+        <span class="wf-name">4 cards MOFU — Navigation situations</span>
+        <div class="wf-tags"><span class="wf-geo p">Personnification</span><span class="wf-geo e">Expertise</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Rôle</div>
+          <div class="wf-col-content">Router vers les pages MOFU profondes. Capture les intentions projet (pas produit). C'est ici que se déclare la profondeur du silo.</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">4 cards (icône + titre + desc + lien)</div>
+          <div class="sketch-grid-4" style="margin-top:0">
+            <div class="sketch-box">🔧<br>Rénovation thermique</div>
+            <div class="sketch-box">💶<br>Économies d'énergie</div>
+            <div class="sketch-box">🎨<br>Design & ambiance</div>
+            <div class="sketch-box">📋<br>Guide installation</div>
+          </div>
+        </div>
+        <div class="note-strip">Variable scalable : les 4 situations changent par univers. Le composant card reste identique.</div>
+      </div>
+    </div>
+
+    <!-- S06 CATALOGUE — CRO v2 -->
+    <div class="wf-section cro">
+      <div class="wf-head">
+        <span class="wf-num">06</span>
+        <span class="wf-name">Catalogue produits — id="catalogue"</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Standard PLP</span><span class="wf-geo cro">CRO</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Chips catalogue + filtres PLP</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip" style="background:#0063b0;color:#fff;">Tous</span>
+            <span class="sketch-chip">Électrique</span>
+            <span class="sketch-chip">Eau chaude</span>
+            <span class="sketch-chip">Soufflant</span>
+            <span class="sketch-chip">Design</span>
+            <span class="sketch-chip">Éco</span>
+          </div>
+          <div class="sketch-row" style="margin-top:10px;">
+            <span class="sketch-tag">Marque ▼</span>
+            <span class="sketch-tag">Puissance ▼</span>
+            <span class="sketch-tag">Prix ▼</span>
+            <span class="sketch-tag">Trier par ▼</span>
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Grille 10 produits — card CRO enrichie</div>
+          <div class="sketch-grid-2" style="margin-top:0">
+            <div class="product-sketch">
+              [ SVG sèche-serviettes ]<br>
+              <strong>Sauter Marapi 500W</strong><br>
+              <span class="ps-ref">109,00 €</span>
+              <span class="ps-price">89,90 €</span><br>
+              <span class="ps-stock-ok">✓ En stock</span><br>
+              <span class="ps-delivery">Livraison offerte dès 69 €</span><br>
+              [Ajouter au panier]<br>
+              <span class="ps-install">Installation dès 79 € · Devis gratuit</span>
+            </div>
+            <div class="product-sketch">
+              [ SVG sèche-serviettes ]<br>
+              <strong>GoodHome Soufflant 1200W</strong><br>
+              <span class="ps-ref">159,00 €</span>
+              <span class="ps-price">129,90 €</span><br>
+              <span class="ps-stock-low">⚠ Dernières pièces</span><br>
+              <span class="ps-delivery">Livraison offerte dès 69 €</span><br>
+              [Ajouter au panier]<br>
+              <span class="ps-install">Installation dès 79 € · Devis gratuit</span>
+            </div>
+          </div>
+        </div>
+        <div class="note-strip cro-note"><strong>CRO v2 — 4 signaux conversion ajoutés :</strong> (1) Prix barré fabricant = ancrage mental. (2) Badge stock coloré = urgence. (3) "Livraison offerte dès 69 €" = levée de frein. (4) "Installation dès 79 €" = levée de frein technique sous le panier.</div>
+      </div>
+    </div>
+
+    <!-- S07 CALCULATEUR — CRO v2 -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">07</span>
+        <span class="wf-name">Calculateur de puissance ⚡ — id="calculateur"</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo p">Personnification</span><span class="wf-geo cro">CRO</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Inputs</div>
+          <div class="wf-col-content">
+            <ul>
+              <li>Surface de la pièce (m²)</li>
+              <li>Type d'isolation (bonne / moyenne / faible)</li>
+              <li>Bouton "Calculer"</li>
+              <li><strong>Erreur inline</strong> si champ vide (pas d'alert JS)</li>
+            </ul>
+          </div>
+          <div class="sketch" style="margin-top:8px;">[ ___m² ] &nbsp; [ Isolation ▼ ] &nbsp; [Calculer]</div>
+          <div style="margin-top:4px;font-size:10px;color:var(--cro);background:var(--cro-bg);padding:4px 8px;border-radius:4px;display:inline-block;">⚠ Veuillez indiquer la surface de votre pièce. &lt;-- inline, pas alert()</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Output — card CRO enrichie</div>
+          <div class="wf-col-content">
+            <strong>Résultat :</strong> Xwatt recommandés + tip contextuel<br>
+            <strong>3 produits filtrés</strong> avec SVG produit (plus d'emoji)<br>
+            <strong>CTA "Voir le produit"</strong> sur chaque calc-pcard<br>
+            <strong>CTA PLP :</strong> "Voir tous les modèles X00W"
+          </div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:70px;flex-direction:column;gap:3px;">
+              [SVG]<br>Produit<br>XXX€<br><span style="background:var(--orange);color:#0063b0;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir le produit</span>
+            </div>
+            <div class="sketch-box" style="height:70px;flex-direction:column;gap:3px;">
+              [SVG]<br>Produit<br>XXX€<br><span style="background:var(--orange);color:#0063b0;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir le produit</span>
+            </div>
+            <div class="sketch-box" style="height:70px;flex-direction:column;gap:3px;">
+              [SVG]<br>Produit<br>XXX€<br><span style="background:var(--orange);color:#0063b0;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;">Voir le produit</span>
+            </div>
+          </div>
+        </div>
+        <div class="note-strip cro-note"><strong>CRO v2 :</strong> Le CTA hero "#calculateur" atterrit ici (id ajouté). SVG produit remplace les emojis dans les résultats = meilleure perception produit. Bouton "Voir le produit" par calc-pcard = conversion directe depuis l'outil.</div>
+      </div>
+    </div>
+
+    <!-- S08 TABLEAUX COMPARATIFS — CRO v2 -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">08</span>
+        <span class="wf-name">Tableaux comparatifs (×2)</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo cro">CRO</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Tableau 1 — Modèles phares (6 lignes)</div>
+          <div class="wf-col-content">
+            <strong>Intro GEO 100 mots</strong> au-dessus du tableau (mots-clés factuels : 73%, 150–200 W/m², -35% connecté)<br>
+            Colonnes : Produit · Type · Puissance · Prix · Note · Finition · Économies · <strong style="color:var(--cro);">Action</strong>
+          </div>
+          <div class="sketch" style="height:56px;font-size:10px;">[ Sèche-serviette Sauter ] | Électrique | 750W | 199€ | ★★★★½ | Blanc mat | ★★★★ | <span style="background:#0063b0;color:#fff;padding:1px 6px;border-radius:3px;">Voir le produit</span></div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Tableau 2 — 10 grandes marques (8 lignes)</div>
+          <div class="wf-col-content">
+            <strong>Intro GEO 100 mots</strong> au-dessus du tableau (fourchettes prix, différentiel eau chaude vs électrique ×3)<br>
+            Colonnes : Marque · Spécialité · Prix · Finitions · Installation · Note · Dispo · <strong style="color:var(--cro);">Action</strong>
+          </div>
+          <div class="sketch" style="height:56px;font-size:10px;">[ Sauter ] | Électrique connecté | 89–250€ | Blanc mat | Facile | ★★★★½ | En stock | <span style="background:#0063b0;color:#fff;padding:1px 6px;border-radius:3px;">Voir la gamme</span></div>
+        </div>
+        <div class="note-strip cro-note"><strong>CRO v2 :</strong> Colonne "Action" ajoutée aux deux tableaux. Bouton "Voir le produit" / "Voir la gamme" = conversion directe depuis le comparatif sans remonter au catalogue.</div>
+      </div>
+    </div>
+
+    <!-- S09 SERVICES -->
+    <div class="wf-section service">
+      <div class="wf-head">
+        <span class="wf-num">09</span>
+        <span class="wf-name">Services Castorama — éditorialisés</span>
+        <div class="wf-tags"><span class="wf-geo s">Service</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">Chaque service est lié au topic chauffage SDB — pas un service générique. Le "pourquoi ce service pour ce produit" est explicite dans le libellé.</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">4 encarts (statiques)</div>
+          <div class="wf-col-content">
+            <ul>
+              <li>🚚 <strong>Livraison à domicile</strong> — "Votre sèche-serviettes livré en 48h"</li>
+              <li>🔨 <strong>Service installation</strong> — "Pose par un technicien Castorama agréé"</li>
+              <li>💳 <strong>Carte Castorama</strong> — "−10% sur votre 1ère commande"</li>
+              <li>🏪 <strong>Click &amp; Drive</strong> — "Disponible en 2h en magasin"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note-strip">100% statique dans la maquette. Pas de géolocalisation dans les libellés marketing. Les vrais services Castorama uniquement.</div>
+      </div>
+    </div>
+
+    <!-- S10 MARKETPLACE -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">10</span>
+        <span class="wf-name">Marketplace Castorama — Nos autres produits</span>
+        <div class="wf-tags"><span class="wf-geo s">Service</span><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Marketplace</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">
+            Bloc type Amazon marketplace : produits vendeurs partenaires affichés avec comparatif prix/livraison.<br><br>
+            <strong>Badge :</strong> "Vendeurs partenaires · Garantie acheteur Castorama"<br>
+            <strong>4–5 produits</strong> en ligne horizontale avec : photo, nom, prix, livraison, note vendeur, bouton "Voir l'offre"
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Card produit marketplace</div>
+          <div class="sketch-grid-2" style="margin-top:0">
+            <div class="sketch-box" style="height:80px;flex-direction:column;align-items:flex-start;padding:8px;gap:3px;font-size:10px;">
+              [img]<br><strong>Marque · Modèle</strong><br>XXX€ · Livraison estimée 48h<br>★★★★ · Vendeur Partenaire<br><span style="background:#0063b0;color:#fff;padding:1px 6px;border-radius:2px;">Voir l'offre</span>
+            </div>
+            <div class="sketch-box" style="height:80px;flex-direction:column;align-items:flex-start;padding:8px;gap:3px;font-size:10px;">
+              [img]<br><strong>Marque · Modèle</strong><br>XXX€ · Livraison estimée 48h<br>★★★★ · Vendeur Partenaire<br><span style="background:#0063b0;color:#fff;padding:1px 6px;border-radius:2px;">Voir l'offre</span>
+            </div>
+          </div>
+        </div>
+        <div class="note-strip">Positionné après Services — les services Castorama propres d'abord, marketplace partenaires ensuite. Chaque card affiche : image produit, nom, prix, livraison estimée, note, vendeur, économie éventuelle (-N%).</div>
+      </div>
+    </div>
+
+    <!-- S11 UGC -->
+    <div class="wf-section ugc">
+      <div class="wf-head">
+        <span class="wf-num">11</span>
+        <span class="wf-name">Avis clients — UGC simplifié</span>
+        <div class="wf-tags"><span class="wf-geo u">UGC</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Note globale</div>
+          <div class="wf-col-content"><strong>X.X/5</strong> · ★★★★★ · N avis vérifiés<br><br>Pas de segmentation par persona sur cette page hub. Les avis segmentés vont sur les pages MOFU profondes.</div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">3 avis neutres (non segmentés)</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box">★★★★★<br>Avis 1</div>
+            <div class="sketch-box">★★★★★<br>Avis 2</div>
+            <div class="sketch-box">★★★★☆<br>Avis 3</div>
+          </div>
+        </div>
+        <div class="note-strip">Règle éditoriale : les avis segmentés par persona (Rénovateur, Passionné) sont réservés aux pages MOFU profondes où l'intention est déclarée.</div>
+      </div>
+    </div>
+
+    <!-- S12 FAQ -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">12</span>
+        <span class="wf-name">FAQ situationnelle — accordéon</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">6 questions MOFU</div>
+          <div class="wf-col-content">
+            <ul>
+              <li>Quelle puissance pour ma salle de bain ?</li>
+              <li>Sèche-serviettes ou panneau rayonnant ?</li>
+              <li>Peut-on installer soi-même ?</li>
+              <li>Quel chauffage améliore mon DPE ? ← Rénovateur</li>
+              <li>Critères pour un sèche-serviettes design ? ← Passionné</li>
+              <li><strong>Normes NF C 15-100, IP21/IP44, QUALIFELEC</strong> ← Expertise niche</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">Technique</div>
+          <div class="wf-col-content">Accordéon CSS pur (input:checkbox). Q1 ouverte par défaut. Zéro JS requis.</div>
+          <div class="sketch" style="margin-top:8px">▼ Question 1 — réponse visible<br>▶ Question 2 — réponse masquée</div>
+        </div>
+        <div class="note-strip">Q6 ajoutée : normes techniques (NF C 15-100, volumes IP, NF DTU 60.1, QUALIFELEC) — signal d'expertise de niche pour GEO et crawlers spécialisés.</div>
+      </div>
+    </div>
+
+    <!-- S13 ACTUALITES -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">13</span>
+        <span class="wf-name">Actualités du moment</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Éditorial</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">
+            Bloc 3 cards d'actualités produit / marché, style "blog Castorama".<br><br>
+            Chaque card : image, catégorie tag, titre, date, lien "Lire l'article".
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">3 cards (exemples)</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:70px;flex-direction:column;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">
+              [img]<br><span style="background:#E5EFFE;color:#1255BE;padding:1px 5px;border-radius:3px;">Tendances</span><br>Nouveaux modèles connectés 2025
+            </div>
+            <div class="sketch-box" style="height:70px;flex-direction:column;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">
+              [img]<br><span style="background:#E2F5EC;color:#0A7850;padding:1px 5px;border-radius:3px;">Économies</span><br>Réduire sa facture chauffage SDB
+            </div>
+            <div class="sketch-box" style="height:70px;flex-direction:column;align-items:flex-start;padding:8px;gap:2px;font-size:10px;">
+              [img]<br><span style="background:#EAE5FB;color:#5F28C2;padding:1px 5px;border-radius:3px;">Installation</span><br>Norme IP44 : tout comprendre
+            </div>
+          </div>
+        </div>
+        <div class="note-strip">Composant identique aux "Actualités" du site Castorama principal. Scalable par univers en changeant les 3 articles. Signal freshness pour Google et les moteurs IA.</div>
+      </div>
+    </div>
+
+    <!-- S14 CONSEILS -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">14</span>
+        <span class="wf-name">Tous nos conseils pour vos projets</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Éditorial</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col">
+          <div class="wf-col-label">Principe</div>
+          <div class="wf-col-content">
+            5 cards conseils edito — articles de fond liés au topic (guides d'achat, installation, normes).<br><br>
+            Format : icône/emoji + titre court + description 1 ligne + lien "Lire le guide".
+          </div>
+        </div>
+        <div class="wf-col">
+          <div class="wf-col-label">5 thèmes conseils (exemples)</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:60px;flex-direction:column;gap:2px;font-size:10px;">💡 Guide d'achat<br>Quel sèche-serviettes choisir ?</div>
+            <div class="sketch-box" style="height:60px;flex-direction:column;gap:2px;font-size:10px;">🔧 Installation<br>Électrique : installer soi-même ?</div>
+            <div class="sketch-box" style="height:60px;flex-direction:column;gap:2px;font-size:10px;">💰 Économies<br>Sèche-serviettes & DPE</div>
+            <div class="sketch-box" style="height:60px;flex-direction:column;gap:2px;font-size:10px;">📏 Puissance<br>Calculer ses besoins</div>
+            <div class="sketch-box" style="height:60px;flex-direction:column;gap:2px;font-size:10px;">🎨 Design<br>Tendances 2025</div>
+          </div>
+        </div>
+        <div class="note-strip">Maillage éditorial profond : chaque card pointe vers un article ou guide du blog Castorama. Renforce la topical authority sur le cluster "chauffage salle de bain".</div>
+      </div>
+    </div>
+
+    <!-- S15 MAILLAGE -->
+    <div class="wf-section expertise">
+      <div class="wf-head">
+        <span class="wf-num">15</span>
+        <span class="wf-name">Maillage interne</span>
+        <div class="wf-tags"><span class="wf-geo e">Expertise</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">3 colonnes de liens (topical authority)</div>
+          <div class="sketch-grid-3">
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Vos situations</strong><br>
+              → Rénovation thermique<br>→ Économies d'énergie<br>→ Design &amp; ambiance<br>→ Guide installation
+            </div>
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Par type de produit</strong><br>
+              → Sèche-serviettes électrique<br>→ Eau chaude<br>→ Mixte · Soufflant<br>→ Accessoires
+            </div>
+            <div class="sketch-box" style="height:80px;align-items:flex-start;padding:10px;font-size:11px;text-align:left;">
+              <strong>Nos conseils</strong><br>
+              → Guide d'achat<br>→ Installer soi-même<br>→ Quelle puissance<br>→ Modèles connectés
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S16 CHIPS REBOND -->
+    <div class="wf-section std">
+      <div class="wf-head">
+        <span class="wf-num">16</span>
+        <span class="wf-name">Chips rebond — PLPs profondes</span>
+        <div class="wf-tags"><span class="wf-geo" style="background:#F0F2F7;color:#8A97AE;">Navigation</span></div>
+      </div>
+      <div class="wf-body">
+        <div class="wf-col full">
+          <div class="wf-col-label">Liens directs vers les PLPs BOFU existantes</div>
+          <div class="sketch-chips">
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Sèche-serviettes électrique →</span>
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Sèche-serviettes eau chaude →</span>
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Sèche-serviettes mixte →</span>
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Soufflant SDB →</span>
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Panneau rayonnant →</span>
+            <span class="sketch-chip" style="border-radius:5px;font-weight:600;">Accessoires →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEMPLATE SCALABILITY NOTE -->
+    <div style="margin-top:20px;background:var(--navy);border-radius:10px;padding:22px 24px;color:#fff;">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,0.45);margin-bottom:10px;">Template scalable — variables par univers · CRO v2</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;font-size:13px;">
+        <div>
+          <div style="color:rgba(255,255,255,0.55);font-size:11px;margin-bottom:6px;font-weight:600;">COMPOSANTS FIXES (identiques partout)</div>
+          <div style="color:rgba(255,255,255,0.8);line-height:1.7;">Header · Breadcrumb · Hero (double CTA + preuve sociale) · Chips<br>Cards MOFU · Catalogue (stock + prix barré + livraison) · Tableaux (+ colonne Action)<br>Services · Marketplace · UGC · FAQ · Actualités · Conseils · Maillage · Chips rebond · Footer</div>
+        </div>
+        <div>
+          <div style="color:rgba(255,255,255,0.55);font-size:11px;margin-bottom:6px;font-weight:600;">VARIABLES PAR UNIVERS</div>
+          <div style="color:rgba(255,255,255,0.8);line-height:1.7;">
+            <strong style="color:var(--orange);">Calculateur :</strong><br>
+            Chauffage SDB → m² → W<br>
+            Jardin → m² → type tondeuse<br>
+            Cuisine → usage → robot recommandé<br>
+            Dressing → espace → type armoire<br><br>
+            <strong style="color:var(--orange);">Signaux CRO :</strong> stock, prix barré, livraison — valeurs dynamiques par catégorie
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

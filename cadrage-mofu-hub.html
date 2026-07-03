@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Note de cadrage — Template MOFU Hub</title>
+<style>
+:root {
+  --ink:    #141C2E;
+  --ink-2:  #4A5A72;
+  --ink-3:  #8A97AE;
+  --bg:     #F4F6FB;
+  --white:  #FFFFFF;
+  --border: #DDE2EE;
+  --accent: #0063B0;
+  --yellow: #F5D000;
+
+  --ws1: #0063B0; --ws1-bg: #E5EFFE; --ws1-lt: #F2F7FF;
+  --ws2: #2D7D46; --ws2-bg: #E2F5EC; --ws2-lt: #F3FBF6;
+  --ws3: #6B3FA0; --ws3-bg: #EDE8F9; --ws3-lt: #F7F5FD;
+  --ws4: #C45200; --ws4-bg: #FDF0E3; --ws4-lt: #FEF9F4;
+
+  --r-color: #B8004E; --r-bg: #FDE8EE;
+  --a-color: #C45200; --a-bg: #FDF0E3;
+  --c-color: #0063B0; --c-bg: #E5EFFE;
+  --i-color: #4A5A72; --i-bg: #EEF1F7;
+
+  --p1-color: #B8004E; --p1-bg: #FDE8EE;
+  --p2-color: #C45200; --p2-bg: #FDF0E3;
+  --p3-color: #2D7D46; --p3-bg: #E2F5EC;
+
+  --radius: 8px;
+  --mono: Menlo, Consolas, 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 14px; color: var(--ink); line-height: 1.6;
+}
+
+/* ── STICKY NAV ── */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+.sticky-nav a {
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 11px 16px; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .12s, border-color .12s;
+}
+.sticky-nav a:hover { color: #fff; border-bottom-color: var(--yellow); }
+
+/* ── PAGE ── */
+.page { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* ── DOC HEADER ── */
+.doc-header { padding: 44px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+.doc-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.doc-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; }
+.db-main { background: var(--accent); color: #fff; }
+.db-version { background: var(--bg); color: var(--ink-3); border: 1px solid var(--border); }
+.doc-header h1 { font-size: 30px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); text-wrap: balance; margin-bottom: 10px; }
+.doc-header .subtitle { font-size: 15px; color: var(--ink-2); max-width: 620px; }
+
+/* ── READ-ME BOX ── */
+.readme {
+  background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius);
+  padding: 20px 24px; margin-bottom: 32px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+}
+.readme-item { }
+.readme-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+.readme-val { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.readme-val strong { color: var(--ink); }
+
+/* ── WS OVERVIEW ── */
+.ws-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 44px; }
+.ws-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 16px; border-top: 3px solid var(--border); }
+.ws-card.ws1 { border-top-color: var(--ws1); }
+.ws-card.ws2 { border-top-color: var(--ws2); }
+.ws-card.ws3 { border-top-color: var(--ws3); }
+.ws-card.ws4 { border-top-color: var(--ws4); }
+.ws-card-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+.ws-card h3 { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.ws-card p { font-size: 11.5px; color: var(--ink-2); line-height: 1.5; }
+.ws-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+.ws-chip { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
+.ws1 .ws-chip { background: var(--ws1-bg); color: var(--ws1); }
+.ws2 .ws-chip { background: var(--ws2-bg); color: var(--ws2); }
+.ws3 .ws-chip { background: var(--ws3-bg); color: var(--ws3); }
+.ws4 .ws-chip { background: var(--ws4-bg); color: var(--ws4); }
+
+/* ── SECTIONS ── */
+.ws-section { margin-bottom: 52px; scroll-margin-top: 44px; }
+.ws-section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1.5px solid var(--border); }
+.ws-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.ws1 .ws-icon { background: var(--ws1-bg); }
+.ws2 .ws-icon { background: var(--ws2-bg); }
+.ws3 .ws-icon { background: var(--ws3-bg); }
+.ws4 .ws-icon { background: var(--ws4-bg); }
+.ws-section-head h2 { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+.ws-tag { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+.ws1 .ws-tag { background: var(--ws1-bg); color: var(--ws1); }
+.ws2 .ws-tag { background: var(--ws2-bg); color: var(--ws2); }
+.ws3 .ws-tag { background: var(--ws3-bg); color: var(--ws3); }
+.ws4 .ws-tag { background: var(--ws4-bg); color: var(--ws4); }
+
+/* QPQC - Quoi / Pourquoi / Qui / Comment */
+.qpqc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+.qpqc-item { background: var(--white); border: 1.5px solid var(--border); border-radius: 7px; padding: 12px 14px; }
+.qpqc-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+.ws1 .qpqc-label { color: var(--ws1); }
+.ws2 .qpqc-label { color: var(--ws2); }
+.ws3 .qpqc-label { color: var(--ws3); }
+.ws4 .qpqc-label { color: var(--ws4); }
+.qpqc-text { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+
+/* ── BLOCKS ── */
+.ws-block { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; }
+.ws-block.ws1 { border-left: 4px solid var(--ws1); }
+.ws-block.ws2 { border-left: 4px solid var(--ws2); }
+.ws-block.ws3 { border-left: 4px solid var(--ws3); }
+.ws-block.ws4 { border-left: 4px solid var(--ws4); }
+.ws-block-head { padding: 9px 18px; background: #F8F9FC; border-bottom: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); display: flex; align-items: center; gap: 8px; }
+.ws-block-body { padding: 16px 18px; }
+.scope-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.scope-chip { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px; background: var(--bg); color: var(--ink-2); border: 1px solid var(--border); }
+
+/* ── TABLES ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+thead tr { background: var(--ink); color: #fff; }
+.ws1 thead tr { background: var(--ws1); }
+.ws2 thead tr { background: var(--ws2); }
+.ws3 thead tr { background: var(--ws3); }
+.ws4 thead tr { background: var(--ws4); }
+th { text-align: left; padding: 9px 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
+td { padding: 10px 14px; color: var(--ink-2); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: #FAFBFD; }
+td strong { color: var(--ink); font-weight: 600; }
+
+/* ── RACI TABLE ── */
+.raci-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.raci-table th { padding: 10px 14px; background: var(--ink); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; }
+.raci-table th.role-col { background: #2A3650; width: 140px; text-align: left; }
+.raci-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; }
+.raci-table td:first-child { text-align: left; color: var(--ink); font-weight: 600; font-size: 13px; background: #FAFBFD; border-right: 1px solid var(--border); }
+.raci-table tr:last-child td { border-bottom: none; }
+.raci-table tr:nth-child(even) td:not(:first-child) { background: #FAFBFD; }
+
+.raci-pill { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-size: 13px; font-weight: 900; }
+.raci-R { background: var(--r-bg); color: var(--r-color); }
+.raci-A { background: var(--a-bg); color: var(--a-color); }
+.raci-C { background: var(--c-bg); color: var(--c-color); }
+.raci-I { background: var(--i-bg); color: var(--i-color); }
+.raci-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+.raci-legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink-2); }
+
+/* ── PILLS ── */
+.pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+.pill-ok    { background: var(--ws2-bg); color: var(--ws2); }
+.pill-warn  { background: var(--ws4-bg); color: var(--ws4); }
+.pill-no    { background: var(--r-bg);   color: var(--r-color); }
+.pill-p1    { background: var(--p1-bg);  color: var(--p1-color); }
+.pill-p2    { background: var(--p2-bg);  color: var(--p2-color); }
+.pill-p3    { background: var(--p3-bg);  color: var(--p3-color); }
+
+/* ── TECH BLOCK (collapsible) ── */
+.tech-toggle { display: none; }
+.tech-label {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; padding: 9px 18px;
+  background: #F8F9FC; border-bottom: 1px solid var(--border);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--ink-3); user-select: none;
+}
+.tech-label::after { content: '▼'; margin-left: auto; font-size: 9px; transition: transform .15s; }
+.tech-toggle:checked + .tech-label::after { transform: rotate(-90deg); }
+.tech-content { display: none; }
+.tech-toggle:checked + .tech-label + .tech-content { display: block; }
+.code-block {
+  background: var(--ink); color: #A8C8FF;
+  font-family: var(--mono); font-size: 12px; line-height: 1.7;
+  padding: 16px 20px; overflow-x: auto;
+}
+.code-block .cm  { color: #5A7A9A; }
+.code-block .key { color: #A8C8FF; }
+.code-block .str { color: #FFD787; }
+.code-block .num { color: #FF9F6A; }
+.code-block .boo { color: #CF93FF; }
+.code-block .url { color: #fff; }
+.code-block .met { color: var(--yellow); font-weight: 700; }
+
+/* ── NOTES ── */
+.note { background: #FFF9E5; border-left: 3px solid var(--yellow); padding: 10px 16px; font-size: 12.5px; color: var(--ink-2); border-radius: 0 5px 5px 0; margin-top: 12px; }
+.note strong { color: var(--ink); }
+.alert { background: var(--r-bg); border-left: 3px solid var(--r-color); padding: 10px 16px; font-size: 12.5px; color: var(--r-color); border-radius: 0 5px 5px 0; margin-top: 12px; }
+.alert strong { color: var(--r-color); }
+
+/* ── LIVRABLES ── */
+.livrable-list { display: flex; flex-direction: column; gap: 8px; }
+.livrable-item { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: start; font-size: 13px; color: var(--ink-2); }
+.livrable-bullet { width: 22px; height: 22px; border-radius: 4px; font-size: 10px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.ws1 .livrable-bullet { background: var(--ws1); }
+.ws2 .livrable-bullet { background: var(--ws2); }
+.ws3 .livrable-bullet { background: var(--ws3); }
+.ws4 .livrable-bullet { background: var(--ws4); }
+.livrable-owner { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 3px; background: var(--bg); color: var(--ink-3); border: 1px solid var(--border); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+
+/* ── MATRICE ── */
+.matrix-cell-high { background: var(--p1-bg); color: var(--p1-color); font-weight: 700; text-align: center; }
+.matrix-cell-med  { background: var(--p2-bg); color: var(--p2-color); font-weight: 600; text-align: center; }
+.matrix-cell-low  { background: var(--p3-bg); color: var(--p3-color); font-weight: 600; text-align: center; }
+.matrix-cell-head { background: var(--ink); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+
+/* ── CHECKLIST ── */
+.checklist-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.checklist-col-head { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid var(--border); }
+.ws1 .checklist-col-head { color: var(--ws1); border-bottom-color: var(--ws1-bg); }
+.ws2 .checklist-col-head { color: var(--ws2); border-bottom-color: var(--ws2-bg); }
+.ws3 .checklist-col-head { color: var(--ws3); border-bottom-color: var(--ws3-bg); }
+.ws4 .checklist-col-head { color: var(--ws4); border-bottom-color: var(--ws4-bg); }
+.checklist-item { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--ink-2); padding: 5px 0; border-bottom: 1px solid var(--border); }
+.checklist-item:last-child { border-bottom: none; }
+.check-box { width: 15px; height: 15px; border: 1.5px solid var(--border); border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+
+/* ── FOOTER ── */
+.doc-footer { padding-top: 36px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; color: var(--ink-3); flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 700px) {
+  .ws-grid { grid-template-columns: 1fr 1fr; }
+  .qpqc { grid-template-columns: 1fr 1fr; }
+  .checklist-wrap { grid-template-columns: 1fr; }
+  .readme { grid-template-columns: 1fr; }
+  .doc-header h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="sticky-nav">
+  <a href="#intro">Intro</a>
+  <a href="#gouvernance">Gouvernance</a>
+  <a href="#ws1">WS1 — Données</a>
+  <a href="#ws2">WS2 — Éditorial</a>
+  <a href="#ws3">WS3 — Avis</a>
+  <a href="#ws4">WS4 — Services</a>
+  <a href="#matrice">Priorisation</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header class="doc-header">
+    <div class="doc-meta">
+      <span class="doc-badge db-main">Note de cadrage</span>
+      <span class="doc-badge db-version">Template MOFU Hub · v2.0 · 2026</span>
+    </div>
+    <h1>Ce que vos équipes doivent préparer, enrichir, collecter et produire</h1>
+    <p class="subtitle">Guide opérationnel pour le déploiement du template MOFU Hub — 4 workstreams, responsabilités RACI, actions concrètes et livrables attendus par composant.</p>
+  </header>
+
+  <!-- ── COMMENT LIRE CE DOCUMENT ── -->
+  <section id="intro">
+    <div class="readme">
+      <div class="readme-item">
+        <div class="readme-label">À qui s'adresse ce document</div>
+        <div class="readme-val"><strong>Chef de marché</strong> (porteur du template pour son univers), Chef de projet digital, Studio, Webmerch, Marketplace, équipes Data et Dev. Chaque section indique qui est concerné et ce qu'on attend d'eux.</div>
+      </div>
+      <div class="readme-item">
+        <div class="readme-label">Ce que ce document couvre</div>
+        <div class="readme-val">4 workstreams d'activation : les données produit à enrichir, les contenus à produire ou reformater, les avis à structurer, les services à inventorier. Pour chaque WS : quoi, pourquoi, qui fait quoi (RACI), livrables.</div>
+      </div>
+      <div class="readme-item">
+        <div class="readme-label">Ce que ce document ne couvre pas</div>
+        <div class="readme-val">La conception technique de la page (wireframe séparé), les choix graphiques (mockup séparé). Les délais et sprints sont à définir avec le chef de projet selon le calendrier de déploiement par univers.</div>
+      </div>
+    </div>
+
+    <!-- 4 WS cards -->
+    <div class="ws-grid">
+      <div class="ws-card ws1">
+        <div class="ws-card-eyebrow">WS 1 · Bloquant</div>
+        <h3>Flux Produit &amp; Données</h3>
+        <p>Enrichir le catalogue produit, exposer les bons champs pour alimenter tous les composants dynamiques.</p>
+        <div class="ws-chips">
+          <span class="ws-chip">Catalogue</span>
+          <span class="ws-chip">Calculateur</span>
+          <span class="ws-chip">Tableaux</span>
+        </div>
+      </div>
+      <div class="ws-card ws2">
+        <div class="ws-card-eyebrow">WS 2 · Prioritaire</div>
+        <h3>Gestion Éditoriale</h3>
+        <p>Identifier, reformater et produire les contenus qui nourrissent les nouveaux templates.</p>
+        <div class="ws-chips">
+          <span class="ws-chip">FAQ</span>
+          <span class="ws-chip">Actualités</span>
+          <span class="ws-chip">Conseils</span>
+        </div>
+      </div>
+      <div class="ws-card ws3">
+        <div class="ws-card-eyebrow">WS 3 · Important</div>
+        <h3>Avis Clients (UGC)</h3>
+        <p>Catégoriser les avis existants par univers pour les exploiter aux bons endroits du template.</p>
+        <div class="ws-chips">
+          <span class="ws-chip">Note hero</span>
+          <span class="ws-chip">UGC hub</span>
+        </div>
+      </div>
+      <div class="ws-card ws4">
+        <div class="ws-card-eyebrow">WS 4 · Cadrage</div>
+        <h3>Services</h3>
+        <p>Recenser l'offre de services disponible par univers et la structurer pour le template.</p>
+        <div class="ws-chips">
+          <span class="ws-chip">Services S09</span>
+          <span class="ws-chip">Card produit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       GOUVERNANCE & RACI GLOBAL
+  ═══════════════════════════════════ -->
+  <section class="ws-section" id="gouvernance">
+    <div class="ws-section-head">
+      <div class="ws-icon" style="background:#EEF1F7;">🏛</div>
+      <h2>Gouvernance &amp; RACI</h2>
+    </div>
+
+    <!-- Légende RACI -->
+    <div class="ws-block" style="border-left: 4px solid var(--accent);">
+      <div class="ws-block-head">Légende — 4 niveaux de responsabilité</div>
+      <div class="ws-block-body">
+        <div class="raci-legend">
+          <div class="raci-legend-item"><span class="raci-pill raci-R">R</span><span><strong>Responsible</strong> — réalise le travail. Peut être plusieurs personnes.</span></div>
+          <div class="raci-legend-item"><span class="raci-pill raci-A">A</span><span><strong>Accountable</strong> — valide et assume la décision finale. Un seul par livrable.</span></div>
+          <div class="raci-legend-item"><span class="raci-pill raci-C">C</span><span><strong>Consulted</strong> — est sollicité pour input ou validation partielle, en amont.</span></div>
+          <div class="raci-legend-item"><span class="raci-pill raci-I">I</span><span><strong>Informed</strong> — est tenu informé de l'avancement et des décisions prises.</span></div>
+        </div>
+        <div class="note" style="margin-top:14px"><strong>Règle de gouvernance :</strong> chaque livrable ne peut avoir qu'un seul <span style="font-weight:800;color:var(--a-color);">A</span>. En cas de doute sur la validation, l'A remonte au Chef de projet digital. Le Chef de marché est A sur tous les livrables qui engagent son univers (données, contenu, services).</div>
+      </div>
+    </div>
+
+    <!-- RACI global -->
+    <div class="ws-block" style="border-left: 4px solid var(--accent);">
+      <div class="ws-block-head">RACI global — par workstream</div>
+      <div class="ws-block-body" style="padding:0;overflow-x:auto;">
+        <table class="raci-table">
+          <thead>
+            <tr>
+              <th class="role-col" style="text-align:left;">Workstream</th>
+              <th>Chef de marché</th>
+              <th>Data / PIM</th>
+              <th>Dev / IT</th>
+              <th>Studio</th>
+              <th>Webmerch</th>
+              <th>Marketplace</th>
+              <th>Chef de projet</th>
+              <th>Direction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>WS1 — Données produit</td>
+              <td><span class="raci-pill raci-A">A</span></td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+            </tr>
+            <tr>
+              <td>WS2 — Contenu éditorial</td>
+              <td><span class="raci-pill raci-A">A</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+            </tr>
+            <tr>
+              <td>WS3 — Avis clients</td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-A">A</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+            </tr>
+            <tr>
+              <td>WS4 — Services</td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-A">A</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-I">I</span></td>
+            </tr>
+            <tr>
+              <td>Mise en production template</td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-R">R</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-C">C</span></td>
+              <td><span class="raci-pill raci-A">A</span></td>
+              <td><span class="raci-pill raci-A">A</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Rôles -->
+    <div class="ws-block" style="border-left: 4px solid var(--accent);">
+      <div class="ws-block-head">Définition des rôles</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead><tr><th>Rôle</th><th>Périmètre</th><th>Ce qu'il engage sur ce projet</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Chef de marché</strong></td>
+              <td>Propriétaire de l'univers produit (jardin, cuisine…)</td>
+              <td>Valide les données produit, les règles de badge, les services disponibles et le contenu éditorial. C'est son univers — ses décisions engagent la qualité finale du template.</td>
+            </tr>
+            <tr>
+              <td><strong>Équipe Data / PIM</strong></td>
+              <td>Gestion du catalogue et du référentiel produit</td>
+              <td>Enrichit les champs manquants (prix de référence, badge, type d'installation, indice de protection). Source unique de vérité pour les données produit.</td>
+            </tr>
+            <tr>
+              <td><strong>Équipe Dev / IT</strong></td>
+              <td>Développement et infrastructure</td>
+              <td>Expose les APIs catalogue, avis et CMS. Assure le temps de réponse et la disponibilité temps réel du stock. Intègre le template dans le CMS cible.</td>
+            </tr>
+            <tr>
+              <td><strong>Studio</strong></td>
+              <td>Production éditoriale — contenus, guides, blog, FAQ</td>
+              <td>Produit les textes GEO, reformate les guides existants, enrichit la FAQ avec les normes techniques, tagge les articles blog par univers. Interlocuteur éditorial unique pour tous les univers.</td>
+            </tr>
+            <tr>
+              <td><strong>Webmerch</strong></td>
+              <td>Merchandising web — prix, badges, services, mise en avant</td>
+              <td>Définit les règles de badge produit, valide les prix de référence affichés, gère le catalogue de services disponibles par univers. Garant de la cohérence entre l'offre et l'affichage template.</td>
+            </tr>
+            <tr>
+              <td><strong>Marketplace</strong></td>
+              <td>Gestion des vendeurs partenaires et de leur offre</td>
+              <td>Alimente le composant S10 Marketplace du template avec les offres partenaires pertinentes par univers. Valide la pertinence des produits tiers exposés dans le hub.</td>
+            </tr>
+            <tr>
+              <td><strong>Chef de projet digital</strong></td>
+              <td>Coordination transverse</td>
+              <td>Pilote le planning par univers, arbitre les priorités inter-workstreams, valide la mise en production. Point de contact unique entre les équipes.</td>
+            </tr>
+            <tr>
+              <td><strong>Direction</strong></td>
+              <td>Sponsor budget et priorité</td>
+              <td>Valide le périmètre des univers à déployer et l'ordre de déploiement. N'intervient pas dans le détail opérationnel.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       WS1 — FLUX PRODUIT & DONNÉES
+  ═══════════════════════════════════ -->
+  <section class="ws-section ws1" id="ws1">
+    <div class="ws-section-head">
+      <div class="ws-icon">📦</div>
+      <h2>WS 1 — Flux Produit &amp; Données</h2>
+      <span class="ws-tag">Bloquant</span>
+    </div>
+
+    <div class="qpqc">
+      <div class="qpqc-item">
+        <div class="qpqc-label">Quoi</div>
+        <div class="qpqc-text">Enrichir les données produit du catalogue pour que chaque composant dynamique du template s'affiche correctement : prix, stock, type, badge, installation.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Pourquoi</div>
+        <div class="qpqc-text">Sans ces données, le catalogue affiche des cartes incomplètes, le calculateur retourne de mauvais produits, les tableaux comparatifs sont creux. C'est le workstream bloquant pour tout le reste.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Qui</div>
+        <div class="qpqc-text"><strong>Responsable :</strong> Équipe Data / PIM<br><strong>Décideur :</strong> Chef de marché<br><strong>Intégration :</strong> Équipe Dev / IT</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Comment</div>
+        <div class="qpqc-text">Enrichissement dans le PIM (outil de référence produit), puis exposition via l'API catalogue. Les règles de badge sont définies par le chef de marché et implémentées par l'équipe Data.</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws1">
+      <div class="ws-block-head">Composants du template alimentés par ce workstream</div>
+      <div class="ws-block-body">
+        <div class="scope-chips">
+          <span class="scope-chip">S06 Catalogue (grille produits)</span>
+          <span class="scope-chip">S07 Calculateur (résultats)</span>
+          <span class="scope-chip">S08 Tableaux comparatifs</span>
+          <span class="scope-chip">S10 Marketplace partenaires</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE 4 COLONNES — pas de scroll -->
+    <div class="ws-block ws1">
+      <div class="ws-block-head">Données requises — état &amp; actions à mener</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:28%">Donnée</th>
+              <th style="width:14%">État actuel</th>
+              <th style="width:44%">Action à mener — par qui</th>
+              <th style="width:14%">Priorité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Identifiant unique (SKU)</strong><br><span style="font-size:11px;color:var(--ink-3);">Réf. interne produit</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td>Aucune action. Vérifier cohérence avec l'ID utilisé dans les APIs avis et services.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Nom produit normalisé</strong><br><span style="font-size:11px;color:var(--ink-3);">Format : Marque · Modèle · Spec principale</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Équipe Data :</strong> Normaliser le libellé sur 100 % des SKUs MOFU de l'univers. Le format doit être lisible et cohérent sur toutes les cards produit.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Type de produit</strong><br><span style="font-size:11px;color:var(--ink-3);">Taxonomie fermée propre à l'univers</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Chef de marché :</strong> Définir la liste fermée des types pour cet univers. <strong>Équipe Data :</strong> Mapper les catégories existantes sur cette taxonomie.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Prix actuel de vente</strong><br><span style="font-size:11px;color:var(--ink-3);">Prix affiché sur le site</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td>Aucune action.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Prix de référence fabricant</strong><br><span style="font-size:11px;color:var(--ink-3);">PVPC — affiché barré sur la card</span></td>
+              <td><span class="pill pill-no">Absent</span></td>
+              <td><strong>Équipe Data (acheteur) :</strong> Collecter le PVPC fabricant pour chaque SKU. Source : fiche constructeur, contrat acheteur ou base GS1. Requis pour afficher le prix barré.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Statut de stock</strong><br><span style="font-size:11px;color:var(--ink-3);">En stock / Dernières pièces / Sur commande</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Équipe Dev :</strong> Exposer le statut en temps réel. <strong>Chef de marché :</strong> Valider le seuil "Dernières pièces" (ex. stock &lt; 5 unités).</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Badge produit</strong><br><span style="font-size:11px;color:var(--ink-3);">Éco / Design / Connecté / Bestseller</span></td>
+              <td><span class="pill pill-no">Absent</span></td>
+              <td><strong>Chef de marché :</strong> Définir les règles de badge pour son univers (critères objectifs par badge). <strong>Équipe Data :</strong> Appliquer les règles dans le PIM.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Classe énergie</strong><br><span style="font-size:11px;color:var(--ink-3);">Obligatoire — réglementation UE</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Équipe Data :</strong> Vérifier présence sur 100 % des SKUs. Champ obligatoire légalement — alerter si manquant sur des produits déjà en ligne.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Type d'installation</strong><br><span style="font-size:11px;color:var(--ink-3);">Sans travaux / Facile / Pro recommandé</span></td>
+              <td><span class="pill pill-no">Absent</span></td>
+              <td><strong>Chef de marché :</strong> Valider la règle de dérivation automatique selon le type produit. <strong>Équipe Data :</strong> Implémenter la règle dans le PIM.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Délai de livraison estimé</strong><br><span style="font-size:11px;color:var(--ink-3);">Affiché sous le prix sur la card</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Équipe Dev :</strong> Calculer dynamiquement ou mapper statiquement sur le statut stock (en stock → 48h, sur commande → sous 7 jours).</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Note &amp; nombre d'avis</strong><br><span style="font-size:11px;color:var(--ink-3);">Affichés sur la card et les tableaux</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td><strong>Équipe Dev :</strong> S'assurer que ces champs sont synchronisés depuis le système d'avis (WS3) — pas de valeurs statiques dans le PIM.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Spécification principale</strong><br><span style="font-size:11px;color:var(--ink-3);">Variable par univers (puissance, largeur, capacité…)</span></td>
+              <td><span class="pill pill-warn">Partiel</span></td>
+              <td><strong>Chef de marché :</strong> Définir quelle est la "spécification principale" pour son univers. <strong>Équipe Data :</strong> Vérifier exhaustivité et format homogène sur 100 % des SKUs.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Endpoint (collapsible) -->
+    <div class="ws-block ws1">
+      <input type="checkbox" class="tech-toggle" id="tech-ws1">
+      <label class="tech-label" for="tech-ws1">Annexe technique — Format API catalogue (pour équipe Dev)</label>
+      <div class="tech-content">
+        <div class="code-block">
+<span class="met">GET</span> <span class="url">/api/v2/catalog?universe={slug}&amp;limit=20&amp;offset=0</span>
+<span class="cm">// Filtres supportés : ?type= · ?badge= · ?price_max= · ?stock=ok|low</span>
+
+{
+  <span class="key">"products"</span>: [{
+    <span class="key">"sku"</span>:              <span class="str">"REF-001"</span>,
+    <span class="key">"name"</span>:             <span class="str">"Marque Modèle [Spec principale]"</span>,
+    <span class="key">"type"</span>:             <span class="str">"[type-univers]"</span>,
+    <span class="key">"spec_main"</span>:        <span class="str">"[valeur + unité]"</span>,
+    <span class="key">"price_current"</span>:   <span class="num">89.90</span>,
+    <span class="key">"price_reference"</span>: <span class="num">109.00</span>,
+    <span class="key">"stock_status"</span>:    <span class="str">"ok"</span>, <span class="cm">// ok | low | order | unavailable</span>
+    <span class="key">"delivery_estimate"</span>:<span class="str">"48h"</span>,
+    <span class="key">"rating"</span>:           <span class="num">4.5</span>,
+    <span class="key">"review_count"</span>:     <span class="num">234</span>,
+    <span class="key">"badge"</span>:            <span class="str">"eco"</span>, <span class="cm">// eco | design | connecte | best | null</span>
+    <span class="key">"install_type"</span>:     <span class="str">"easy"</span>, <span class="cm">// easy | pro | sans-travaux</span>
+    <span class="key">"url"</span>:              <span class="str">"/univers/marque-modele"</span>
+  }]
+}</div>
+        <div class="note" style="margin:0;border-radius:0;"><strong>Contrainte performance :</strong> Le calculateur filtre les produits côté client — le feed catalogue doit être chargé en moins de 300 ms. Prévoir un cache CDN sur les réponses par univers.</div>
+      </div>
+    </div>
+
+    <!-- Livrables WS1 -->
+    <div class="ws-block ws1">
+      <div class="ws-block-head">Livrables attendus — WS1</div>
+      <div class="ws-block-body">
+        <div class="livrable-list">
+          <div class="livrable-item"><span class="livrable-bullet">1</span><span>Taxonomie des types produit validée — liste fermée, mappée sur les catégories PIM existantes</span><span class="livrable-owner">Chef de marché + Data</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">2</span><span>Règles de badge documentées et implémentées dans le PIM — critères objectifs par badge, par univers</span><span class="livrable-owner">Chef de marché</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">3</span><span>Prix de référence fabricant (PVPC) renseigné pour 100 % des SKUs de l'univers concerné</span><span class="livrable-owner">Data / Acheteur</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">4</span><span>API catalogue exposée avec filtres type / badge / prix / stock — temps de réponse &lt;300 ms, testé en charge</span><span class="livrable-owner">Dev / IT</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">5</span><span>Statut stock temps réel ou cache court (TTL &lt;15 min) pour le badge "Dernières pièces"</span><span class="livrable-owner">Dev / IT</span></div>
+        </div>
+        <div class="alert" style="margin-top:14px"><strong>Point d'attention :</strong> Sans les livrables 1 (taxonomie) et 3 (PVPC), les filtres du catalogue et le prix barré sont non fonctionnels — le template ne peut pas être mis en ligne. Ces deux points sont sous la responsabilité du Chef de marché.</div>
+      </div>
+    </div>
+
+    <!-- RACI WS1 -->
+    <div class="ws-block ws1">
+      <div class="ws-block-head">RACI détaillé — WS1</div>
+      <div class="ws-block-body" style="padding:0;overflow-x:auto;">
+        <table class="raci-table">
+          <thead><tr><th class="role-col" style="text-align:left;">Livrable WS1</th><th>Chef de marché</th><th>Data / PIM</th><th>Dev / IT</th><th>Webmerch</th><th>Marketplace</th><th>Chef de projet</th></tr></thead>
+          <tbody>
+            <tr><td>Taxonomie types produit</td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td></tr>
+            <tr><td>Règles de badge</td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td></tr>
+            <tr><td>Enrichissement PVPC + spécs</td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+            <tr><td>API catalogue + stock</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       WS2 — GESTION ÉDITORIALE
+  ═══════════════════════════════════ -->
+  <section class="ws-section ws2" id="ws2">
+    <div class="ws-section-head">
+      <div class="ws-icon">✍️</div>
+      <h2>WS 2 — Gestion Éditoriale</h2>
+      <span class="ws-tag">Prioritaire</span>
+    </div>
+
+    <div class="qpqc">
+      <div class="qpqc-item">
+        <div class="qpqc-label">Quoi</div>
+        <div class="qpqc-text">Identifier les contenus existants (guides, articles, FAQ), les reformater selon les contraintes du template, et produire les contenus manquants (intros GEO, normes techniques).</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Pourquoi</div>
+        <div class="qpqc-text">Le template est conçu pour les moteurs de recherche IA (SGE, Perplexity) autant que pour Google. La qualité factuelle et le respect des formats GEO déterminent la visibilité organique.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Qui</div>
+        <div class="qpqc-text"><strong>Responsable :</strong> Studio<br><strong>Décideur :</strong> Chef de marché<br><strong>Validation :</strong> Chef de projet</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Comment</div>
+        <div class="qpqc-text">Audit du corpus existant par univers, sélection et reformatage, puis production des contenus manquants selon les gabarits ci-dessous. Livraison dans le CMS ou en fichier structuré (JSON/CSV).</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws2">
+      <div class="ws-block-head">Composants du template alimentés par ce workstream</div>
+      <div class="ws-block-body">
+        <div class="scope-chips">
+          <span class="scope-chip">S03 Chapeau hero</span>
+          <span class="scope-chip">S08 Intros GEO tableaux</span>
+          <span class="scope-chip">S12 FAQ (6 Q&amp;A)</span>
+          <span class="scope-chip">S13 Actualités (3 cards)</span>
+          <span class="scope-chip">S14 Conseils (5 cards)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-block ws2">
+      <div class="ws-block-head">Contenus à sourcer, reformater ou produire</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead>
+            <tr><th style="width:25%">Contenu</th><th style="width:25%">Source</th><th style="width:35%">Action + Gabarit</th><th style="width:15%">Priorité</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Intros GEO tableaux</strong><br><span style="font-size:11px;color:var(--ink-3);">2 textes × univers (produits + marques)</span></td>
+              <td>À rédiger — n'existe pas dans ce format</td>
+              <td>Exactement <strong>100 mots</strong>. Minimum 2 chiffres factuels vérifiables. Mots-clés SEO naturellement intégrés. Zéro formule générique. Livraison : CMS ou fichier texte.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>FAQ — 5 Q existantes</strong><br><span style="font-size:11px;color:var(--ink-3);">Q1 ouverte par défaut</span></td>
+              <td>Pages catégorie · SAV · FAQ site existant</td>
+              <td>Sélectionner 5 questions MOFU pertinentes. Question &lt;90 caractères, réponse 60–180 mots. Q1 doit couvrir la recommandation principale de l'univers.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>FAQ — Q6 normes techniques</strong><br><span style="font-size:11px;color:var(--ink-3);">Expertise de niche obligatoire</span></td>
+              <td>À rédiger par un expert univers</td>
+              <td>1 question + réponse couvrant les normes techniques de l'univers (certifications, indices, classes). Valider avec un expert technique avant mise en ligne.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Actualités — 3 articles</strong><br><span style="font-size:11px;color:var(--ink-3);">Fraîcheur max : 6 mois</span></td>
+              <td>Blog · Rubrique éditoriale</td>
+              <td>Identifier 3 articles récents pertinents pour l'univers. Taguer dans le CMS avec l'univers slug. Format card : image 16/9 + catégorie + titre &lt;65 car + date + URL.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Conseils — 5 guides</strong><br><span style="font-size:11px;color:var(--ink-3);">1 par thème obligatoire</span></td>
+              <td>Blog · Guides d'achat · Fiches conseils</td>
+              <td>1 guide par thème : achat · installation · économies/performance · technique · design. Titre &lt;55 car + description &lt;90 car + URL. Livraison : CMS.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Chapeau hero</strong><br><span style="font-size:11px;color:var(--ink-3);">2 phrases, 25–40 mots</span></td>
+              <td>À rédiger par univers</td>
+              <td>Couvre 3 intentions (rénovation, économies, design/ambiance). 1 bénéfice fonctionnel + 1 bénéfice émotionnel. Pas de prix dans le hero.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Chips sémantiques</strong><br><span style="font-size:11px;color:var(--ink-3);">10 chips — SEO + filtre catalogue</span></td>
+              <td>Analyse search interne + outil SEO</td>
+              <td>Définir 10 chips depuis les requêtes les plus fréquentes sur cet univers. Chaque chip doit correspondre à un filtre catalogue existant. Valider avec l'équipe SEO.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ws-block ws2">
+      <input type="checkbox" class="tech-toggle" id="tech-ws2">
+      <label class="tech-label" for="tech-ws2">Annexe technique — Format API CMS éditorial (pour équipe Dev)</label>
+      <div class="tech-content">
+        <div class="code-block">
+<span class="met">GET</span> <span class="url">/api/v2/editorial?universe={slug}&amp;type=actualite|conseil|faq&amp;limit=5</span>
+
+<span class="cm">// Actualité :</span>
+{ <span class="key">"title"</span>: <span class="str">"Titre &lt;65 car"</span>, <span class="key">"category"</span>: <span class="str">"Tendances"</span>, <span class="key">"date"</span>: <span class="str">"2025-11-12"</span>, <span class="key">"image"</span>: <span class="str">"URL"</span>, <span class="key">"url"</span>: <span class="str">"/blog/..."</span> }
+
+<span class="cm">// FAQ :</span>
+{ <span class="key">"question"</span>: <span class="str">"&lt;90 car"</span>, <span class="key">"answer_html"</span>: <span class="str">"&lt;p&gt;...&lt;/p&gt;"</span>, <span class="key">"open_default"</span>: <span class="boo">true</span> }
+
+<span class="cm">// Conseil :</span>
+{ <span class="key">"icon"</span>: <span class="str">"💡"</span>, <span class="key">"title"</span>: <span class="str">"&lt;55 car"</span>, <span class="key">"description"</span>: <span class="str">"&lt;90 car"</span>, <span class="key">"url"</span>: <span class="str">"/guides/..."</span> }
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-block ws2">
+      <div class="ws-block-head">Livrables attendus — WS2</div>
+      <div class="ws-block-body">
+        <div class="livrable-list">
+          <div class="livrable-item"><span class="livrable-bullet">1</span><span>2 textes GEO 100 mots (×2 tableaux) — validés par le chef de marché, livrés en CMS ou CSV</span><span class="livrable-owner">Studio</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">2</span><span>FAQ 6 Q&amp;A reformatées et validées — dont Q6 normes techniques rédigée par un expert</span><span class="livrable-owner">Éditorial + Expert</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">3</span><span>3 articles blog taggés par univers dans le CMS pour alimentation dynamique des Actualités</span><span class="livrable-owner">Éditorial</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">4</span><span>5 guides Conseils identifiés et mappés — titres, descriptions et URLs livrés en CMS</span><span class="livrable-owner">Studio</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">5</span><span>Endpoint CMS exposant FAQ + Actualités + Conseils filtrés par univers slug</span><span class="livrable-owner">Dev / IT</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-block ws2">
+      <div class="ws-block-head">RACI détaillé — WS2</div>
+      <div class="ws-block-body" style="padding:0;overflow-x:auto;">
+        <table class="raci-table">
+          <thead><tr><th class="role-col" style="text-align:left;">Livrable WS2</th><th>Chef de marché</th><th>Studio</th><th>Webmerch</th><th>Dev / IT</th><th>Expert technique</th><th>Chef de projet</th></tr></thead>
+          <tbody>
+            <tr><td>Intros GEO 100 mots</td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td></tr>
+            <tr><td>FAQ 5+1 Q&amp;A</td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td></tr>
+            <tr><td>Tagging blog + Conseils</td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+            <tr><td>API CMS éditorial</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       WS3 — AVIS CLIENTS
+  ═══════════════════════════════════ -->
+  <section class="ws-section ws3" id="ws3">
+    <div class="ws-section-head">
+      <div class="ws-icon">⭐</div>
+      <h2>WS 3 — Avis Clients (UGC)</h2>
+      <span class="ws-tag">Important</span>
+    </div>
+
+    <div class="qpqc">
+      <div class="qpqc-item">
+        <div class="qpqc-label">Quoi</div>
+        <div class="qpqc-text">Catégoriser les avis existants par univers et exposer un endpoint filtré pour alimenter la note globale dans le hero et les 3 avis sélectionnés dans le bloc UGC.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Pourquoi</div>
+        <div class="qpqc-text">La preuve sociale (note + avis) dans le hero augmente le taux de clic. Les avis dans le template sont des signaux UGC pour le SEO. Sans catégorisation par univers, il est impossible de filtrer les bons avis.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Qui</div>
+        <div class="qpqc-text"><strong>Responsable :</strong> Équipe Data / PIM<br><strong>Décideur (API) :</strong> Équipe Dev / IT<br><strong>Validation :</strong> Chef de projet</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Comment</div>
+        <div class="qpqc-text">Ajout d'un champ "univers" dans le modèle avis (dérivé de la catégorie produit). Exposition de 2 endpoints : résumé pour le hero, liste filtrée pour le bloc UGC.</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws3">
+      <div class="ws-block-head">Données requises — état &amp; actions</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead><tr><th style="width:28%">Donnée</th><th style="width:14%">État</th><th style="width:43%">Action — par qui</th><th style="width:15%">Priorité</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Champ "univers" sur les avis</strong><br><span style="font-size:11px;color:var(--ink-3);">Clé de filtrage par page hub</span></td>
+              <td><span class="pill pill-no">Absent</span></td>
+              <td><strong>Équipe Data :</strong> Ajouter le champ univers en le dérivant de la catégorie produit associée à chaque avis. Sans ce champ, impossible de filtrer les avis par page hub.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Indicateur "vérifié"</strong><br><span style="font-size:11px;color:var(--ink-3);">Requis pour la note hero</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td>Aucune action. La note affichée dans le hero ne compte que les avis vérifiés.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Texte de l'avis</strong><br><span style="font-size:11px;color:var(--ink-3);">Bloc UGC — min. 20 mots</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td><strong>Équipe Dev :</strong> Filtrer côté API les avis avec moins de 20 mots. Les avis trop courts dégradent la perception qualité du hub.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Auteur (prénom + initiale)</strong><br><span style="font-size:11px;color:var(--ink-3);">RGPD — jamais nom complet</span></td>
+              <td><span class="pill pill-ok">Disponible</span></td>
+              <td>Vérifier que le format exposé est bien prénom + initiale (ex. "Marie D."). Ne jamais exposer un nom complet — exiger la conformité RGPD à l'API level.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tag persona (optionnel)</strong><br><span style="font-size:11px;color:var(--ink-3);">Pour pages MOFU profondes uniquement</span></td>
+              <td><span class="pill pill-no">Absent</span></td>
+              <td><strong>Studio :</strong> Tagger les avis les plus riches avec un profil intention (rénovation, design, budget). Réservé aux pages MOFU profondes, pas au hub.</td>
+              <td><span class="pill pill-p3">P3</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ws-block ws3">
+      <input type="checkbox" class="tech-toggle" id="tech-ws3">
+      <label class="tech-label" for="tech-ws3">Annexe technique — Format API avis (pour équipe Dev)</label>
+      <div class="tech-content">
+        <div class="code-block">
+<span class="cm">// Résumé pour le hero :</span>
+<span class="met">GET</span> <span class="url">/api/v2/reviews/summary?universe={slug}&amp;verified=true</span>
+{ <span class="key">"average_rating"</span>: <span class="num">4.7</span>, <span class="key">"total_verified"</span>: <span class="num">1284</span> }
+
+<span class="cm">// 3 avis pour le bloc UGC :</span>
+<span class="met">GET</span> <span class="url">/api/v2/reviews?universe={slug}&amp;verified=true&amp;min_rating=4&amp;min_words=20&amp;limit=3&amp;sort=helpful</span>
+{ <span class="key">"reviews"</span>: [{ <span class="key">"rating"</span>: <span class="num">5</span>, <span class="key">"text"</span>: <span class="str">"..."</span>, <span class="key">"author_name"</span>: <span class="str">"Marie D."</span>, <span class="key">"verified"</span>: <span class="boo">true</span> }] }
+        </div>
+        <div class="note" style="margin:0;border-radius:0;"><strong>Règle éditoriale :</strong> Le hub n'affiche que des avis non segmentés. Les avis avec tag persona sont réservés aux pages MOFU profondes.</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws3">
+      <div class="ws-block-head">Livrables attendus — WS3</div>
+      <div class="ws-block-body">
+        <div class="livrable-list">
+          <div class="livrable-item"><span class="livrable-bullet">1</span><span>Champ "univers" ajouté au modèle avis — dérivé de la catégorie produit, rétroactif sur les avis existants</span><span class="livrable-owner">Data / PIM</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">2</span><span>Endpoint résumé /reviews/summary?universe= — moyenne + total avis vérifiés pour le hero</span><span class="livrable-owner">Dev / IT</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">3</span><span>Endpoint liste /reviews?universe= avec filtres verified, min_rating=4, min_words=20, sort=helpful</span><span class="livrable-owner">Dev / IT</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">4</span><span>Conformité RGPD vérifiée — prénom + initiale uniquement exposé dans les réponses API</span><span class="livrable-owner">Dev / IT + Juridique</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-block ws3">
+      <div class="ws-block-head">RACI détaillé — WS3</div>
+      <div class="ws-block-body" style="padding:0;overflow-x:auto;">
+        <table class="raci-table">
+          <thead><tr><th class="role-col" style="text-align:left;">Livrable WS3</th><th>Chef de marché</th><th>Data / PIM</th><th>Dev / IT</th><th>Juridique</th><th>Chef de projet</th></tr></thead>
+          <tbody>
+            <tr><td>Champ univers sur avis</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+            <tr><td>API résumé + liste filtrée</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+            <tr><td>Conformité RGPD API</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-C">C</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       WS4 — SERVICES
+  ═══════════════════════════════════ -->
+  <section class="ws-section ws4" id="ws4">
+    <div class="ws-section-head">
+      <div class="ws-icon">🔧</div>
+      <h2>WS 4 — Services</h2>
+      <span class="ws-tag">Cadrage</span>
+    </div>
+
+    <div class="qpqc">
+      <div class="qpqc-item">
+        <div class="qpqc-label">Quoi</div>
+        <div class="qpqc-text">Recenser les services disponibles pour chaque univers (livraison, installation, financement, retrait), les structurer dans un modèle de données et les exposer via un endpoint.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Pourquoi</div>
+        <div class="qpqc-text">Les services affichés dans le template (S09 + card produit "Installation dès X€") doivent être exacts et disponibles pour l'univers. Afficher un service non disponible dégrade la confiance client.</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Qui</div>
+        <div class="qpqc-text"><strong>Responsable :</strong> Chef de marché<br><strong>Intégration :</strong> Équipe Dev / IT<br><strong>Validation :</strong> Chef de projet</div>
+      </div>
+      <div class="qpqc-item">
+        <div class="qpqc-label">Comment</div>
+        <div class="qpqc-text">Le chef de marché audit les pages services existantes pour son univers et valide lesquels sont actifs. L'équipe Dev structure et expose ces données. 4 services affichés toujours — règle de fallback si &lt;4 disponibles.</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws4">
+      <div class="ws-block-head">Disponibilité services — à vérifier par univers</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead><tr><th style="width:28%">Service</th><th style="width:20%">Disponibilité</th><th style="width:37%">Action à mener</th><th style="width:15%">Priorité</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Livraison à domicile</strong><br><span style="font-size:11px;color:var(--ink-3);">Délai + conditions</span></td>
+              <td><span class="pill pill-ok">Universel</span></td>
+              <td>Personnaliser le libellé avec le nom produit de l'univers. Vérifier le délai (48h ou 72h selon l'univers).</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Service installation</strong><br><span style="font-size:11px;color:var(--ink-3);">Prix à afficher sur la card produit</span></td>
+              <td><span class="pill pill-warn">À vérifier</span></td>
+              <td><strong>Chef de marché :</strong> Confirmer disponibilité et prix de départ pour son univers. Ce prix apparaît sur chaque card produit du catalogue.</td>
+              <td><span class="pill pill-p1">P1</span></td>
+            </tr>
+            <tr>
+              <td><strong>Click &amp; Drive</strong><br><span style="font-size:11px;color:var(--ink-3);">Retrait en magasin</span></td>
+              <td><span class="pill pill-ok">Universel</span></td>
+              <td>Vérifier si le délai est 2h ou 4h selon le format de produit (encombrant vs standard).</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Financement</strong><br><span style="font-size:11px;color:var(--ink-3);">Avantage carte fidélité</span></td>
+              <td><span class="pill pill-ok">Universel</span></td>
+              <td>Vérifier que l'offre est toujours active avant chaque déploiement d'univers. Contenu quasi-statique.</td>
+              <td><span class="pill pill-p2">P2</span></td>
+            </tr>
+            <tr>
+              <td><strong>Reprise / Recyclage</strong><br><span style="font-size:11px;color:var(--ink-3);">Service optionnel — 5ème card</span></td>
+              <td><span class="pill pill-warn">À vérifier</span></td>
+              <td>Si disponible pour l'univers, peut remplacer l'un des 4 services standard. <strong>Chef de marché :</strong> valider la pertinence.</td>
+              <td><span class="pill pill-p3">P3</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note"><strong>Règle des 4 services :</strong> Le template affiche toujours exactement 4 services. Si un service n'est pas disponible pour un univers, il est remplacé par un service universel (Livraison, Click &amp; Drive, Financement). Ne jamais afficher un service non opérationnel.</div>
+      </div>
+    </div>
+
+    <div class="ws-block ws4">
+      <div class="ws-block-head">Livrables attendus — WS4</div>
+      <div class="ws-block-body">
+        <div class="livrable-list">
+          <div class="livrable-item"><span class="livrable-bullet">1</span><span>Matrice services disponibles — tableau validé par le chef de marché pour chaque univers (disponible / non disponible / prix)</span><span class="livrable-owner">Chef de marché</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">2</span><span>Prix d'installation confirmé par univers — nécessaire pour l'affichage "Installation dès X€" sur chaque card produit</span><span class="livrable-owner">Chef de marché</span></div>
+          <div class="livrable-item"><span class="livrable-bullet">3</span><span>Endpoint /services?universe= retournant max 4 services actifs avec titre, description, prix et disponibilité</span><span class="livrable-owner">Dev / IT</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-block ws4">
+      <div class="ws-block-head">RACI détaillé — WS4</div>
+      <div class="ws-block-body" style="padding:0;overflow-x:auto;">
+        <table class="raci-table">
+          <thead><tr><th class="role-col" style="text-align:left;">Livrable WS4</th><th>Chef de marché</th><th>Webmerch</th><th>Marketplace</th><th>Studio</th><th>Dev / IT</th><th>Chef de projet</th></tr></thead>
+          <tbody>
+            <tr><td>Matrice services dispo</td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td></tr>
+            <tr><td>Libellés services</td><td><span class="raci-pill raci-A">A</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-I">I</span></td></tr>
+            <tr><td>Offres Marketplace (S10)</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+            <tr><td>API services filtrée</td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-C">C</span></td><td><span class="raci-pill raci-I">I</span></td><td><span class="raci-pill raci-R">R</span></td><td><span class="raci-pill raci-A">A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       MATRICE DE PRIORISATION
+  ═══════════════════════════════════ -->
+  <section class="ws-section" id="matrice">
+    <div class="ws-section-head">
+      <div class="ws-icon" style="background:#EEF1F7;">📊</div>
+      <h2>Matrice de priorisation</h2>
+    </div>
+    <div class="ws-block" style="border-left: 4px solid var(--accent);">
+      <div class="ws-block-head">Impact × Effort × Urgence — séquençage recommandé</div>
+      <div class="ws-block-body" style="padding:0">
+        <table>
+          <thead>
+            <tr>
+              <th class="matrix-cell-head" style="width:18%">Workstream</th>
+              <th class="matrix-cell-head">Impact</th>
+              <th class="matrix-cell-head">Effort technique</th>
+              <th class="matrix-cell-head">Effort éditorial</th>
+              <th class="matrix-cell-head">Urgence</th>
+              <th class="matrix-cell-head" style="width:30%">Par où commencer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="border-left:3px solid var(--ws1);font-weight:700;">WS1 — Données</td>
+              <td class="matrix-cell-high">Bloquant</td>
+              <td class="matrix-cell-high">Élevé</td>
+              <td class="matrix-cell-low">Faible</td>
+              <td class="matrix-cell-high">Critique</td>
+              <td style="font-size:12px;color:var(--ink-2);">Enrichissement PIM + taxonomie + badge</td>
+            </tr>
+            <tr>
+              <td style="border-left:3px solid var(--ws2);font-weight:700;">WS2 — Éditorial</td>
+              <td class="matrix-cell-high">Élevé</td>
+              <td class="matrix-cell-low">Faible</td>
+              <td class="matrix-cell-high">Élevé</td>
+              <td class="matrix-cell-high">Critique</td>
+              <td style="font-size:12px;color:var(--ink-2);">Intros GEO + FAQ (bloquant pour le go-live)</td>
+            </tr>
+            <tr>
+              <td style="border-left:3px solid var(--ws3);font-weight:700;">WS3 — Avis</td>
+              <td class="matrix-cell-med">Moyen</td>
+              <td class="matrix-cell-med">Moyen</td>
+              <td class="matrix-cell-low">Faible</td>
+              <td class="matrix-cell-med">Important</td>
+              <td style="font-size:12px;color:var(--ink-2);">Champ univers + endpoint résumé hero</td>
+            </tr>
+            <tr>
+              <td style="border-left:3px solid var(--ws4);font-weight:700;">WS4 — Services</td>
+              <td class="matrix-cell-med">Moyen</td>
+              <td class="matrix-cell-low">Faible</td>
+              <td class="matrix-cell-low">Faible</td>
+              <td class="matrix-cell-med">Important</td>
+              <td style="font-size:12px;color:var(--ink-2);">Matrice dispo + prix installation</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note"><strong>Séquence recommandée :</strong> WS1 (PIM) et WS2 (rédaction) démarrent en parallèle — l'un ne bloque pas l'autre. WS3 suit dès que le champ univers est créé dans le modèle avis. WS4 peut démarrer en dernier, c'est le moins risqué.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       CHECKLIST PAR UNIVERS
+  ═══════════════════════════════════ -->
+  <section class="ws-section" id="checklist">
+    <div class="ws-section-head">
+      <div class="ws-icon" style="background:#EEF1F7;">✅</div>
+      <h2>Checklist — Lancer un nouvel univers</h2>
+    </div>
+    <div class="ws-block" style="border-left: 4px solid var(--accent);">
+      <div class="ws-block-head">19 points de contrôle avant go-live — à valider par le chef de projet</div>
+      <div class="ws-block-body">
+        <div class="checklist-wrap">
+          <div class="ws1">
+            <div class="checklist-col-head">WS1 — Données produit (6 points)</div>
+            <div class="checklist-item"><span class="check-box"></span>Taxonomie types produit validée par le chef de marché</div>
+            <div class="checklist-item"><span class="check-box"></span>Règles de badge documentées et implémentées dans le PIM</div>
+            <div class="checklist-item"><span class="check-box"></span>Prix de référence (PVPC) renseigné sur 100 % des SKUs MOFU</div>
+            <div class="checklist-item"><span class="check-box"></span>Statut stock exposé en temps réel ou TTL &lt;15 min</div>
+            <div class="checklist-item"><span class="check-box"></span>Champ type d'installation renseigné (dérivé ou manuel)</div>
+            <div class="checklist-item"><span class="check-box"></span>API catalogue testée en charge — réponse &lt;300 ms</div>
+          </div>
+          <div class="ws2">
+            <div class="checklist-col-head">WS2 — Éditorial (7 points)</div>
+            <div class="checklist-item"><span class="check-box"></span>2 textes GEO 100 mots validés (tableaux produits + marques)</div>
+            <div class="checklist-item"><span class="check-box"></span>FAQ 6 Q&amp;A validée — dont Q6 normes techniques</div>
+            <div class="checklist-item"><span class="check-box"></span>3 articles blog taggés par univers dans le CMS</div>
+            <div class="checklist-item"><span class="check-box"></span>5 guides conseils identifiés, mappés et livrés en CMS</div>
+            <div class="checklist-item"><span class="check-box"></span>Chapeau hero 2 phrases rédigé et validé par le chef de marché</div>
+            <div class="checklist-item"><span class="check-box"></span>10 chips sémantiques validés avec l'équipe SEO</div>
+            <div class="checklist-item"><span class="check-box"></span>Endpoint CMS éditorial exposé et testé</div>
+          </div>
+          <div class="ws3">
+            <div class="checklist-col-head">WS3 — Avis (3 points)</div>
+            <div class="checklist-item"><span class="check-box"></span>Champ univers disponible sur le modèle avis</div>
+            <div class="checklist-item"><span class="check-box"></span>Endpoint résumé (note + total vérifiés) disponible par univers</div>
+            <div class="checklist-item"><span class="check-box"></span>Endpoint liste 3 avis filtrés (≥4★ + vérifiés + ≥20 mots)</div>
+          </div>
+          <div class="ws4">
+            <div class="checklist-col-head">WS4 — Services (3 points)</div>
+            <div class="checklist-item"><span class="check-box"></span>4 services disponibles confirmés pour cet univers</div>
+            <div class="checklist-item"><span class="check-box"></span>Prix d'installation documenté par univers</div>
+            <div class="checklist-item"><span class="check-box"></span>Libellés services personnalisés (pas de formule générique)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <span>Note de cadrage — Template MOFU Hub · v2.0</span>
+    <span>Document interne — à adapter par univers</span>
+  </footer>
+
+</div>
+</body>
+</html>

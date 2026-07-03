@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chauffage de salle de bain — Castorama</title>
+<style>
+:root {
+  --orange: #f5d000;
+  --navy: #0063b0;
+  --navy-dark: #004e8c;
+  --bg: #F5F5F5;
+  --white: #FFFFFF;
+  --text: #1A1A1A;
+  --text-2: #5A6577;
+  --text-3: #9AAABB;
+  --border: #E0E4EC;
+  --green: #1A7A4A;
+  --r: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+a { text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* ── HEADER ── */
+.site-header { background: var(--navy); }
+.header-top { display: flex; align-items: center; gap: 16px; padding: 12px 20px; max-width: 1200px; margin: 0 auto; }
+.logo { font-size: 20px; font-weight: 900; color: var(--navy); background: var(--orange); padding: 5px 12px; border-radius: 3px; flex-shrink: 0; letter-spacing: -0.02em; }
+.search-bar { flex: 1; display: flex; border-radius: 4px; overflow: hidden; }
+.search-input { flex: 1; padding: 9px 14px; border: none; font-size: 14px; outline: none; }
+.search-btn { background: var(--orange); color: var(--navy); border: none; padding: 9px 18px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.header-actions { display: flex; gap: 20px; color: rgba(255,255,255,0.8); font-size: 12px; }
+.header-nav { background: var(--navy-dark); padding: 0 20px; }
+.header-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 0; }
+.header-nav a { color: rgba(255,255,255,0.8); font-size: 13px; padding: 10px 16px; display: block; }
+.header-nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+
+/* ── BREADCRUMB ── */
+.breadcrumb { background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 0; }
+.breadcrumb-inner { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-2); }
+.breadcrumb a { color: var(--text-2); }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { color: var(--text-3); }
+.breadcrumb .current { color: var(--text); font-weight: 600; }
+
+/* ── HERO ── */
+.hero { background: var(--white); padding: 36px 0 28px; border-bottom: 1px solid var(--border); }
+.hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: center; }
+.hero h1 { font-size: 38px; font-weight: 900; letter-spacing: -0.035em; color: var(--navy); line-height: 1.1; margin-bottom: 14px; }
+.hero-desc { font-size: 16px; color: var(--text-2); line-height: 1.65; margin-bottom: 24px; max-width: 480px; }
+.btn-primary { background: var(--orange); color: var(--navy); border: none; padding: 13px 30px; border-radius: 6px; font-size: 15px; font-weight: 700; cursor: pointer; display: inline-block; }
+.btn-primary:hover { opacity: 0.9; }
+.hero-img { border-radius: 12px; height: 270px; overflow: hidden; }
+
+/* ── CHIPS SÉMANTIQUES ── */
+.chips-section { background: var(--white); border-bottom: 2px solid var(--border); padding: 14px 0; }
+.chips-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 10px; }
+.chips-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 13px; color: var(--navy); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.chip:hover { border-color: var(--orange); color: var(--orange); }
+.chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+/* ── MOFU CARDS ── */
+.mofu-section { padding: 36px 0; }
+.section-h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 20px; }
+.mofu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mofu-card { background: var(--white); border-radius: var(--r); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); transition: transform 0.15s, box-shadow 0.15s; display: block; }
+.mofu-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+.mofu-icon { width: 42px; height: 42px; background: #EEF3F9; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 20px; }
+.mofu-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.mofu-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+.mofu-link { font-size: 12px; color: var(--orange); font-weight: 600; margin-top: 10px; display: block; }
+
+/* ── CATALOGUE ── */
+.catalogue-section { padding: 36px 0; background: var(--bg); }
+.catalogue-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.catalogue-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.cat-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 12px; color: var(--navy); cursor: pointer; transition: all 0.12s; }
+.cat-chip:hover, .cat-chip.active { background: var(--orange); color: var(--navy); border-color: var(--orange); }
+.catalogue-filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+.filter-lbl { font-size: 13px; font-weight: 600; color: var(--text-2); }
+.filter-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); font-size: 13px; cursor: pointer; }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.product-card { background: var(--white); border-radius: var(--r); padding: 14px; box-shadow: var(--shadow); border: 1px solid var(--border); position: relative; transition: opacity 0.2s; }
+.product-card.hidden { display: none; }
+.product-card.dimmed { opacity: 0.35; }
+.product-badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.badge-eco { background: #D4EFD8; color: #1A7A4A; }
+.badge-design { background: #E8E4F8; color: #5030A8; }
+.badge-connect { background: #D8ECFE; color: #1558C0; }
+.badge-best { background: #fff3cc; color: #7A6000; }
+.product-img { width: 100%; height: 150px; background: var(--bg); border-radius: 6px; margin-bottom: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.product-brand { font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); margin-bottom: 3px; }
+.product-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+.product-stars { color: #F4A820; font-size: 12px; margin-bottom: 6px; }
+.product-stars span { color: var(--text-3); }
+.product-price { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 10px; }
+.btn-cart { width: 100%; background: var(--orange); color: var(--navy); border: none; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.btn-cart:hover { opacity: 0.9; }
+.catalogue-footer { text-align: center; margin-top: 20px; }
+.btn-more { background: var(--white); border: 2px solid var(--navy); color: var(--navy); padding: 11px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; }
+
+/* ── CALCULATEUR ── */
+.calc-section { padding: 40px 0; background: var(--white); }
+.calc-box { background: var(--navy); border-radius: 14px; padding: 36px; color: #fff; }
+.calc-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+.calc-icon-box { width: 54px; height: 54px; background: rgba(254,220,1,0.18); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.calc-title { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.calc-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+.calc-form { display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; }
+.calc-field { flex: 1; min-width: 150px; }
+.calc-field label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); margin-bottom: 7px; }
+.calc-input { width: 100%; padding: 12px 16px; border-radius: 6px; border: none; font-size: 16px; font-weight: 700; background: rgba(255,255,255,0.1); color: #fff; }
+.calc-input::placeholder { color: rgba(255,255,255,0.3); font-weight: 400; }
+.calc-input:focus { outline: 2px solid var(--orange); }
+.calc-submit { background: var(--orange); color: var(--navy); border: none; padding: 13px 28px; border-radius: 6px; font-size: 15px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.calc-submit:hover { opacity: 0.9; }
+.calc-result { margin-top: 32px; display: none; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
+.calc-result.visible { display: block; }
+.calc-result-info { display: flex; align-items: center; gap: 20px; margin-bottom: 22px; flex-wrap: wrap; }
+.calc-result-badge { background: rgba(254,220,1,0.15); border: 1px solid rgba(254,220,1,0.4); border-radius: 8px; padding: 10px 20px; }
+.calc-result-watt { font-size: 32px; font-weight: 900; color: var(--orange); }
+.calc-result-label { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; }
+.calc-result-tip { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 480px; }
+.calc-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+.calc-pcard { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 14px; }
+.calc-pimg { width: 100%; height: 90px; background: rgba(255,255,255,0.05); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 10px; }
+.calc-pname { font-size: 12px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.calc-pprice { font-size: 18px; font-weight: 900; color: var(--orange); }
+.btn-plp { background: transparent; border: 2px solid rgba(255,255,255,0.25); color: #fff; padding: 10px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.btn-plp:hover { border-color: rgba(255,255,255,0.5); }
+
+/* ── TABLEAU COMPARATIF ── */
+.table-section { padding: 40px 0; background: var(--bg); }
+.table-intro { font-size: 14px; color: var(--text-2); margin-top: 10px; margin-bottom: 24px; line-height: 1.75; }
+.table-wrap { overflow-x: auto; border-radius: var(--r); box-shadow: var(--shadow); }
+.comp-table { width: 100%; border-collapse: collapse; background: var(--white); min-width: 750px; }
+.comp-table thead th { background: var(--navy); color: #fff; padding: 13px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+.comp-table tbody td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+.comp-table tbody tr:last-child td { border-bottom: none; }
+.comp-table tbody tr:hover td { background: #F7F9FC; }
+.comp-table td:first-child a { color: var(--navy); font-weight: 700; font-size: 13px; }
+.comp-table td:first-child a:hover { color: var(--orange); text-decoration: underline; }
+.stars { color: #F4A820; letter-spacing: 1px; }
+.price-val { font-weight: 700; color: var(--navy); }
+.install-easy { color: var(--green); font-weight: 600; }
+.install-pro { color: #A05000; font-weight: 600; }
+.table-cta { margin-top: 16px; font-size: 14px; color: var(--orange); font-weight: 600; cursor: pointer; }
+.table-cta:hover { text-decoration: underline; }
+
+/* ── SERVICES ── */
+.services-section { padding: 40px 0; background: var(--white); }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.service-card { background: var(--bg); border-radius: var(--r); padding: 22px; border: 1px solid var(--border); }
+.service-icon { font-size: 30px; margin-bottom: 12px; }
+.service-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.service-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; margin-bottom: 8px; }
+.service-highlight { font-size: 12px; color: var(--orange); font-weight: 600; }
+
+/* ── UGC ── */
+.ugc-section { padding: 40px 0; background: var(--bg); }
+.ugc-global { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; padding: 20px; background: var(--white); border-radius: var(--r); box-shadow: var(--shadow); flex-wrap: wrap; }
+.ugc-score-big { font-size: 48px; font-weight: 900; color: var(--navy); line-height: 1; }
+.ugc-stars-big { color: #F4A820; font-size: 22px; display: block; margin-bottom: 2px; }
+.ugc-count { font-size: 13px; color: var(--text-2); }
+.ugc-more { margin-left: auto; font-size: 13px; color: var(--orange); font-weight: 600; }
+.ugc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.ugc-card { background: var(--white); border-radius: var(--r); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.ugc-card-stars { color: #F4A820; font-size: 13px; margin-bottom: 10px; }
+.ugc-card-text { font-size: 13px; color: var(--text); line-height: 1.65; font-style: italic; margin-bottom: 14px; }
+.ugc-card-author { font-size: 12px; color: var(--text-3); }
+
+/* ── FAQ ── */
+.faq-section { padding: 40px 0; background: var(--white); }
+.faq-wrap { max-width: 780px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item input[type="checkbox"] { display: none; }
+.faq-item label { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--navy); gap: 16px; }
+.faq-chevron { font-size: 18px; color: var(--text-3); transition: transform 0.25s; flex-shrink: 0; }
+.faq-item input:checked ~ label .faq-chevron { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-item input:checked ~ .faq-answer { max-height: 240px; }
+.faq-answer-inner { padding-bottom: 18px; font-size: 14px; color: var(--text-2); line-height: 1.75; }
+
+/* ── MAILLAGE ── */
+.maillage-section { padding: 40px 0; background: var(--bg); }
+.maillage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.maillage-col h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-3); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--orange); }
+.maillage-col ul { list-style: none; }
+.maillage-col li { margin-bottom: 9px; }
+.maillage-col a { font-size: 13px; color: var(--text-2); }
+.maillage-col a:hover { color: var(--orange); }
+.maillage-col a::before { content: ""; }
+
+/* ── CHIPS REBOND ── */
+.rebond-section { padding: 32px 0; background: var(--white); border-top: 1px solid var(--border); }
+.rebond-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 12px; }
+.rebond-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.rebond-chip { background: var(--bg); border: 1.5px solid var(--border); border-radius: 6px; padding: 9px 18px; font-size: 13px; color: var(--navy); font-weight: 600; transition: all 0.15s; }
+.rebond-chip:hover { background: var(--orange); color: var(--navy); border-color: var(--orange); }
+
+/* ── FOOTER ── */
+.site-footer { background: var(--navy); color: #fff; padding: 40px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-bottom: 36px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: rgba(255,255,255,0.65); font-size: 13px; }
+.footer-col a:hover { color: #fff; }
+.footer-legal { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-img { display: none; }
+  .mofu-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .ugc-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── MARKETPLACE ── */
+.market-section { padding: 40px 0; background: var(--white); }
+.market-intro { font-size: 14px; color: var(--text-2); margin-bottom: 20px; line-height: 1.6; max-width: 640px; }
+.market-badge-partner { display: inline-flex; align-items: center; gap: 6px; background: #EEF3F9; border: 1px solid #CCDBEB; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 18px; }
+.market-table-wrap { overflow-x: auto; border-radius: var(--r); box-shadow: var(--shadow); }
+.market-table { width: 100%; border-collapse: collapse; background: var(--white); min-width: 820px; }
+.market-table thead th { background: var(--navy); color: #fff; padding: 12px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: left; white-space: nowrap; }
+.market-table tbody td { padding: 14px 14px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+.market-table tbody tr:hover td { background: #F7F9FC; }
+.market-table tbody tr:last-child td { border-bottom: none; }
+.market-cell-product { display: flex; align-items: center; gap: 12px; }
+.market-thumb { width: 64px; height: 64px; background: var(--bg); border-radius: 6px; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.market-thumb svg { width: 56px; height: 56px; }
+.market-pname { font-weight: 700; font-size: 13px; color: var(--text); line-height: 1.4; }
+.market-psub { font-size: 11px; color: var(--text-3); margin-top: 3px; }
+.market-seller { font-size: 12px; color: var(--navy); font-weight: 700; }
+.market-seller-sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+.market-badge-new { background: #E2F5EC; color: #0A7850; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; display: inline-block; }
+.market-price-main { font-size: 15px; font-weight: 900; color: var(--text); white-space: nowrap; }
+.market-price-old { font-size: 11px; color: var(--text-3); text-decoration: line-through; margin-top: 1px; white-space: nowrap; }
+.market-price-save { font-size: 10px; color: var(--green); font-weight: 700; margin-top: 2px; white-space: nowrap; }
+.market-stars { color: #F4A820; font-size: 13px; white-space: nowrap; }
+.market-stars span { color: var(--text-3); font-size: 11px; margin-left: 3px; }
+.market-stars-score { font-size: 12px; font-weight: 700; color: var(--text); margin-top: 2px; }
+.market-delivery { font-size: 11px; color: var(--text-2); line-height: 1.55; white-space: nowrap; }
+.market-delivery strong { color: var(--green); font-weight: 700; }
+.market-btn { background: var(--orange); color: var(--navy); border: none; padding: 9px 16px; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; display: block; width: 100%; text-align: center; }
+.market-btn:hover { opacity: 0.88; }
+.market-btn-sec { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); padding: 6px 16px; border-radius: 5px; font-size: 11px; font-weight: 600; cursor: pointer; white-space: nowrap; display: block; width: 100%; text-align: center; margin-top: 6px; }
+.market-btn-sec:hover { background: #EEF3F9; }
+
+/* ── ACTUALITÉS ── */
+.actu-section { padding: 48px 0; background: var(--bg); border-top: 1px solid var(--border); }
+.actu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.actu-card { border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); display: block; transition: transform 0.15s, box-shadow 0.15s; background: var(--white); }
+.actu-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.actu-thumb { height: 160px; overflow: hidden; display: block; }
+.actu-thumb svg { width: 100%; height: 100%; display: block; }
+.actu-body { padding: 18px; }
+.actu-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 8px; }
+.actu-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 8px; }
+.actu-desc { font-size: 12px; color: var(--text-2); line-height: 1.55; margin-bottom: 14px; }
+.actu-arrow { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--border); color: var(--text-2); font-size: 15px; transition: all 0.15s; }
+.actu-card:hover .actu-arrow { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+/* ── CONSEILS ÉDITO ── */
+.conseils-section { padding: 48px 0; background: var(--white); }
+.conseils-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.conseil-card { background: var(--white); border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); transition: transform 0.15s, box-shadow 0.15s; display: block; }
+.conseil-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.conseil-thumb { height: 140px; overflow: hidden; display: block; }
+.conseil-thumb svg { width: 100%; height: 100%; display: block; }
+.conseil-body { padding: 14px; }
+.conseil-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.45; margin-bottom: 8px; }
+.conseil-desc { font-size: 11px; color: var(--text-2); line-height: 1.55; }
+@media (max-width: 900px) {
+  .actu-grid     { grid-template-columns: repeat(2, 1fr); }
+  .conseils-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .mofu-grid     { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .calc-products { grid-template-columns: 1fr; }
+  .maillage-grid { grid-template-columns: 1fr; }
+  .actu-grid     { grid-template-columns: 1fr; }
+  .conseils-grid { grid-template-columns: 1fr; }
+  .footer-grid   { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .score-banner-inner { grid-template-columns: 1fr; }
+}
+
+/* ── CRO ADDITIONS ── */
+.hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.btn-secondary { background: transparent; border: 2px solid var(--navy); color: var(--navy); padding: 11px 22px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-block; transition: all 0.15s; }
+.btn-secondary:hover { background: var(--navy); color: #fff; }
+.hero-social { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-2); }
+.hero-stars { color: #F4A820; font-size: 14px; letter-spacing: 1px; }
+
+.product-price-wrap { margin-bottom: 8px; }
+.product-price-ref { font-size: 12px; color: var(--text-3); text-decoration: line-through; display: block; margin-bottom: 2px; }
+.product-price { font-size: 22px; font-weight: 900; color: var(--navy); }
+.product-stock { font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+.stock-ok    { color: var(--green); }
+.stock-low   { color: #C84000; }
+.stock-order { color: var(--text-2); }
+.product-delivery { font-size: 11px; color: var(--text-2); margin-bottom: 10px; }
+.product-install { font-size: 11px; color: var(--text-2); text-align: center; margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--border); }
+
+.calc-pcard-btn { width: 100%; background: var(--orange); color: var(--navy); border: none; padding: 8px; border-radius: 5px; font-size: 12px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+.calc-pcard-btn:hover { opacity: 0.88; }
+.calc-error-msg { font-size: 12px; color: #C84000; font-weight: 600; margin-top: 6px; display: none; }
+.calc-error-msg.visible { display: block; }
+
+.table-action-btn { background: var(--navy); color: #fff; border: none; padding: 7px 13px; border-radius: 5px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.table-action-btn:hover { background: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <a href="#" class="logo">CASTORAMA</a>
+    <div class="search-bar">
+      <input class="search-input" type="text" placeholder="Rechercher un produit, une marque...">
+      <button class="search-btn">Rechercher</button>
+    </div>
+    <div class="header-actions">
+      <span>Mon compte</span>
+      <span>Mes listes</span>
+      <span>Panier (0)</span>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <div class="header-nav-inner">
+      <a href="#">Tous les rayons</a>
+      <a href="#">Chauffage & Clim</a>
+      <a href="#">Salle de bain</a>
+      <a href="#">Cuisine</a>
+      <a href="#">Jardin</a>
+      <a href="#">Idées & Conseils</a>
+      <a href="#">Services</a>
+    </div>
+  </nav>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner container">
+    <a href="#">Accueil</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#">Chauffage, climatisation et ventilation</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="current">Chauffage de salle de bain</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner container">
+    <div class="hero-text">
+      <h1>Chauffage de<br>salle de bain</h1>
+      <p class="hero-desc">Comparez les solutions et trouvez le chauffage adapté à votre salle de bain, que vous rénoviez, que vous cherchiez à faire des économies ou que vous souhaitiez un équipement design.</p>
+      <div class="hero-ctas">
+        <a href="#calculateur" class="btn-primary">Calculer ma puissance</a>
+        <a href="#catalogue" class="btn-secondary">Voir les produits</a>
+      </div>
+      <div class="hero-social">
+        <span class="hero-stars">★★★★★</span>
+        <span>4,7/5 · 1 284 avis vérifiés Castorama</span>
+      </div>
+    </div>
+    <div class="hero-img">
+      <svg viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+        <rect width="420" height="230" fill="#EDF1F5"/>
+        <g stroke="#DEE3E9" stroke-width="0.6" fill="none">
+          <line x1="0" y1="46" x2="420" y2="46"/><line x1="0" y1="92" x2="420" y2="92"/><line x1="0" y1="138" x2="420" y2="138"/><line x1="0" y1="184" x2="420" y2="184"/>
+          <line x1="46" y1="0" x2="46" y2="230"/><line x1="92" y1="0" x2="92" y2="230"/><line x1="138" y1="0" x2="138" y2="230"/><line x1="184" y1="0" x2="184" y2="230"/><line x1="230" y1="0" x2="230" y2="230"/><line x1="276" y1="0" x2="276" y2="230"/><line x1="322" y1="0" x2="322" y2="230"/><line x1="368" y1="0" x2="368" y2="230"/>
+        </g>
+        <rect x="0" y="230" width="420" height="40" fill="#D5D9DF"/>
+        <line x1="0" y1="252" x2="420" y2="252" stroke="#C8CDD3" stroke-width="0.6"/>
+        <line x1="70" y1="230" x2="70" y2="270" stroke="#C8CDD3" stroke-width="0.6"/><line x1="140" y1="230" x2="140" y2="270" stroke="#C8CDD3" stroke-width="0.6"/><line x1="210" y1="230" x2="210" y2="270" stroke="#C8CDD3" stroke-width="0.6"/><line x1="280" y1="230" x2="280" y2="270" stroke="#C8CDD3" stroke-width="0.6"/><line x1="350" y1="230" x2="350" y2="270" stroke="#C8CDD3" stroke-width="0.6"/>
+        <rect x="52" y="22" width="9" height="195" rx="4" fill="#ACBBC6"/>
+        <rect x="139" y="22" width="9" height="195" rx="4" fill="#ACBBC6"/>
+        <rect x="52" y="42" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="68" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="94" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="120" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="146" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="172" width="96" height="7" rx="3" fill="#C0CAD2"/><rect x="52" y="198" width="96" height="7" rx="3" fill="#C0CAD2"/>
+        <circle cx="56.5" cy="22" r="5" fill="#8EA0AE"/><circle cx="143.5" cy="22" r="5" fill="#8EA0AE"/><circle cx="56.5" cy="217" r="5" fill="#8EA0AE"/><circle cx="143.5" cy="217" r="5" fill="#8EA0AE"/>
+        <path d="M49 50 Q100 56 151 50 L151 108 Q100 114 49 108 Z" fill="#EFF3F7" stroke="#DDE3E9" stroke-width="0.8"/>
+        <line x1="49" y1="63" x2="151" y2="63" stroke="#DDE3E9" stroke-width="0.5"/><line x1="49" y1="75" x2="151" y2="75" stroke="#DDE3E9" stroke-width="0.5"/><line x1="49" y1="87" x2="151" y2="87" stroke="#DDE3E9" stroke-width="0.5"/><line x1="49" y1="99" x2="151" y2="99" stroke="#DDE3E9" stroke-width="0.5"/>
+        <rect x="49" y="103" width="102" height="5" fill="#8AAED8" opacity="0.55"/>
+        <rect x="196" y="52" width="200" height="9" rx="3" fill="#BEC4CC"/>
+        <ellipse cx="230" cy="36" rx="14" ry="18" fill="#79B879" opacity="0.9"/><ellipse cx="238" cy="31" rx="10" ry="13" fill="#5AAA5A" opacity="0.75"/><ellipse cx="225" cy="33" rx="7" ry="10" fill="#6AB46A" opacity="0.8"/>
+        <rect x="224" y="48" width="12" height="13" rx="3" fill="#AF7848"/>
+        <rect x="258" y="39" width="34" height="15" rx="6" fill="#E9D5C3"/><rect x="258" y="39" width="34" height="5" rx="3" fill="#D9C1A9"/>
+        <rect x="306" y="38" width="15" height="17" rx="3" fill="rgba(200,222,242,0.5)" stroke="#B8C8D8" stroke-width="1"/><rect x="309" y="35" width="3" height="18" rx="1.5" fill="#E88888" opacity="0.8"/>
+        <rect x="214" y="75" width="160" height="142" rx="6" fill="rgba(208,222,236,0.45)" stroke="#BCC8D5" stroke-width="1.5"/>
+        <rect x="219" y="80" width="52" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+        <defs><radialGradient id="hg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FF8040" stop-opacity="0.08"/><stop offset="100%" stop-color="#FF8040" stop-opacity="0"/></radialGradient></defs>
+        <rect x="44" y="16" width="114" height="207" fill="url(#hg)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CHIPS SÉMANTIQUES -->
+<div class="chips-section">
+  <div class="container">
+    <div class="chips-label">Recherches fréquentes</div>
+    <div class="chips-row">
+      <button class="chip" data-filter="all">Chauffage salle de bain</button>
+      <button class="chip" data-filter="eco">Chauffage économique SDB</button>
+      <button class="chip" data-filter="design">Chauffage design SDB</button>
+      <button class="chip" data-filter="electrique">Sèche-serviettes électrique</button>
+      <button class="chip" data-filter="eau-chaude">Sèche-serviettes eau chaude</button>
+      <button class="chip" data-filter="500">Chauffage 500W</button>
+      <button class="chip" data-filter="sans-travaux">Chauffage sans travaux</button>
+      <button class="chip" data-filter="connecte">Sèche-serviettes connecté</button>
+      <button class="chip" data-filter="budget">Chauffage SDB pas cher</button>
+      <button class="chip" data-filter="eco">Chauffage compatible DPE</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOFU NAVIGATION -->
+<section class="mofu-section">
+  <div class="container">
+    <h2 class="section-h2">Votre projet, vos besoins</h2>
+    <div class="mofu-grid">
+      <a href="#" class="mofu-card">
+        <div class="mofu-icon">🔧</div>
+        <div class="mofu-title">Rénovation thermique</div>
+        <div class="mofu-desc">Remplacez votre convecteur par une solution économe et compatible DPE.</div>
+        <span class="mofu-link">Voir les solutions</span>
+      </a>
+      <a href="#" class="mofu-card">
+        <div class="mofu-icon">💶</div>
+        <div class="mofu-title">Économies d'énergie</div>
+        <div class="mofu-desc">Réduisez votre facture de chauffage sans sacrifier le confort au quotidien.</div>
+        <span class="mofu-link">Réduire ma facture</span>
+      </a>
+      <a href="#" class="mofu-card">
+        <div class="mofu-icon">🎨</div>
+        <div class="mofu-title">Design & ambiance</div>
+        <div class="mofu-desc">Un sèche-serviettes pensé pour votre décoration et votre style intérieur.</div>
+        <span class="mofu-link">Découvrir les gammes</span>
+      </a>
+      <a href="#" class="mofu-card">
+        <div class="mofu-icon">📋</div>
+        <div class="mofu-title">Guide d'installation</div>
+        <div class="mofu-desc">Posez vous-même ou faites appel à un professionnel Castorama agréé.</div>
+        <span class="mofu-link">Voir le guide</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section class="catalogue-section" id="catalogue">
+  <div class="container">
+    <h2 class="section-h2">Notre catalogue Chauffage SDB &amp; Sèche-Serviettes</h2>
+
+    <!-- Chips catalogue -->
+    <div class="chips-label">Filtrer par besoin</div>
+    <div class="catalogue-chips">
+      <button class="cat-chip active" data-cat="all">Tous</button>
+      <button class="cat-chip" data-cat="electrique">Électrique</button>
+      <button class="cat-chip" data-cat="eau-chaude">Eau chaude</button>
+      <button class="cat-chip" data-cat="soufflant">Soufflant</button>
+      <button class="cat-chip" data-cat="design">Design primé</button>
+      <button class="cat-chip" data-cat="eco">Éco-responsable</button>
+      <button class="cat-chip" data-cat="connecte">Connecté</button>
+    </div>
+
+    <!-- Filtres PLP standard -->
+    <div class="catalogue-filters">
+      <span class="filter-lbl">Affiner :</span>
+      <select class="filter-select" id="filter-brand">
+        <option value="">Toutes les marques</option>
+        <option>Sauter</option>
+        <option>GoodHome</option>
+        <option>Noirot</option>
+        <option>Acova</option>
+        <option>Carrera</option>
+        <option>Deltacolor</option>
+      </select>
+      <select class="filter-select" id="filter-power">
+        <option value="">Toute puissance</option>
+        <option value="500">500W et moins</option>
+        <option value="750">500W – 750W</option>
+        <option value="1000">750W – 1000W</option>
+        <option value="1200">1000W et plus</option>
+      </select>
+      <select class="filter-select">
+        <option>Tout prix</option>
+        <option>Moins de 100€</option>
+        <option>100€ – 200€</option>
+        <option>200€ – 350€</option>
+        <option>Plus de 350€</option>
+      </select>
+      <select class="filter-select">
+        <option>Mieux notés</option>
+        <option>Prix croissant</option>
+        <option>Prix décroissant</option>
+      </select>
+    </div>
+
+    <!-- Grille produits -->
+    <div class="products-grid" id="products-grid">
+      <!-- Produits injectés par JS -->
+    </div>
+
+    <div class="catalogue-footer">
+      <button class="btn-more">Voir tous les produits (47)</button>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATEUR DE PUISSANCE -->
+<section class="calc-section" id="calculateur">
+  <div class="container">
+    <div class="calc-box">
+      <div class="calc-header">
+        <div class="calc-icon-box">⚡</div>
+        <div>
+          <div class="calc-title">Calculateur de puissance</div>
+          <div class="calc-desc">Indiquez la surface de votre salle de bain et le type d'isolation pour obtenir la puissance recommandée et une sélection de produits adaptés.</div>
+        </div>
+      </div>
+      <div class="calc-form">
+        <div class="calc-field">
+          <label>Surface de la pièce (m²)</label>
+          <input class="calc-input" type="number" id="calc-surface" placeholder="Ex : 8" min="1" max="50">
+          <div class="calc-error-msg" id="calc-error">Veuillez indiquer la surface de votre pièce (ex. 8 m²).</div>
+        </div>
+        <div class="calc-field">
+          <label>Type d'isolation</label>
+          <select class="calc-input" id="calc-isolation" style="background:rgba(255,255,255,0.1);color:#fff;border:none;cursor:pointer;">
+            <option value="1">Bonne isolation (après 2000)</option>
+            <option value="1.2">Isolation moyenne (1980–2000)</option>
+            <option value="1.5">Faible isolation (avant 1980)</option>
+          </select>
+        </div>
+        <button class="calc-submit" onclick="calculatePower()">Calculer</button>
+      </div>
+
+      <div class="calc-result" id="calc-result">
+        <div class="calc-result-info">
+          <div class="calc-result-badge">
+            <div class="calc-result-watt" id="result-watt">750W</div>
+            <div class="calc-result-label">Puissance recommandée</div>
+          </div>
+          <div class="calc-result-tip" id="result-tip">Pour une pièce de cette surface, nous recommandons un sèche-serviettes de 750W. Cette puissance assure un confort thermique optimal tout en restant économique.</div>
+        </div>
+        <div class="calc-products" id="calc-products"></div>
+        <button class="btn-plp" id="btn-plp-link">Voir tous les modèles adaptés à votre configuration</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLEAU COMPARATIF -->
+<section class="table-section">
+  <div class="container">
+    <h2 class="section-h2">Tableau comparatif des sèche-serviettes du moment</h2>
+    <p class="table-intro">Le sèche-serviettes électrique équipe aujourd'hui 73 % des nouvelles salles de bain rénovées en France (Observatoire Habitat 2024). Disponible à partir de 70 € pour les modèles sans travaux branchés sur prise 230V, il monte jusqu'à 650 € pour les finitions premium eau chaude en inox brossé. La puissance recommandée est de 150 à 200 W par m² en isolation standard : 500 W suffisent pour 3 à 5 m², une grande salle de bain mal isolée nécessite 1 500 W. Les modèles connectés avec détection de présence consomment en moyenne 35 % de moins qu'un modèle sans régulation. Ce tableau compare les 10 modèles phares disponibles chez Castorama selon le type d'énergie, la puissance, la finition et la note clients.</p>
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Type d'énergie</th>
+            <th>Puissance</th>
+            <th>Prix indicatif</th>
+            <th>Note clients</th>
+            <th>Finition / Design</th>
+            <th>Économies d'énergie</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">Sèche-serviette Sauter Marapi Connecté</a></td>
+            <td>Électrique</td>
+            <td>750W</td>
+            <td class="price-val">199,90 €</td>
+            <td><span class="stars">★★★★½</span> <span style="font-size:11px;color:#9AAABB">4,5/5 (178)</span></td>
+            <td>Blanc mat</td>
+            <td><span class="stars">★★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+          <tr>
+            <td><a href="#">Sèche-serviette GoodHome Neva Soufflant</a></td>
+            <td>Soufflant</td>
+            <td>1 200W</td>
+            <td class="price-val">129,90 €</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,3/5 (89)</span></td>
+            <td>Blanc brillant</td>
+            <td><span class="stars">★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+          <tr>
+            <td><a href="#">Sèche-serviette Noirot Axane Eau Chaude</a></td>
+            <td>Eau chaude</td>
+            <td>–</td>
+            <td class="price-val">249,90 €</td>
+            <td><span class="stars">★★★★½</span> <span style="font-size:11px;color:#9AAABB">4,7/5 (156)</span></td>
+            <td>Chromé</td>
+            <td><span class="stars">★★★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+          <tr>
+            <td><a href="#">Sèche-serviette Acova Fassane Premium</a></td>
+            <td>Électrique</td>
+            <td>750W</td>
+            <td class="price-val">319,90 €</td>
+            <td><span class="stars">★★★★★</span> <span style="font-size:11px;color:#9AAABB">4,8/5 (92)</span></td>
+            <td>Inox brossé</td>
+            <td><span class="stars">★★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+          <tr>
+            <td><a href="#">Sèche-serviette Carrera Milano 500W</a></td>
+            <td>Électrique</td>
+            <td>500W</td>
+            <td class="price-val">149,90 €</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,2/5 (67)</span></td>
+            <td>Noir mat</td>
+            <td><span class="stars">★★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+          <tr>
+            <td><a href="#">Sèche-serviette Deltacolor Quartz Design</a></td>
+            <td>Électrique</td>
+            <td>500W</td>
+            <td class="price-val">109,90 €</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,4/5 (112)</span></td>
+            <td>Blanc mat</td>
+            <td><span class="stars">★★★</span></td>
+            <td><button class="table-action-btn">Voir le produit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-cta">Lire notre guide de choix complet</div>
+
+    <!-- Tableau marques -->
+    <h2 class="section-h2" style="margin-top:40px;">Tableau de bord des 10 grandes marques</h2>
+    <p class="table-intro">Castorama référence 8 marques spécialisées en chauffage de salle de bain, de l'entrée de gamme accessible comme GoodHome (dès 69 €) aux gammes design premium Acova (jusqu'à 650 €). Sauter et Noirot dominent le segment du connecté avec des programmateurs Wi-Fi intégrés qui réduisent la consommation jusqu'à 40 % par rapport à un modèle sans régulation. Les marques eau chaude comme Atlantic ou Noirot sont particulièrement adaptées aux maisons équipées d'une chaudière à condensation : leur coût de fonctionnement annuel peut être 3 fois inférieur à un sèche-serviettes électrique équivalent. Ce comparatif vous aide à identifier le fabricant le mieux adapté à votre budget, votre installation et votre style.</p>
+    <div class="table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Marque</th>
+            <th>Spécialité / Type</th>
+            <th>Gamme de prix</th>
+            <th>Finitions</th>
+            <th>Installation</th>
+            <th>Note clients</th>
+            <th>Disponibilité Castorama</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sauter</strong></td>
+            <td>Électrique connecté</td>
+            <td class="price-val">89 € – 250 €</td>
+            <td>Blanc mat, Blanc brillant</td>
+            <td class="install-easy">Facile (230V)</td>
+            <td><span class="stars">★★★★½</span> <span style="font-size:11px;color:#9AAABB">4,5/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>GoodHome</strong></td>
+            <td>Électrique / Soufflant</td>
+            <td class="price-val">69 € – 160 €</td>
+            <td>Blanc brillant, Anthracite</td>
+            <td class="install-easy">Facile (230V)</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,3/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Noirot</strong></td>
+            <td>Eau chaude / Électrique</td>
+            <td class="price-val">120 € – 350 €</td>
+            <td>Chromé, Blanc, Anthracite</td>
+            <td class="install-pro">Pro recommandé</td>
+            <td><span class="stars">★★★★½</span> <span style="font-size:11px;color:#9AAABB">4,6/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Acova</strong></td>
+            <td>Premium / Design</td>
+            <td class="price-val">250 € – 650 €</td>
+            <td>Inox, Chromé, Finitions spéciales</td>
+            <td class="install-pro">Pro recommandé</td>
+            <td><span class="stars">★★★★★</span> <span style="font-size:11px;color:#9AAABB">4,8/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Carrera</strong></td>
+            <td>Électrique design</td>
+            <td class="price-val">100 € – 280 €</td>
+            <td>Noir mat, Blanc mat, Chromé</td>
+            <td class="install-easy">Facile (230V)</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,2/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Deltacolor</strong></td>
+            <td>Électrique entrée de gamme</td>
+            <td class="price-val">70 € – 150 €</td>
+            <td>Blanc brillant</td>
+            <td class="install-easy">Facile (230V)</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,4/5</span></td>
+            <td style="color:#1A7A4A;font-weight:600">✓ En stock</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Delonghi</strong></td>
+            <td>Soufflant portable</td>
+            <td class="price-val">60 € – 120 €</td>
+            <td>Blanc, Gris</td>
+            <td class="install-easy">Sans travaux</td>
+            <td><span class="stars">★★★★</span> <span style="font-size:11px;color:#9AAABB">4,1/5</span></td>
+            <td style="color:#A05000;font-weight:600">⏱ Sur commande</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+          <tr>
+            <td><strong>Atlantic</strong></td>
+            <td>Eau chaude économe</td>
+            <td class="price-val">180 € – 420 €</td>
+            <td>Blanc, Chromé</td>
+            <td class="install-pro">Pro recommandé</td>
+            <td><span class="stars">★★★★½</span> <span style="font-size:11px;color:#9AAABB">4,6/5</span></td>
+            <td style="color:#A05000;font-weight:600">⏱ Sur commande</td>
+            <td><button class="table-action-btn">Voir la gamme</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="container">
+    <h2 class="section-h2">Les services pour votre projet</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <div class="service-title">Livraison à domicile</div>
+        <div class="service-desc">Votre sèche-serviettes livré directement dans votre salle de bain en 48h, encombrant inclus.</div>
+        <div class="service-highlight">Livraison offerte dès 69€ d'achat</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔨</div>
+        <div class="service-title">Service d'installation</div>
+        <div class="service-desc">Pose de votre sèche-serviettes par un technicien Castorama agréé, électrique ou eau chaude, raccordement inclus.</div>
+        <div class="service-highlight">À partir de 79€ TTC, devis gratuit</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💳</div>
+        <div class="service-title">Carte Castorama</div>
+        <div class="service-desc">Financez votre chauffage salle de bain en plusieurs fois sans frais. −10% sur votre première commande.</div>
+        <div class="service-highlight">−10% immédiat sur votre 1ère commande</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏪</div>
+        <div class="service-title">Click &amp; Drive</div>
+        <div class="service-desc">Commandez votre sèche-serviettes en ligne, récupérez-le prêt à installer dans votre magasin en 2 heures.</div>
+        <div class="service-highlight">Disponible dans 150 magasins</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE -->
+<section class="market-section">
+  <div class="container">
+    <h2 class="section-h2">Marketplace Castorama</h2>
+    <div class="market-badge-partner">🤝 Vendeurs partenaires · Garantie acheteur Castorama</div>
+    <p class="market-intro">Ces produits sont vendus et expédiés par des vendeurs tiers sélectionnés sur Castorama.fr. Paiement sécurisé, retour 30 jours, service client Castorama inclus.</p>
+    <div class="market-table-wrap">
+      <table class="market-table">
+        <thead>
+          <tr>
+            <th style="min-width:260px">Produit</th>
+            <th>Vendeur</th>
+            <th>État</th>
+            <th>Prix TTC</th>
+            <th>Note</th>
+            <th>Livraison</th>
+            <th style="min-width:120px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="market-cell-product">
+                <div class="market-thumb">
+                  <svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="155" rx="4" fill="#FAFAFA" fill-opacity="0.5"/><rect x="18" y="12" width="8" height="130" rx="4" fill="#1C1C1E"/><rect x="94" y="12" width="8" height="130" rx="4" fill="#1C1C1E"/><rect x="18" y="26" width="84" height="6" rx="3" fill="#2E2E30"/><rect x="18" y="46" width="84" height="6" rx="3" fill="#2E2E30"/><rect x="18" y="66" width="84" height="6" rx="3" fill="#2E2E30"/><rect x="18" y="86" width="84" height="6" rx="3" fill="#2E2E30"/><rect x="18" y="106" width="84" height="6" rx="3" fill="#2E2E30"/><rect x="18" y="126" width="84" height="6" rx="3" fill="#2E2E30"/><circle cx="22" cy="12" r="5" fill="#111"/><circle cx="98" cy="12" r="5" fill="#111"/><circle cx="22" cy="142" r="5" fill="#111"/><circle cx="98" cy="142" r="5" fill="#111"/></svg>
+                </div>
+                <div>
+                  <div class="market-pname">Rointe Kyros 750W Connecté Noir</div>
+                  <div class="market-psub">Électrique · Pilotable via app · Programmateur 24/7</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="market-seller">ElectroHeat Pro</div>
+              <div class="market-seller-sub">97 % avis positifs · 3 840 ventes</div>
+            </td>
+            <td><span class="market-badge-new">Neuf</span></td>
+            <td>
+              <div class="market-price-main">189,00 €</div>
+              <div class="market-price-old">229,00 €</div>
+              <div class="market-price-save">−17 % · économisez 40 €</div>
+            </td>
+            <td>
+              <div class="market-stars">★★★★½ <span>(124)</span></div>
+              <div class="market-stars-score">4,6 / 5</div>
+            </td>
+            <td>
+              <div class="market-delivery"><strong>Livraison gratuite</strong></div>
+              <div class="market-delivery">Estimée sous 3–5 j.</div>
+            </td>
+            <td>
+              <button class="market-btn">Ajouter au panier</button>
+              <button class="market-btn-sec">Voir le produit</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="market-cell-product">
+                <div class="market-thumb">
+                  <svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="155" rx="4" fill="#FAFAFA" fill-opacity="0.5"/><rect x="18" y="12" width="8" height="130" rx="4" fill="#ACBCC8"/><rect x="94" y="12" width="8" height="130" rx="4" fill="#ACBCC8"/><rect x="18" y="26" width="84" height="6" rx="3" fill="#C4D0DA"/><rect x="18" y="46" width="84" height="6" rx="3" fill="#C4D0DA"/><rect x="18" y="66" width="84" height="6" rx="3" fill="#C4D0DA"/><rect x="18" y="86" width="84" height="6" rx="3" fill="#C4D0DA"/><rect x="18" y="106" width="84" height="6" rx="3" fill="#C4D0DA"/><rect x="18" y="126" width="84" height="6" rx="3" fill="#C4D0DA"/><circle cx="22" cy="12" r="5" fill="#9AAAB6"/><circle cx="98" cy="12" r="5" fill="#9AAAB6"/><circle cx="22" cy="142" r="5" fill="#9AAAB6"/><circle cx="98" cy="142" r="5" fill="#9AAAB6"/><rect x="14" y="140" width="7" height="14" rx="2" fill="#9AAAB6"/><rect x="99" y="140" width="7" height="14" rx="2" fill="#9AAAB6"/></svg>
+                </div>
+                <div>
+                  <div class="market-pname">Thermor Allure Bain Eau Chaude 1000W</div>
+                  <div class="market-psub">Eau chaude · Chromé · Barres plates inox</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="market-seller">PlomberiePlus</div>
+              <div class="market-seller-sub">99 % avis positifs · 6 210 ventes</div>
+            </td>
+            <td><span class="market-badge-new">Neuf</span></td>
+            <td>
+              <div class="market-price-main">274,00 €</div>
+              <div class="market-price-old">299,00 €</div>
+              <div class="market-price-save">−8 % · économisez 25 €</div>
+            </td>
+            <td>
+              <div class="market-stars">★★★★★ <span>(203)</span></div>
+              <div class="market-stars-score">4,8 / 5</div>
+            </td>
+            <td>
+              <div class="market-delivery"><strong>Livraison gratuite</strong></div>
+              <div class="market-delivery">Estimée sous 48 h.</div>
+            </td>
+            <td>
+              <button class="market-btn">Ajouter au panier</button>
+              <button class="market-btn-sec">Voir le produit</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="market-cell-product">
+                <div class="market-thumb">
+                  <svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="18" width="104" height="120" rx="8" fill="#E8ECF0" stroke="#D0D5DC" stroke-width="1.5"/><g stroke="#B0B8C2" stroke-width="2" stroke-linecap="round"><line x1="28" y1="52" x2="92" y2="52"/><line x1="28" y1="62" x2="92" y2="62"/><line x1="28" y1="72" x2="92" y2="72"/><line x1="28" y1="82" x2="92" y2="82"/><line x1="28" y1="92" x2="92" y2="92"/><line x1="28" y1="102" x2="92" y2="102"/><line x1="28" y1="112" x2="92" y2="112"/></g><circle cx="60" cy="35" r="9" fill="#C8CDD4" stroke="#B0B5BC" stroke-width="1.2"/><circle cx="60" cy="35" r="4" fill="#D8DDE4"/><rect x="40" y="132" width="18" height="6" rx="2" fill="#C0C5CC"/><rect x="62" y="132" width="18" height="6" rx="2" fill="#C0C5CC"/></svg>
+                </div>
+                <div>
+                  <div class="market-pname">Soufflant SDB Rowenta SO9265 2000W</div>
+                  <div class="market-psub">Soufflant · Sèche-serviettes intégré · IP24</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="market-seller">ElectroDiscount</div>
+              <div class="market-seller-sub">95 % avis positifs · 11 430 ventes</div>
+            </td>
+            <td><span class="market-badge-new">Neuf</span></td>
+            <td>
+              <div class="market-price-main">89,90 €</div>
+              <div class="market-price-save">Prix le plus bas du marché</div>
+            </td>
+            <td>
+              <div class="market-stars">★★★★ <span>(512)</span></div>
+              <div class="market-stars-score">4,0 / 5</div>
+            </td>
+            <td>
+              <div class="market-delivery"><strong>Livraison gratuite</strong></div>
+              <div class="market-delivery">Estimée sous 2–3 j.</div>
+            </td>
+            <td>
+              <button class="market-btn">Ajouter au panier</button>
+              <button class="market-btn-sec">Voir le produit</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="market-cell-product">
+                <div class="market-thumb">
+                  <svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="155" rx="4" fill="#FAFAFA" fill-opacity="0.5"/><rect x="18" y="12" width="8" height="130" rx="4" fill="#B8BEC6"/><rect x="94" y="12" width="8" height="130" rx="4" fill="#B8BEC6"/><rect x="18" y="26" width="84" height="6" rx="3" fill="#CACFD6"/><rect x="18" y="46" width="84" height="6" rx="3" fill="#CACFD6"/><rect x="18" y="66" width="84" height="6" rx="3" fill="#CACFD6"/><rect x="18" y="86" width="84" height="6" rx="3" fill="#CACFD6"/><rect x="18" y="106" width="84" height="6" rx="3" fill="#CACFD6"/><rect x="18" y="126" width="84" height="6" rx="3" fill="#CACFD6"/><circle cx="22" cy="12" r="5" fill="#9EA4AC"/><circle cx="98" cy="12" r="5" fill="#9EA4AC"/><circle cx="22" cy="142" r="5" fill="#9EA4AC"/><circle cx="98" cy="142" r="5" fill="#9EA4AC"/><circle cx="60" cy="10" r="4" fill="#0063b0" opacity="0.7"/></svg>
+                </div>
+                <div>
+                  <div class="market-pname">Airelec Inova Smart 1000W Connecté</div>
+                  <div class="market-psub">Électrique · Wi-Fi · Compatible Google Home / Alexa</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="market-seller">SmartHomeFR</div>
+              <div class="market-seller-sub">98 % avis positifs · 2 150 ventes</div>
+            </td>
+            <td><span class="market-badge-new">Neuf</span></td>
+            <td>
+              <div class="market-price-main">159,00 €</div>
+              <div class="market-price-old">179,00 €</div>
+              <div class="market-price-save">−11 % · économisez 20 €</div>
+            </td>
+            <td>
+              <div class="market-stars">★★★★½ <span>(78)</span></div>
+              <div class="market-stars-score">4,5 / 5</div>
+            </td>
+            <td>
+              <div class="market-delivery"><strong>Livraison gratuite</strong></div>
+              <div class="market-delivery">Estimée sous 4–6 j.</div>
+            </td>
+            <td>
+              <button class="market-btn">Ajouter au panier</button>
+              <button class="market-btn-sec">Voir le produit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- UGC -->
+<section class="ugc-section">
+  <div class="container">
+    <h2 class="section-h2">Ce qu'ils en disent</h2>
+    <div class="ugc-global">
+      <div class="ugc-score-big">4,7</div>
+      <div>
+        <span class="ugc-stars-big">★★★★★</span>
+        <div class="ugc-count">sur 5 · 1 284 avis vérifiés Castorama</div>
+      </div>
+      <a href="#" class="ugc-more">Lire tous les avis</a>
+    </div>
+    <div class="ugc-grid">
+      <div class="ugc-card">
+        <div class="ugc-card-stars">★★★★★</div>
+        <div class="ugc-card-text">"Installation rapide, le technicien Castorama a tout géré en 2h. Le sèche-serviettes chauffe bien, les serviettes sont chaudes en 20 minutes. Très satisfait du rapport qualité/prix."</div>
+        <div class="ugc-card-author">Marc T. — Vérifié Castorama · Juin 2025</div>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-card-stars">★★★★★</div>
+        <div class="ugc-card-text">"Le modèle Acova s'intègre parfaitement à notre salle de bain gris anthracite. L'inox brossé est magnifique, chauffe rapidement et silencieusement. Un vrai équipement haut de gamme."</div>
+        <div class="ugc-card-author">Sophie L. — Vérifié Castorama · Mai 2025</div>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-card-stars">★★★★☆</div>
+        <div class="ugc-card-text">"Facile à installer soi-même sur une simple prise 230V. Serviettes chaudes chaque matin, la SDB se réchauffe en 15 minutes. Commande en ligne, livraison en 48h, top."</div>
+        <div class="ugc-card-author">Pierre D. — Vérifié Castorama · Avril 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-h2">Vos questions sur le chauffage de salle de bain</h2>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <input type="checkbox" id="faq1" checked>
+        <label for="faq1">Quelle puissance pour chauffer ma salle de bain ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">Comptez environ 150 à 200W par m² pour une salle de bain bien isolée. Pour une pièce de 8m², un sèche-serviettes de 1 000W à 1 500W sera adapté. Notre calculateur ci-dessus vous donne une recommandation précise selon votre configuration et votre isolation.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq2">
+        <label for="faq2">Sèche-serviettes ou panneau rayonnant : lequel choisir ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">Le sèche-serviettes combine chauffage de la pièce et séchage du linge, idéal en usage principal. Le panneau rayonnant est plus économique à l'achat et adapté en chauffage d'appoint ou pour une petite surface. Si vous rénovez et que vous avez déjà une chaudière, le sèche-serviettes eau chaude est la solution la plus économique sur la durée.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq3">
+        <label for="faq3">Peut-on installer soi-même un sèche-serviettes électrique ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">Oui, un sèche-serviettes électrique se branche sur une simple prise 230V (classe II) sans intervention de plombier ou d'électricien. L'installation est accessible à un bricoleur débutant. Pour les modèles eau chaude, une intervention de plombier est nécessaire pour le raccordement au circuit de chauffage central.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq4">
+        <label for="faq4">Quel chauffage salle de bain améliore mon DPE ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">Pour améliorer votre DPE, privilégiez un sèche-serviettes eau chaude relié à votre chaudière à condensation, ou un modèle électrique à inertie avec programmateur. Les modèles connectés avec détection de présence consomment jusqu'à 40% de moins qu'un modèle sans régulation. Évitez les soufflants en usage principal.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq5">
+        <label for="faq5">Quels critères pour un sèche-serviettes design ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">Pour un sèche-serviettes design, regardez la finition (inox brossé, noir mat, blanc mat), la géométrie des barres (plates ou rondes) et la largeur (entre 40 et 60 cm pour s'adapter aux murs). Les marques Acova et Noirot proposent les gammes les plus complètes en finitions premium. Vérifiez la compatibilité avec votre style de salle de bain, qu'il soit minimaliste, industriel ou chaleureux.</div></div>
+      </div>
+      <div class="faq-item">
+        <input type="checkbox" id="faq6">
+        <label for="faq6">Quelles normes électriques respecter pour un sèche-serviettes en salle de bain ? <span class="faq-chevron">▼</span></label>
+        <div class="faq-answer"><div class="faq-answer-inner">La norme NF C 15-100 divise la salle de bain en volumes électriques. En volume 0 (dans la baignoire) et volume 1 (au-dessus, jusqu'à 2,25 m), aucun appareil électrique n'est autorisé. En volume 2 (jusqu'à 60 cm autour de la baignoire), seuls les appareils classés IP44 minimum sont tolérés. Au-delà, un sèche-serviettes électrique de classe II, classé IP21, peut être installé sur une prise standard 230V sans intervention d'électricien. Pour les modèles eau chaude, le raccordement hydraulique doit respecter la norme NF DTU 60.1 et nécessite un plombier qualifié. En cas de doute, un électricien certifié QUALIFELEC peut réaliser un diagnostic de conformité.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTUALITÉS DU MOMENT -->
+<section class="actu-section">
+  <div class="container">
+    <h2 class="section-h2">Actualités du moment</h2>
+    <div class="actu-grid">
+
+      <a href="#" class="actu-card">
+        <div class="actu-thumb">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="ag1" cx="80%" cy="90%" r="60%"><stop offset="0%" stop-color="#D04810" stop-opacity="0.45"/><stop offset="100%" stop-color="#D04810" stop-opacity="0"/></radialGradient></defs>
+            <rect width="400" height="160" fill="#1A2038"/>
+            <rect x="0" y="112" width="400" height="48" fill="#111825"/>
+            <rect width="400" height="160" fill="url(#ag1)"/>
+            <line x1="230" y1="0" x2="230" y2="112" stroke="#232D48" stroke-width="1"/>
+            <line x1="0" y1="112" x2="400" y2="112" stroke="#232D48" stroke-width="1"/>
+            <rect x="280" y="15" width="8" height="95" rx="4" fill="#252D48"/>
+            <rect x="355" y="15" width="8" height="95" rx="4" fill="#252D48"/>
+            <rect x="280" y="30" width="83" height="6" rx="3" fill="#2E3855"/><rect x="280" y="48" width="83" height="6" rx="3" fill="#2E3855"/><rect x="280" y="66" width="83" height="6" rx="3" fill="#2E3855"/><rect x="280" y="84" width="83" height="6" rx="3" fill="#2E3855"/>
+            <ellipse cx="320" cy="115" rx="70" ry="35" fill="#D05010" opacity="0.15"/>
+            <rect x="14" y="14" width="115" height="34" rx="4" fill="#f5d000"/>
+            <rect x="21" y="20" width="50" height="8" rx="2" fill="#0063b0" opacity="0.75"/>
+            <rect x="21" y="32" width="80" height="8" rx="2" fill="#0063b0" opacity="0.75"/>
+            <rect x="14" y="120" width="108" height="20" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="20" y="126" width="65" height="7" rx="2" fill="rgba(255,255,255,0.22)"/>
+            <circle cx="372" cy="140" r="13" fill="rgba(255,255,255,0.08)"/>
+            <line x1="366" y1="140" x2="378" y2="140" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+            <polyline points="374,135 379,140 374,145" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="actu-body">
+          <div class="actu-tag">Projet Chauffage</div>
+          <div class="actu-title">(Ré)chauffez votre intérieur</div>
+          <div class="actu-desc">Nos solutions adaptées à vos besoins, votre logement et votre budget</div>
+          <div class="actu-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#" class="actu-card">
+        <div class="actu-thumb">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C83E0A"/><stop offset="100%" stop-color="#E8702A"/></linearGradient></defs>
+            <rect width="400" height="160" fill="url(#ag2)"/>
+            <rect x="155" y="10" width="140" height="140" rx="5" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <rect x="163" y="18" width="60" height="52" rx="3" fill="rgba(255,255,255,0.18)"/>
+            <rect x="229" y="18" width="60" height="52" rx="3" fill="rgba(255,255,255,0.1)"/>
+            <rect x="163" y="77" width="126" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="163" y="87" width="96" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="163" y="97" width="110" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="163" y="107" width="80" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="163" y="132" width="60" height="10" rx="2" fill="rgba(255,255,255,0.22)"/>
+            <rect x="14" y="14" width="125" height="24" rx="3" fill="#f5d000"/>
+            <rect x="20" y="19" width="100" height="8" rx="2" fill="#0063b0" opacity="0.7"/>
+            <rect x="14" y="46" width="110" height="16" rx="3" fill="rgba(0,0,0,0.15)"/>
+            <rect x="20" y="50" width="85" height="8" rx="2" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="372" cy="140" r="13" fill="rgba(255,255,255,0.15)"/>
+            <line x1="366" y1="140" x2="378" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+            <polyline points="374,135 379,140 374,145" stroke="rgba(255,255,255,0.8)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="actu-body">
+          <div class="actu-tag">Nouveau catalogue</div>
+          <div class="actu-title">Bien se chauffer</div>
+          <div class="actu-desc">Trouvez la solution chauffage la plus adaptée à votre maison et vos habitudes</div>
+          <div class="actu-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#" class="actu-card">
+        <div class="actu-thumb">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="160" fill="#F5EDE4"/>
+            <rect x="20" y="110" width="400" height="50" fill="#EDE0D4"/>
+            <rect x="148" y="12" width="105" height="133" rx="6" fill="#E4D8CC" stroke="#D4C8BC" stroke-width="1"/>
+            <rect x="158" y="24" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="40" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="56" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="72" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="88" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="104" width="85" height="7" rx="3" fill="#C8BAA8"/><rect x="158" y="120" width="85" height="7" rx="3" fill="#C8BAA8"/>
+            <circle cx="163" cy="12" r="5" fill="#B8A898"/><circle cx="248" cy="12" r="5" fill="#B8A898"/><circle cx="163" cy="145" r="5" fill="#B8A898"/><circle cx="248" cy="145" r="5" fill="#B8A898"/>
+            <rect x="268" y="12" width="116" height="85" rx="4" fill="rgba(255,255,255,0.65)"/>
+            <rect x="276" y="20" width="50" height="7" rx="2" fill="#0063b0" opacity="0.5"/>
+            <rect x="276" y="33" width="96" height="11" rx="2" fill="#0063b0" opacity="0.65"/>
+            <rect x="276" y="50" width="80" height="11" rx="2" fill="#0063b0" opacity="0.65"/>
+            <rect x="276" y="67" width="60" height="8" rx="2" fill="#0063b0" opacity="0.35"/>
+            <rect x="276" y="81" width="88" height="8" rx="2" fill="#333" opacity="0.15"/>
+            <circle cx="372" cy="140" r="13" fill="rgba(0,0,0,0.07)"/>
+            <line x1="366" y1="140" x2="378" y2="140" stroke="rgba(0,0,0,0.4)" stroke-width="2" stroke-linecap="round"/>
+            <polyline points="374,135 379,140 374,145" stroke="rgba(0,0,0,0.4)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="actu-body">
+          <div class="actu-tag">Collections 2026</div>
+          <div class="actu-title">Chauffage et Confort, notre sélection</div>
+          <div class="actu-desc">Découvrez nos collections, et inspirez-vous en feuilletant notre catalogue interactif</div>
+          <div class="actu-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONSEILS ÉDITORIAUX -->
+<section class="conseils-section">
+  <div class="container">
+    <h2 class="section-h2">Tous nos conseils pour votre projet</h2>
+    <div class="conseils-grid">
+
+      <a href="#" class="conseil-card">
+        <div class="conseil-thumb">
+          <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="140" fill="#E8EDF5"/>
+            <g stroke="#D8DDE8" stroke-width="0.5"><line x1="0" y1="35" x2="300" y2="35"/><line x1="0" y1="70" x2="300" y2="70"/><line x1="0" y1="105" x2="300" y2="105"/><line x1="50" y1="0" x2="50" y2="110"/><line x1="100" y1="0" x2="100" y2="110"/><line x1="150" y1="0" x2="150" y2="110"/><line x1="200" y1="0" x2="200" y2="110"/><line x1="250" y1="0" x2="250" y2="110"/></g>
+            <rect x="0" y="110" width="300" height="30" fill="#C8D0DA"/>
+            <rect x="58" y="8" width="8" height="96" rx="4" fill="#8899AA"/>
+            <rect x="124" y="8" width="8" height="96" rx="4" fill="#8899AA"/>
+            <rect x="58" y="22" width="74" height="6" rx="3" fill="#9AAABB"/><rect x="58" y="38" width="74" height="6" rx="3" fill="#9AAABB"/><rect x="58" y="54" width="74" height="6" rx="3" fill="#9AAABB"/><rect x="58" y="70" width="74" height="6" rx="3" fill="#9AAABB"/><rect x="58" y="86" width="74" height="6" rx="3" fill="#9AAABB"/>
+            <rect x="168" y="78" width="118" height="34" rx="7" fill="#FAFCFE" stroke="#D0D8E4" stroke-width="1"/>
+            <ellipse cx="227" cy="78" rx="59" ry="10" fill="#EEF2F8"/>
+          </svg>
+        </div>
+        <div class="conseil-body">
+          <div class="conseil-title">Choisir le chauffage pour la salle de bains</div>
+          <div class="conseil-desc">Plusieurs critères rentrent en compte dans le choix du mode de chauffage de la salle de bains.</div>
+        </div>
+      </a>
+
+      <a href="#" class="conseil-card">
+        <div class="conseil-thumb">
+          <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="140" fill="#F5F6F8"/>
+            <rect x="78" y="6" width="10" height="128" rx="5" fill="#C0C8D0"/>
+            <rect x="212" y="6" width="10" height="128" rx="5" fill="#C0C8D0"/>
+            <rect x="78" y="22" width="144" height="9" rx="4" fill="#D0D8E0"/><rect x="78" y="44" width="144" height="9" rx="4" fill="#D0D8E0"/><rect x="78" y="66" width="144" height="9" rx="4" fill="#D0D8E0"/><rect x="78" y="88" width="144" height="9" rx="4" fill="#D0D8E0"/><rect x="78" y="110" width="144" height="9" rx="4" fill="#D0D8E0"/>
+            <circle cx="83" cy="6" r="7" fill="#A8B0B8"/><circle cx="217" cy="6" r="7" fill="#A8B0B8"/>
+            <circle cx="83" cy="134" r="7" fill="#A8B0B8"/><circle cx="217" cy="134" r="7" fill="#A8B0B8"/>
+            <rect x="70" y="28" width="160" height="38" rx="2" fill="#EEF2F8" stroke="#E0E4EC" stroke-width="0.5" opacity="0.85"/>
+            <rect x="70" y="57" width="160" height="5" fill="#80A8D0" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="conseil-body">
+          <div class="conseil-title">Comment choisir un sèche-serviettes électrique</div>
+          <div class="conseil-desc">Nos conseils pour choisir un sèche-serviettes électrique pour la salle de bains.</div>
+        </div>
+      </a>
+
+      <a href="#" class="conseil-card">
+        <div class="conseil-thumb">
+          <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="140" fill="#F0EDE8"/>
+            <rect x="88" y="6" width="9" height="118" rx="4" fill="#B0BCC8"/>
+            <rect x="203" y="6" width="9" height="118" rx="4" fill="#B0BCC8"/>
+            <rect x="88" y="22" width="124" height="8" rx="4" fill="#C0CCD8"/><rect x="88" y="42" width="124" height="8" rx="4" fill="#C0CCD8"/><rect x="88" y="62" width="124" height="8" rx="4" fill="#C0CCD8"/><rect x="88" y="82" width="124" height="8" rx="4" fill="#C0CCD8"/><rect x="88" y="102" width="124" height="8" rx="4" fill="#C0CCD8"/>
+            <rect x="80" y="118" width="9" height="18" rx="2" fill="#98A8B4"/>
+            <rect x="211" y="118" width="9" height="18" rx="2" fill="#98A8B4"/>
+            <rect x="89" y="124" width="26" height="8" rx="2" fill="#98A8B4"/>
+            <rect x="185" y="124" width="27" height="8" rx="2" fill="#98A8B4"/>
+            <circle cx="115" cy="128" r="5" fill="#7A8898"/><circle cx="185" cy="128" r="5" fill="#7A8898"/>
+          </svg>
+        </div>
+        <div class="conseil-body">
+          <div class="conseil-title">Choisir un sèche-serviettes chauffage central</div>
+          <div class="conseil-desc">Nos conseils pour trouver le sèche-serviettes chauffage central qui correspond à vos besoins.</div>
+        </div>
+      </a>
+
+      <a href="#" class="conseil-card">
+        <div class="conseil-thumb">
+          <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="140" fill="#E8EEF4"/>
+            <circle cx="100" cy="48" r="7" fill="#CDD5DF" stroke="#B8C2CC" stroke-width="1.5"/>
+            <circle cx="200" cy="48" r="7" fill="#CDD5DF" stroke="#B8C2CC" stroke-width="1.5"/>
+            <circle cx="100" cy="98" r="7" fill="#CDD5DF" stroke="#B8C2CC" stroke-width="1.5"/>
+            <circle cx="200" cy="98" r="7" fill="#CDD5DF" stroke="#B8C2CC" stroke-width="1.5"/>
+            <line x1="68" y1="48" x2="232" y2="48" stroke="#0063b0" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+            <line x1="68" y1="98" x2="232" y2="98" stroke="#0063b0" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+            <rect x="88" y="40" width="8" height="65" rx="3" fill="#C0C8D2"/>
+            <rect x="204" y="40" width="8" height="65" rx="3" fill="#C0C8D2"/>
+            <rect x="88" y="54" width="124" height="7" rx="3" fill="#CCD4DC"/><rect x="88" y="72" width="124" height="7" rx="3" fill="#CCD4DC"/><rect x="88" y="90" width="124" height="7" rx="3" fill="#CCD4DC"/>
+            <rect x="218" y="14" width="8" height="56" rx="4" fill="#6888A8" transform="rotate(32 222 42)"/>
+            <rect x="218" y="14" width="8" height="18" rx="3" fill="#C8B068" transform="rotate(32 222 42)"/>
+          </svg>
+        </div>
+        <div class="conseil-body">
+          <div class="conseil-title">Comment installer un sèche-serviettes électrique</div>
+          <div class="conseil-desc">Découvrez les normes électriques à connaître pour l'installation d'un sèche-serviettes électrique.</div>
+        </div>
+      </a>
+
+      <a href="#" class="conseil-card">
+        <div class="conseil-thumb">
+          <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="140" fill="#EEF3F5"/>
+            <rect x="14" y="18" width="112" height="104" rx="4" fill="#D8E0E8" stroke="#C0C8D0" stroke-width="1"/>
+            <rect x="23" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="37" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="51" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="65" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="79" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="93" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/><rect x="107" y="26" width="10" height="88" rx="2" fill="#C8D0D8"/>
+            <rect x="134" y="60" width="32" height="3" rx="1" fill="#0063b0" opacity="0.45"/>
+            <polygon points="155,53 170,63 155,73" fill="#0063b0" opacity="0.45"/>
+            <rect x="178" y="8" width="7" height="122" rx="3" fill="#B0B8C0"/>
+            <rect x="238" y="8" width="7" height="122" rx="3" fill="#B0B8C0"/>
+            <rect x="178" y="24" width="67" height="7" rx="3" fill="#C0CAD0"/><rect x="178" y="44" width="67" height="7" rx="3" fill="#C0CAD0"/><rect x="178" y="64" width="67" height="7" rx="3" fill="#C0CAD0"/><rect x="178" y="84" width="67" height="7" rx="3" fill="#C0CAD0"/><rect x="178" y="104" width="67" height="7" rx="3" fill="#C0CAD0"/>
+            <rect x="170" y="122" width="7" height="14" rx="2" fill="#9AA4AC"/>
+            <rect x="246" y="122" width="7" height="14" rx="2" fill="#9AA4AC"/>
+          </svg>
+        </div>
+        <div class="conseil-body">
+          <div class="conseil-title">Comment remplacer un radiateur par un sèche-serviettes eau chaude</div>
+          <div class="conseil-desc">Nos conseils pour démonter un radiateur et le remplacer par un sèche-serviettes chauffage central.</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAILLAGE INTERNE -->
+<section class="maillage-section">
+  <div class="container">
+    <h2 class="section-h2">Approfondir votre projet</h2>
+    <div class="maillage-grid">
+      <div class="maillage-col">
+        <h3>Vos situations</h3>
+        <ul>
+          <li><a href="#">Rénovation thermique SDB</a></li>
+          <li><a href="#">Économies d'énergie SDB</a></li>
+          <li><a href="#">Design &amp; ambiance SDB</a></li>
+          <li><a href="#">Guide d'installation</a></li>
+        </ul>
+      </div>
+      <div class="maillage-col">
+        <h3>Par type de produit</h3>
+        <ul>
+          <li><a href="#">Sèche-serviettes électrique</a></li>
+          <li><a href="#">Sèche-serviettes eau chaude</a></li>
+          <li><a href="#">Sèche-serviettes mixte</a></li>
+          <li><a href="#">Soufflant salle de bain</a></li>
+          <li><a href="#">Accessoires sèche-serviettes</a></li>
+        </ul>
+      </div>
+      <div class="maillage-col">
+        <h3>Nos conseils</h3>
+        <ul>
+          <li><a href="#">Guide d'achat sèche-serviettes</a></li>
+          <li><a href="#">Installer un sèche-serviettes électrique</a></li>
+          <li><a href="#">Quelle puissance choisir ?</a></li>
+          <li><a href="#">Sèche-serviettes connecté : les avantages</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHIPS REBOND PLPs -->
+<section class="rebond-section">
+  <div class="container">
+    <div class="rebond-label">Naviguer par type de produit</div>
+    <div class="rebond-chips">
+      <a href="#" class="rebond-chip">Sèche-serviettes électrique</a>
+      <a href="#" class="rebond-chip">Sèche-serviettes eau chaude</a>
+      <a href="#" class="rebond-chip">Sèche-serviettes mixte</a>
+      <a href="#" class="rebond-chip">Soufflant salle de bain</a>
+      <a href="#" class="rebond-chip">Panneau rayonnant SDB</a>
+      <a href="#" class="rebond-chip">Accessoires sèche-serviettes</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Chauffage SDB</h4>
+        <ul>
+          <li><a href="#">Sèche-serviettes</a></li>
+          <li><a href="#">Panneaux rayonnants</a></li>
+          <li><a href="#">Soufflants</a></li>
+          <li><a href="#">Accessoires</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Service installation</a></li>
+          <li><a href="#">Livraison à domicile</a></li>
+          <li><a href="#">Click &amp; Drive</a></li>
+          <li><a href="#">Carte Castorama</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Idées &amp; Conseils</h4>
+        <ul>
+          <li><a href="#">Guides d'achat</a></li>
+          <li><a href="#">Tutos installation</a></li>
+          <li><a href="#">Inspiration salle de bain</a></li>
+          <li><a href="#">Blog Castorama</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <ul>
+          <li><a href="#">Nos magasins</a></li>
+          <li><a href="#">Programme fidélité</a></li>
+          <li><a href="#">Espace presse</a></li>
+          <li><a href="#">Recrutement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">© 2025 Castorama France — Mentions légales — Politique de confidentialité — Gestion des cookies</div>
+  </div>
+</footer>
+
+<script>
+// ── DONNÉES PRODUITS ──
+const PRODUCTS = [
+  { id:1,  brand:'Sauter',    name:'Sèche-serviette Sauter Marapi 500W',            type:'electrique', power:500,  price:89.90,  priceRef:109,  stock:'ok',    rating:4.5, reviews:234, badge:'eco',      emoji:'🛁' },
+  { id:2,  brand:'GoodHome',  name:'Sèche-serviette GoodHome Neva Soufflant 1200W', type:'soufflant',  power:1200, price:129.90, priceRef:159,  stock:'low',   rating:4.3, reviews:89,  badge:'best',     emoji:'🚿' },
+  { id:3,  brand:'Noirot',    name:'Sèche-serviette Noirot Axane Eau Chaude 1000W', type:'eau-chaude', power:1000, price:249.90, priceRef:null, stock:'ok',    rating:4.7, reviews:156, badge:null,       emoji:'🛁' },
+  { id:4,  brand:'Acova',     name:'Sèche-serviette Acova Fassane Premium 750W',    type:'electrique', power:750,  price:319.90, priceRef:null, stock:'low',   rating:4.8, reviews:92,  badge:'design',   emoji:'✨' },
+  { id:5,  brand:'Carrera',   name:'Sèche-serviette Carrera Milano Noir 500W',      type:'electrique', power:500,  price:149.90, priceRef:179,  stock:'ok',    rating:4.2, reviews:67,  badge:'design',   emoji:'🛁' },
+  { id:6,  brand:'Sauter',    name:'Sèche-serviette Sauter Palas Connecté 1000W',   type:'electrique', power:1000, price:199.90, priceRef:null, stock:'ok',    rating:4.6, reviews:178, badge:'connecte', emoji:'📱' },
+  { id:7,  brand:'Noirot',    name:'Panneau rayonnant SDB Noirot 500W',              type:'panneau',    power:500,  price:79.90,  priceRef:99,   stock:'ok',    rating:4.1, reviews:45,  badge:'eco',      emoji:'🌿' },
+  { id:8,  brand:'Deltacolor', name:'Sèche-serviette Deltacolor Quartz 750W',          type:'electrique', power:750,  price:109.90, priceRef:134,  stock:'ok',    rating:4.4, reviews:112, badge:'eco',     emoji:'🛁' },
+  { id:9,  brand:'Atlantic',  name:'Sèche-serviette Atlantic Doris Eau Chaude 1500W',  type:'eau-chaude', power:1500, price:289.90, priceRef:null, stock:'order', rating:4.6, reviews:201, badge:null,      emoji:'🛁' },
+  { id:10, brand:'Acova',     name:'Sèche-serviette Acova Lame² Noir Mat 500W',        type:'electrique', power:500,  price:389.90, priceRef:null, stock:'low',   rating:4.9, reviews:58,  badge:'design',  emoji:'✨' },
+];
+
+const BADGE_MAP = {
+  eco: { cls:'badge-eco', label:'Éco-responsable' },
+  design: { cls:'badge-design', label:'Design primé' },
+  connecte: { cls:'badge-connect', label:'Connecté' },
+  best: { cls:'badge-best', label:'Bestseller' },
+};
+
+function getProductSVG(type, badge) {
+  const isBlack = badge === 'design';
+  const isChrome = type === 'eau-chaude';
+  const rc = isBlack ? '#1C1C1E' : isChrome ? '#ACBCC8' : '#B8BEC6';
+  const bc = isBlack ? '#2E2E30' : isChrome ? '#C4D0DA' : '#CACFD6';
+  const mc = isBlack ? '#111' : isChrome ? '#9AAAB6' : '#9EA4AC';
+  const bg = isBlack ? '#F2F2F2' : '#FAFAFA';
+
+  if (type === 'soufflant') {
+    return `<svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <rect x="8" y="18" width="104" height="120" rx="8" fill="#E8ECF0" stroke="#D0D5DC" stroke-width="1.5"/>
+      <g stroke="#B0B8C2" stroke-width="2" stroke-linecap="round">
+        <line x1="28" y1="52" x2="92" y2="52"/><line x1="28" y1="62" x2="92" y2="62"/><line x1="28" y1="72" x2="92" y2="72"/>
+        <line x1="28" y1="82" x2="92" y2="82"/><line x1="28" y1="92" x2="92" y2="92"/><line x1="28" y1="102" x2="92" y2="102"/><line x1="28" y1="112" x2="92" y2="112"/>
+      </g>
+      <circle cx="60" cy="35" r="9" fill="#C8CDD4" stroke="#B0B5BC" stroke-width="1.2"/>
+      <circle cx="60" cy="35" r="4" fill="#D8DDE4"/>
+      <rect x="40" y="132" width="18" height="6" rx="2" fill="#C0C5CC"/>
+      <rect x="62" y="132" width="18" height="6" rx="2" fill="#C0C5CC"/>
+    </svg>`;
+  }
+  if (type === 'panneau') {
+    return `<svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+      <rect x="22" y="8" width="76" height="140" rx="6" fill="#E8ECF0" stroke="#D0D5DC" stroke-width="1.5"/>
+      <g stroke="#C8CDD4" stroke-width="0.8">
+        <line x1="30" y1="24" x2="90" y2="24"/><line x1="30" y1="35" x2="90" y2="35"/><line x1="30" y1="46" x2="90" y2="46"/>
+        <line x1="30" y1="57" x2="90" y2="57"/><line x1="30" y1="68" x2="90" y2="68"/><line x1="30" y1="79" x2="90" y2="79"/>
+        <line x1="30" y1="90" x2="90" y2="90"/><line x1="30" y1="101" x2="90" y2="101"/><line x1="30" y1="112" x2="90" y2="112"/><line x1="30" y1="123" x2="90" y2="123"/>
+      </g>
+      <circle cx="60" cy="145" r="4" fill="#C0C5CC"/>
+    </svg>`;
+  }
+  // Ladder towel warmer
+  const pipes = type === 'eau-chaude' ? `<rect x="14" y="140" width="7" height="14" rx="2" fill="${mc}"/><rect x="99" y="140" width="7" height="14" rx="2" fill="${mc}"/>` : '';
+  const wifi = badge === 'connecte' ? `<circle cx="60" cy="9" r="4" fill="#0063b0" opacity="0.75"/>` : '';
+  return `<svg viewBox="0 0 120 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
+    <rect width="120" height="155" rx="4" fill="${bg}" fill-opacity="0.6"/>
+    <rect x="18" y="12" width="8" height="130" rx="4" fill="${rc}"/>
+    <rect x="94" y="12" width="8" height="130" rx="4" fill="${rc}"/>
+    <rect x="18" y="26" width="84" height="6" rx="3" fill="${bc}"/>
+    <rect x="18" y="46" width="84" height="6" rx="3" fill="${bc}"/>
+    <rect x="18" y="66" width="84" height="6" rx="3" fill="${bc}"/>
+    <rect x="18" y="86" width="84" height="6" rx="3" fill="${bc}"/>
+    <rect x="18" y="106" width="84" height="6" rx="3" fill="${bc}"/>
+    <rect x="18" y="126" width="84" height="6" rx="3" fill="${bc}"/>
+    <circle cx="22" cy="12" r="5" fill="${mc}"/><circle cx="98" cy="12" r="5" fill="${mc}"/>
+    <circle cx="22" cy="142" r="5" fill="${mc}"/><circle cx="98" cy="142" r="5" fill="${mc}"/>
+    ${pipes}${wifi}
+  </svg>`;
+}
+
+const STOCK_LABEL = { ok:'✓ En stock', low:'⚠ Dernières pièces', order:'⏱ Sur commande' };
+const STOCK_CLS   = { ok:'stock-ok',  low:'stock-low',          order:'stock-order' };
+
+function renderProducts(list) {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = list.map(p => {
+    const badge = p.badge ? `<span class="product-badge ${BADGE_MAP[p.badge].cls}">${BADGE_MAP[p.badge].label}</span>` : '';
+    const stars = '★'.repeat(Math.floor(p.rating)) + (p.rating%1 >= 0.5 ? '½' : '');
+    const priceRef = p.priceRef ? `<span class="product-price-ref">${p.priceRef.toFixed(2).replace('.',',')} €</span>` : '';
+    const stockCls = STOCK_CLS[p.stock] || 'stock-ok';
+    const stockLbl = STOCK_LABEL[p.stock] || '';
+    return `
+    <div class="product-card" data-type="${p.type}" data-power="${p.power}" data-badge="${p.badge||''}">
+      ${badge}
+      <div class="product-img">${getProductSVG(p.type, p.badge)}</div>
+      <div class="product-brand">${p.brand}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-stars">${stars} <span>(${p.reviews})</span></div>
+      <div class="product-price-wrap">
+        ${priceRef}
+        <span class="product-price">${p.price.toFixed(2).replace('.',',')} €</span>
+      </div>
+      <div class="product-stock ${stockCls}">${stockLbl}</div>
+      <div class="product-delivery">Livraison offerte dès 69 €</div>
+      <button class="btn-cart">Ajouter au panier</button>
+      <div class="product-install">Installation dès 79 € · Devis gratuit</div>
+    </div>`;
+  }).join('');
+}
+
+renderProducts(PRODUCTS);
+
+// ── FILTRE CHIPS CATALOGUE ──
+document.querySelectorAll('.cat-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    const cat = this.dataset.cat;
+    let filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => {
+      if (cat === 'design') return p.badge === 'design';
+      if (cat === 'eco') return p.badge === 'eco';
+      if (cat === 'connecte') return p.badge === 'connecte';
+      return p.type === cat;
+    });
+    renderProducts(filtered.length ? filtered : PRODUCTS);
+  });
+});
+
+// ── CHIPS HERO → scroll + filtre ──
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    const f = this.dataset.filter;
+    const catMap = { electrique:'electrique', 'eau-chaude':'eau-chaude', eco:'eco', design:'design', connecte:'connecte', 'sans-travaux':'soufflant', budget:'all', '500':'all', all:'all' };
+    const target = catMap[f] || 'all';
+    // Activer le bon cat-chip
+    document.querySelectorAll('.cat-chip').forEach(c => {
+      c.classList.remove('active');
+      if (c.dataset.cat === target) c.classList.add('active');
+    });
+    let filtered = target === 'all' ? PRODUCTS : PRODUCTS.filter(p => {
+      if (target === 'eco') return p.badge === 'eco';
+      if (target === 'design') return p.badge === 'design';
+      if (target === 'connecte') return p.badge === 'connecte';
+      return p.type === target;
+    });
+    if (f === 'budget') filtered = [...PRODUCTS].sort((a,b) => a.price - b.price);
+    if (f === '500') filtered = PRODUCTS.filter(p => p.power <= 500);
+    renderProducts(filtered.length ? filtered : PRODUCTS);
+    document.getElementById('catalogue').scrollIntoView({ behavior:'smooth' });
+  });
+});
+
+// ── CALCULATEUR DE PUISSANCE ──
+function calculatePower() {
+  const surface = parseFloat(document.getElementById('calc-surface').value);
+  const isolation = parseFloat(document.getElementById('calc-isolation').value);
+  const errEl = document.getElementById('calc-error');
+  if (!surface || surface < 1) { errEl.classList.add('visible'); return; }
+  errEl.classList.remove('visible');
+  const watt = Math.round(surface * 150 * isolation / 50) * 50;
+  const displayWatt = Math.max(250, Math.min(2000, watt));
+
+  document.getElementById('result-watt').textContent = displayWatt + 'W';
+  const tips = {
+    250: 'Pour une petite salle de bain très bien isolée, un modèle 250–500W suffit amplement.',
+    500: 'Une puissance de 500W est idéale pour votre configuration. Optez pour un modèle électrique à prise 230V, installation simple sans plombier.',
+    750: 'Nous recommandons un sèche-serviettes de 750W pour votre salle de bain. Ce palier offre le meilleur équilibre confort/consommation.',
+    1000: 'Un modèle 1000W assurera un confort thermique optimal. Pensez à un connecté avec programmateur pour réduire la consommation.',
+    1500: 'Pour une grande pièce ou faiblement isolée, un sèche-serviettes eau chaude ou un modèle 1500W connecté sera plus efficace.',
+    2000: 'Configuration exigeante : nous recommandons un sèche-serviettes eau chaude relié à votre chaudière pour optimiser les coûts d\'usage.',
+  };
+  const levels = [250, 500, 750, 1000, 1500, 2000];
+  const closest = levels.reduce((prev, curr) => Math.abs(curr - displayWatt) < Math.abs(prev - displayWatt) ? curr : prev);
+  document.getElementById('result-tip').textContent = tips[closest] || tips[750];
+
+  // Produits correspondants
+  const matching = PRODUCTS.filter(p => Math.abs(p.power - displayWatt) <= 300 || p.type === 'eau-chaude').slice(0, 3);
+  const fallback = PRODUCTS.slice(0, 3);
+  const toShow = matching.length >= 1 ? matching : fallback;
+
+  document.getElementById('calc-products').innerHTML = toShow.map(p => `
+    <div class="calc-pcard">
+      <div class="calc-pimg">${getProductSVG(p.type, p.badge)}</div>
+      <div class="calc-pname">${p.name}</div>
+      <div class="calc-pprice">${p.price.toFixed(2).replace('.',',')} €</div>
+      <button class="calc-pcard-btn">Voir le produit</button>
+    </div>
+  `).join('');
+
+  document.getElementById('btn-plp-link').textContent = `Voir tous les modèles ${displayWatt}W et plus`;
+  document.getElementById('calc-result').classList.add('visible');
+}
+
+// Enter key sur le calculateur
+document.getElementById('calc-surface').addEventListener('keydown', e => { if (e.key === 'Enter') calculatePower(); });
+</script>
+</body>
+</html>
