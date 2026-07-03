@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOFU Hub — Livrables du projet</title>
+<style>
+:root {
+  --ink: #141C2E;
+  --ink-2: #4A5A72;
+  --ink-3: #8A97AE;
+  --bg: #F4F6FB;
+  --white: #FFFFFF;
+  --border: #DDE2EE;
+  --accent: #0063B0;
+  --yellow: #F5D000;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif; font-size: 14px; color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
+
+header {
+  background: var(--ink);
+  padding: 40px 24px 36px;
+  text-align: center;
+}
+.header-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink); background: var(--yellow);
+  padding: 3px 10px; border-radius: 3px; margin-bottom: 16px;
+}
+header h1 {
+  font-size: 28px; font-weight: 900; letter-spacing: -0.03em;
+  color: #fff; margin-bottom: 10px; text-wrap: balance;
+}
+header p {
+  font-size: 14px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto;
+}
+
+main { flex: 1; max-width: 720px; margin: 0 auto; padding: 48px 24px; width: 100%; }
+
+.section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 14px;
+}
+
+.cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+
+.card {
+  background: var(--white); border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 20px 22px; display: flex; align-items: center; gap: 18px;
+  text-decoration: none; transition: border-color .12s, box-shadow .12s;
+  border-left: 4px solid var(--border);
+}
+.card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(0,99,176,0.1); }
+.card.c1 { border-left-color: #0063B0; }
+.card.c2 { border-left-color: #2D7D46; }
+.card.c3 { border-left-color: #6B3FA0; }
+.card.c4 { border-left-color: #C45200; }
+.card.c5 { border-left-color: var(--ink-3); }
+
+.card-icon {
+  width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.c1 .card-icon { background: #E5EFFE; }
+.c2 .card-icon { background: #E2F5EC; }
+.c3 .card-icon { background: #EDE8F9; }
+.c4 .card-icon { background: #FDF0E3; }
+.c5 .card-icon { background: #EEF1F7; }
+
+.card-body { flex: 1; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.card-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
+
+.card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 7px; }
+.tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; background: var(--bg); color: var(--ink-3); border: 1px solid var(--border); }
+
+.card-arrow { color: var(--ink-3); font-size: 16px; flex-shrink: 0; }
+.card:hover .card-arrow { color: var(--accent); }
+
+.divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+.formula-box {
+  background: var(--ink); border-radius: 10px; padding: 24px 28px;
+  margin-bottom: 40px;
+}
+.formula-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+.formula-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.8; }
+.formula-text strong { color: var(--yellow); }
+
+footer {
+  border-top: 1px solid var(--border); padding: 20px 24px;
+  text-align: center; font-size: 11px; color: var(--ink-3);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">Projet GEO · MOFU Hub</div>
+  <h1>Refonte template MOFU Hub<br>Castorama — Livrables</h1>
+  <p>Mockup interactif · Wireframes · Note de cadrage · Script NotebookLM</p>
+</header>
+
+<main>
+
+  <p class="section-label">Outputs du projet</p>
+  <div class="cards">
+
+    <a class="card c1" href="mofu-chauffage-sdb.html">
+      <div class="card-icon">🛁</div>
+      <div class="card-body">
+        <div class="card-title">Mockup interactif — Chauffage SDB</div>
+        <div class="card-desc">Page MOFU Hub contextualisée sur l'univers chauffage salle de bain. Catalogue filtrable, calculateur de puissance, tableaux comparatifs, CRO v2.</div>
+        <div class="card-tags">
+          <span class="tag">CRO</span><span class="tag">GEO</span><span class="tag">SXO</span><span class="tag">Interactif</span>
+        </div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card c2" href="wireframe-chauffage-sdb.html">
+      <div class="card-icon">📐</div>
+      <div class="card-body">
+        <div class="card-title">Wireframe annoté — Chauffage SDB</div>
+        <div class="card-desc">16 composants annotés avec rôles SEO, GEO, CRO et éditorial. Référence de conception pour l'univers chauffage salle de bain.</div>
+        <div class="card-tags">
+          <span class="tag">16 composants</span><span class="tag">Annoté</span><span class="tag">Référence</span>
+        </div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card c3" href="wireframe-mofu-hub-generic.html">
+      <div class="card-icon">🔲</div>
+      <div class="card-body">
+        <div class="card-title">Wireframe neutre — Template générique</div>
+        <div class="card-desc">Template adaptable à tous les univers. Variables paramétrables, structure fixe, contenu variable. À destination des chefs de marché.</div>
+        <div class="card-tags">
+          <span class="tag">Scalable</span><span class="tag">Multi-univers</span><span class="tag">Variables</span>
+        </div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card c4" href="cadrage-mofu-hub.html">
+      <div class="card-icon">📋</div>
+      <div class="card-body">
+        <div class="card-title">Note de cadrage — Gouvernance & Data</div>
+        <div class="card-desc">4 workstreams (Données, Éditorial, Avis, Services), RACI complet avec Studio / Webmerch / Marketplace, checklist 19 points par univers.</div>
+        <div class="card-tags">
+          <span class="tag">RACI</span><span class="tag">WS1–4</span><span class="tag">Checklist</span><span class="tag">Gouvernance</span>
+        </div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="card c5" href="script-notebooklm-geo.md">
+      <div class="card-icon">🎙</div>
+      <div class="card-body">
+        <div class="card-title">Script NotebookLM — GEO, rebattre les cartes</div>
+        <div class="card-desc">Document source pour la génération du podcast NotebookLM. 8 parties : diagnostic avant/après, parcours silencieux, zero-click, disruption organisationnelle.</div>
+        <div class="card-tags">
+          <span class="tag">NotebookLM</span><span class="tag">Script</span><span class="tag">C-level</span><span class="tag">SEO</span>
+        </div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <hr class="divider">
+
+  <div class="formula-box">
+    <div class="formula-label">La formule centrale du projet</div>
+    <div class="formula-text">
+      <strong>GEO</strong> = maîtrise de la fragmentation de l'acquisition<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ refonte de la gouvernance<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ exploitation data
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Projet MOFU Hub · Template GEO-ready · 2026
+</footer>
+
+</body>
+</html>
